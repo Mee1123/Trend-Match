@@ -1,4 +1,4 @@
-# SE18G1
+# SE18G2
 
 システムプログラミングのプロジェクトのテンプレートです．
 このプロジェクトは動的Webプロジェクトで作成しています．
@@ -15,13 +15,13 @@
   macの人はターミナル，windowsの人はGit Bushを使ってください．
 
 ```
-git clone https://github.com/HazeyamaLab/SE18G1.git
+git clone https://github.com/HazeyamaLab/SE18G2.git
 ```
 
 2. Eclipseにプロジェクトをインポート
 
   「メニュー」 -> 「インポート」 -> 「Gitからプロジェクト」 -> 「既存ローカルリポジトリ」
-  `SE18G1` -> 「新規プロジェクト・ウィザードを使用してインポート」 -> 「Web」 -> 「動的webプロジェクト」
+  `SE18G2` -> 「新規プロジェクト・ウィザードを使用してインポート」 -> 「Web」 -> 「動的webプロジェクト」
   「ターゲットランタイム」 -> `Apach Tomcat 8.0+`
 
 
@@ -29,4 +29,4 @@ git clone https://github.com/HazeyamaLab/SE18G1.git
 
   「実行」 -> 「サーバーで実行」
 
-http://localhost:8080/SE18G1
+http://localhost:8080/SE18G2
