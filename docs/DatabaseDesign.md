@@ -1,4 +1,4 @@
-## データ設計書
+# データ設計書
 ##### 改版履歴
 発行日|版数|改版内容
 ---|---|---
@@ -49,29 +49,6 @@ value_id_2|価値観2|int(11)|yes|fk|null|無し
 value_id_3|価値観3|int(11)|yes|fk|null|無し
 
 
-- occupations
-
-Field|和名|Type|Null|Key|Default|Extra
----|---|---|---|---|---|---
-occupation_id|職種ID|int(11)|no|pk|null|auto_increment
-occupation_name|職種名|varchar(10)|no|無し|null|無し
-
-
-- <u>sexes</u>
-
-Field|和名|Type|Null|Key|Default|Extra
----|---|---|---|---|---|---
-sex_id|性別ID|int(11)|no|pk|null|auto_increment
-sex_name|性別名|varchar(5)|no|無し|null|無し
-
-
-- <u>joboffers</u>
-
-Field|和名|Type|Null|Key|Default|Extra
----|---|---|---|---|---|---
-joboffer_id|内定ID|int(11)|no|pk|null|auto_increment
-joboffer_name|内定名|varchar(5)|no|無し|null|無し
-
 
 - values
 
@@ -89,5 +66,5 @@ message_id|メッセージID|int(11)|no|pk|null|auto_increment
 send_user_id|送信者ID|int(11)|no|fk|NULL|無し
 recieve_user_id|受信者ID|int(11)|no|fk|null|無し
 message_contents|メッセージ内容|varchar(500)|yes|無し|null|無し
-created_at|送信日時|timestamp|no|無し|current_timestamp|無し
+created_at|送信日時|timestamp(8)|no|無し|current_timestamp|無し
 
