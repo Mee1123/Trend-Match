@@ -9,11 +9,11 @@ import java.sql.SQLException;
 public class DatabaseAccessor {
 	private final static String SERVER_NAME = "localhost";
 
-	private final static String DATABASE_NAME = "";
+	private final static String DATABASE_NAME = "trendmatch";
 
-	private final static String USER_NAME = "";
+	private final static String USER_NAME = "se18g2";
 
-	private final static String PASSWORD = "";
+	private final static String PASSWORD = "Trend_match1";
 
 	private final static String DRIVER_URL = "jdbc:mysql://" + SERVER_NAME + ":3306/" + DATABASE_NAME
 			+ "?useUnicode=true&characterEncoding=utf-8";
