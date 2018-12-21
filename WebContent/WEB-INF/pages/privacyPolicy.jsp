@@ -2,7 +2,8 @@
 <html lang="ja">
 <head>
   <title>プライバシーポリシー</title>
-  <link rel="stylesheet" type="text/css" href="../../CSS/pageDesign.css">
+  <link rel="stylesheet" type="text/css" href="SE18G2/WebContent/CSS/pageDesign.css">
+
 </head>
 <body>
 当ウェブサイトは、自己分析とマッチングをあわせた新しい就活支援サイトです。<br>​
@@ -45,4 +46,4 @@
 
 <a href="#"class="square_btn">戻る</a>
 </body>
-</htmll>
+</html>
