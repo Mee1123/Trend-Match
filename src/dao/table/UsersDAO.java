@@ -5,9 +5,51 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import form.UpdateUserInfoForm;
 import model.User;
 
 public class UsersDAO extends config.DatabaseAccessor{
+	/**
+	 * メールアドレスを元にしたselect文.<br>ユーザーIDとパスワードのハッシュが戻って来ます.
+	 * @param mailAddress
+	 * @return model.User
+	 */
+	public User selectUserByMailAddress(String mailAddress) {
+		System.out.println("DAO,1,success");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+			//mysql文の用意
+        	String mysql = "select * form users where mailaddress = ?";
+            // DB へのコネクションを作成する
+    		System.out.println("DAO,2,success");
+            connection = createConnection();
+            // 実行するSQL文とパラメータを指定する
+            preparedStatement = connection.prepareStatement(mysql);
+            preparedStatement.setString(1, mailAddress);
+            // SELECT 文の実行
+            resultSet = preparedStatement.executeQuery();
+            // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
+            User user = new User();
+    		System.out.println("DAO,3,success");
+            while (resultSet.next()) {
+                user.setID(resultSet.getInt("id"));
+                user.setPassword(resultSet.getString("password"));
+            }
+    		System.out.println("DAO,4,success");
+            return user;
+		} catch (Exception e) {
+			// TODO: handle exception
+            e.printStackTrace();
+            return null;
+		}
+        finally {
+            // クローズ処理
+            close(connection, preparedStatement, resultSet);
+        }
+	}
+
 	public User findOne(int userId,Connection connection) {
 		try {
 			String sql = "select * from user where user_id = ?";
@@ -18,8 +60,9 @@ public class UsersDAO extends config.DatabaseAccessor{
 			resultSet.first();
 			User user = new User();
 			user.setUserId(userId);
-			user.setMailaddress(resultSet.getString("mailaddress"));
+			user.setMailAddress(resultSet.getString("mailaddress"));
 			user.setPassword(resultSet.getString("password"));
+			user.setName(resultSet.getString("name"));
 			//user.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
 			//user.setUpdatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime());
 			statement.close();
@@ -30,18 +73,28 @@ public class UsersDAO extends config.DatabaseAccessor{
 		}
 	}
 
-	public void update(User user,Connection connection) {
+	public void update(UpdateUserInfoForm form) {
+		System.out.println("DAO,1,success");
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
 		try {
-			String sql = "update user mailaddress = ? , password = ? where user_id = ? ";
+			String sql = "update user mailaddress = ? , password = ? , name = ? , where user_id = ? ";
+			System.out.println("DAO,2,success");
+            connection = createConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setString(1, user.getUserid());
-			statement.setString(2, user.getMailaddress());
-			statement.setString(3, user.getPassword());
-			//statement.setInt(4, bbs.getBbsId());
+			//statement.setInt(1, user.getUserId());
+			statement.setString(1, form.getMailAddress());
+			statement.setString(2, form.getPassword());
+			statement.setString(3, form.getName());
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		finally {
+            // クローズ処理
+            close(connection, preparedStatement, resultSet);
+        }
 	}
 }

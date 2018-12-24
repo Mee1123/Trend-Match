@@ -25,7 +25,7 @@
 			</div>
 			<div class="form-group">
 				<label for="description">メールアドレス</label> <input class="form-control"
-					name="mailaddress" id="mailaddress" <%=user.getMailaddress()%>>
+					name="mailaddress" id="mailaddress" <%=user.getMailAddress()%>>
 			</div>
 			<div class="form-group">
 				<label for="password">パスワード</label> <input class="form-control"
