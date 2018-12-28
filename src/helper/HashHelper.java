@@ -6,8 +6,15 @@ import java.security.NoSuchAlgorithmException;
 public class HashHelper {
 	private static final String HASH_ALGORITHM = "SHA-256";
 	private static final int STRETCH_COUNT = 1024;//1024回hashする
-	private static final String FIXED_SALT = "vBjRGHZ6awqJL9JDQuNftAzaPSnHszQN";
-
+	private static final String FIXED_SALT = "Gz32ehfueerN4ya7R6ahptExky2uBbCF";
+/***
+ * ハッシュ機構
+ * ハッシュはセキュリティー上の問題でユーザーネームとパスワードを必要とします.
+ * @param name
+ * @param password
+ * @return ハッシュ
+ * @throws NoSuchAlgorithmException
+ */
 	public static String getHash(String name, String password) throws NoSuchAlgorithmException {
 		MessageDigest messageDigest = MessageDigest.getInstance(HASH_ALGORITHM);
 		String salt = name + FIXED_SALT;
