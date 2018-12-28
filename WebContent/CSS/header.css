@@ -9,3 +9,6 @@ div#header
     background-color:#FFFFFF;     /* 背景色() */
     box-shadow: 0px  5px 5px #cccccc;
 }
+#main {
+padding-top: 70px;
+}

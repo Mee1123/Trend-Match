@@ -1,13 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page import="java.util.ArrayList"%>
+<!DOCTYPE html >
 <html>
 <head>
-<link rel="stylesheet" href="/SE18G2/CSS/header.css">
-<meta charset=UTF-8>
-<title>Login-Trend match-</title>
+<meta charset="UTF-8">
+<title>login</title>
 </head>
 <body>
-<div id="header">aaa</div>
-</body>
+
+<h1>Login</h1>
+<form action="/SE18G2/Login" method="post">
+メールアドレス:<input type="text" name="mailAddress"><br>
+パスワード:<input type="password" name="password"><br>
+<input type="submit" value="ログイン">
+</form>
 </html>
