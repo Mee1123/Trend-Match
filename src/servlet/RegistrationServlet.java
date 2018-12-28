@@ -63,7 +63,7 @@ public class RegistrationServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (form.getError().isEmpty()) {
-				response.sendRedirect("/WEB-INF/CheckUserRegistration");
+				response.sendRedirect("/WEB-INF/checkUserRegistration");
 			}
 			else {
 				request.setAttribute("form", form);

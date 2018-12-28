@@ -3,7 +3,7 @@ package form;
 import java.util.ArrayList;
 
 public class userRegistrationForm extends model.User{
-	private ArrayList<String> error = null;
+	private ArrayList<String> error = new ArrayList<String>();
 
 	public userRegistrationForm(String name,String email,String password,String password2) {
 		//System.out.println(name);
