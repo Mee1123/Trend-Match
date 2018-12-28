@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import form.UserForm;
+import form.userRegistrationForm;
 import service.UserService;
 
 /**
@@ -51,7 +51,7 @@ public class RegistrationServlet extends HttpServlet {
 		String mailAddress = request.getParameter("mailAddress");
 		String password =request.getParameter("password");
 		String password2 =request.getParameter("password2");
-		UserForm form = new UserForm(userName,mailAddress,password,password2);
+		userRegistrationForm form = new userRegistrationForm(userName,mailAddress,password,password2);
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if(form.getError().isEmpty()){

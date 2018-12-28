@@ -2,10 +2,10 @@ package form;
 
 import java.util.ArrayList;
 
-public class UserForm extends model.User{
+public class userRegistrationForm extends model.User{
 	private ArrayList<String> error = null;
 
-	public UserForm(String name,String email,String password,String password2) {
+	public userRegistrationForm(String name,String email,String password,String password2) {
 		//System.out.println(name);
 		//System.out.println(email);
 		//System.out.println(password);
