@@ -51,7 +51,6 @@ public class LoginServlet extends HttpServlet {
 		String password =request.getParameter("password");
 		LoginForm form = new LoginForm(mailAddress, password);
 
-		System.out.println("Servlet,1,success");
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if(form.getError().isEmpty()){
 			UserService service = new UserService();
@@ -62,7 +61,6 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (form.getError().isEmpty()) {
-				System.out.println("Servlet,2,success");
 				response.sendRedirect("/SE18G2/Top");
 			}
 			else {

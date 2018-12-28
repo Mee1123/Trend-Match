@@ -2,13 +2,19 @@ package form;
 
 import java.util.ArrayList;
 
-public class LoginForm extends model.User{
-	private ArrayList<String> error = null;
+import config.FormConfig;
+import helper.ValidationHelper;
 
-	public LoginForm(String email,String password) {
-		setMailAddress(email);
+public class LoginForm extends model.User{
+	private ArrayList<String> error = new ArrayList<>();
+
+	public LoginForm(String mailAddress,String password) {
+		setMailAddress(mailAddress);
 		setPassword(password);
-		System.out.println("Form,1,success");
+	}
+
+	public void MailAddressValidation(String mailAddress){
+		error.add(ValidationHelper.maximumText(FormConfig.getMAX(), mailAddress, "メールアドレス"));
 	}
 
 	public ArrayList<String> getError() {
