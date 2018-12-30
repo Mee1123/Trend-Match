@@ -57,7 +57,7 @@ public class RegistrationCheckServlet extends HttpServlet {
 		System.out.println("formから戻りました");
 
 		if(form.getError().isEmpty()){
-			System.out.println("エラーなし");
+			//System.out.println("エラーなし");
 			request.setAttribute("userName", userName);
 			request.setAttribute("mailAddress", mailAddress);
 			request.setAttribute("password", password);
