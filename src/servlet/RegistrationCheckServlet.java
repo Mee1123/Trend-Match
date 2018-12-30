@@ -9,20 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import form.checkUserRegistrationForm;
-import service.UserService;
+import form.userRegistrationForm;
 
 /**
  * Servlet implementation class Registration
  */
-@WebServlet("/checkUserRegistration")
-public class RegistrationServlet extends HttpServlet {
+@WebServlet("/userRegistration")
+public class RegistrationCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistrationServlet() {
+    public RegistrationCheckServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,6 +35,7 @@ public class RegistrationServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//遷移元
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/userRegistration.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -46,15 +46,34 @@ public class RegistrationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		//jspからformの内容を取り出して,LoginFormを作成.
+		//jspからformの内容を取り出し
+		System.out.println("ServletのdoPost");
 		String userName = request.getParameter("userName");
 		String mailAddress = request.getParameter("mailAddress");
 		String password =request.getParameter("password");
-		System.out.println(userName);
-		checkUserRegistrationForm form = new checkUserRegistrationForm(userName,mailAddress,password);
+		String password2 =request.getParameter("password2");
+		System.out.println("RegistrationCheckServlet");
+		userRegistrationForm form = new userRegistrationForm(userName,mailAddress,password,password2);
+		System.out.println("formから戻りました");
+
+		if(form.getError().isEmpty()){
+			System.out.println("エラーなし");
+			request.setAttribute("userName", userName);
+			request.setAttribute("mailAddress", mailAddress);
+			request.setAttribute("password", password);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkUserRegistration.jsp");
+			//System.out.println(dispatcher);
+			dispatcher.forward(request, response);
+		}else{
+			System.out.println("エラーあり");
+			request.setAttribute("form", form);
+			doGet(request, response);
+		}
+
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
-		if(form.getError().isEmpty()){
+		/*if(form.getError().isEmpty()){
 			UserService service = new UserService();
 			try {
 				service.RegistrationUser(request,form);
@@ -63,7 +82,7 @@ public class RegistrationServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (form.getError().isEmpty()) {
-				response.sendRedirect("/WEB-INF/finishUserRegistration.jsp");
+				response.sendRedirect("/WEB-INF/checkUserRegistration");
 			}
 			else {
 				request.setAttribute("form", form);
@@ -72,8 +91,8 @@ public class RegistrationServlet extends HttpServlet {
 		}else {
 			request.setAttribute("form", form);
 			doGet(request, response);
-		}
+		}*/
 
-		}
+	}
 
 }

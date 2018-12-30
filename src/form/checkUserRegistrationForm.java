@@ -4,22 +4,19 @@ import java.util.ArrayList;
 
 import helper.ValidationHelper;
 
-public class userRegistrationForm extends model.User{
+public class checkUserRegistrationForm extends model.User{
 	private ArrayList<String> error = new ArrayList<String>();
 
-	public userRegistrationForm(String name,String email,String password,String password2) {
+	public checkUserRegistrationForm(String name,String email,String password) {
 		System.out.println(name);
 		System.out.println(email);
 		System.out.println(password);
-		System.out.println(password2);
 		setName(name);
 		setMailAddress(email);
 		setPassword(password);
-		setPassword(password2);
 		nameValidation();
 		emailValidation();
 		passwordValidation();
-		passwordCheck(password, password2);
 
 		System.out.println("Form,1,success");
 	}
@@ -62,14 +59,7 @@ public class userRegistrationForm extends model.User{
 
 	}
 
-	public void passwordCheck(String password,String password2){
-		if(!password.equals(password2)){
-			System.out.println("パスワード："+password);
-			System.out.println("確認用パスワード："+password2);
-			error.add("パスワードが一致しません");
-			System.out.println("パスワード不一致");
-		}
-	}
+
 	public ArrayList<String> getError() {
 		return error;
 	}

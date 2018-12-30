@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import dao.table.UsersDAO;
 import form.LoginForm;
-import form.userRegistrationForm;
+import form.checkUserRegistrationForm;
 import helper.HashHelper;
 import helper.SessionHelper;
 import model.User;
@@ -28,7 +28,7 @@ public class UserService {
 		}
 	}
 
-	public void RegistrationUser(HttpServletRequest request, userRegistrationForm form) {
+	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
 		//型変換の必要なし
 		String name = form.getName();
 		String mailAddress = form.getMailAddress();

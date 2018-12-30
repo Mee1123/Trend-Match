@@ -65,7 +65,8 @@ public class UsersDAO extends DatabaseAccessor{
 	        preparedStatement.setString(3, password);
 
 	        // SELECT 文の実行
-	        resultSet = preparedStatement.executeQuery();
+	        //resultSet = preparedStatement.executeQuery();
+	        preparedStatement.execute();
 	        // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
 	        /*User user = new User();
 	        while (resultSet.next()) {
