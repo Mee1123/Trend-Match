@@ -2,17 +2,20 @@ package service;
 
 import java.sql.Connection;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import dao.table.UsersDAO;
 import form.LoginForm;
+import form.checkUserRegistrationForm;
+import helper.HashHelper;
 import helper.SessionHelper;
 import model.User;
 
 public class UserService {
 	UsersDAO usersDAO = new UsersDAO();
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
-	private Connection connection = null;
 
 	public void LoginUser(HttpServletRequest request, LoginForm form) {
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
@@ -27,13 +30,27 @@ public class UserService {
 		}
 	}
 
-	public void DeleteUser(User user) {
+	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
+		//型変換の必要なし
+		String name = form.getName();
+		String mailAddress = form.getMailAddress();
+		String password = form.getPassword();
+		String hashPassword = null;
+		try {
+			hashPassword = HashHelper.getHash(name, password);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		usersDAO.insertUser(name, mailAddress, hashPassword);
+	}
+  
+  	public void DeleteUser(User user) {
 		UsersDAO dao = new UsersDAO();
 		this.connection = dao.createConnection();
 		dao.deleteUser(user, connection);
 		this.connection = null;
 	}
-
-
 }
 
