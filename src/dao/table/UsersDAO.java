@@ -44,4 +44,27 @@ public class UsersDAO extends DatabaseAccessor{
             close(connection, preparedStatement, resultSet);
         }
 	}
+
+	//ユーザー削除
+		public void deleteUser(User user,Connection connection) {
+	        PreparedStatement preparedStatement = null;
+	        ResultSet resultSet = null;
+		    try {
+		    	String sql = "delete from users where user_id = ?";
+				PreparedStatement statement = connection.prepareStatement(sql);
+				statement.setInt(1, user.getUserId());
+				statement.executeUpdate();
+				statement.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+		        e.printStackTrace();
+		        //return null;
+			}
+		    finally {
+		        // クローズ処理
+		        close(connection, preparedStatement, resultSet);
+		    }
+		}
+
+
 }
