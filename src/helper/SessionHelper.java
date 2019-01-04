@@ -11,6 +11,7 @@ public class SessionHelper {
 	public static void createUserSession(HttpServletRequest request, int userID) {
 		HttpSession session = request.getSession();
 		session.setAttribute("userID", userID);
+
 	}
 
 	public static void destroyUserSession(HttpServletRequest request) {

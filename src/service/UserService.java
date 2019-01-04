@@ -1,9 +1,13 @@
 package service;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import dao.table.UsersDAO;
 import form.LoginForm;
+import form.checkUserRegistrationForm;
+import helper.HashHelper;
 import helper.SessionHelper;
 import model.User;
 
@@ -23,4 +27,21 @@ public class UserService {
 			}
 		}
 	}
+
+	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
+		//型変換の必要なし
+		String name = form.getName();
+		String mailAddress = form.getMailAddress();
+		String password = form.getPassword();
+		String hashPassword = null;
+		try {
+			hashPassword = HashHelper.getHash(name, password);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+
+		usersDAO.insertUser(name, mailAddress, hashPassword);
+	}
+
 }
