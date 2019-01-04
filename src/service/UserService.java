@@ -1,20 +1,24 @@
 package service;
 
-import java.sql.Connection;
-import java.time.LocalDateTime;
-import form.UpdateUserInfoForm;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+
 import javax.servlet.http.HttpServletRequest;
+
 import dao.table.UsersDAO;
 import form.LoginForm;
+import form.UpdateAccountInfoForm;
+import form.UpdateUserInfoForm;
 import form.checkUserRegistrationForm;
 import helper.HashHelper;
 import helper.SessionHelper;
 import model.User;
 
 public class UserService {
+
 	UsersDAO usersDAO = new UsersDAO();
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
+	private Connection connection;
 
 	public void LoginUser(HttpServletRequest request, LoginForm form) {
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
@@ -23,6 +27,7 @@ public class UserService {
 		} else {
 			if (form.getPassword().equals(user.getPassword())) {
 				SessionHelper.createUserSession(request, user.getID());
+
 			} else {
 				form.setError(errorStatement);
 			}
@@ -36,15 +41,6 @@ public class UserService {
 		user = dao.findOne(userId, connection);
 		this.connection = null;
 		return user;
-	}
-
-	public void updateUserInfo(UpdateUserInfoForm form,int userId) {
-		System.out.println("Service,1,success");
-		UsersDAO dao = new UsersDAO();
-		dao.update(form,userId);
-		}
-
-}
 	}
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
@@ -62,11 +58,33 @@ public class UserService {
 
 		usersDAO.insertUser(name, mailAddress, hashPassword);
 	}
-  
-  	public void DeleteUser(User user) {
+
+	public void DeleteUser(User user) {
 		UsersDAO dao = new UsersDAO();
 		this.connection = dao.createConnection();
 		dao.deleteUser(user, connection);
 		this.connection = null;
 	}
+
+	public User getMyAccountInfo(int userId) {
+		UsersDAO dao = new UsersDAO();
+		this.connection = dao.createConnection();
+		User account = new User();
+		account = dao.findOne(userId, connection);
+		this.connection = null;
+		return account;
+	}
+
+	public void updateUserInfo(UpdateUserInfoForm form, int userId) {
+		System.out.println("Service,1,success");
+		UsersDAO dao = new UsersDAO();
+		dao.update(form, userId);
+	}
+
+	public void updateAccountInfo(HttpServletRequest request, UpdateAccountInfoForm form) {
+		System.out.println("Service,1,success");
+		UsersDAO dao = new UsersDAO();
+		dao.updateAccount(form);
+	}
+
 }
