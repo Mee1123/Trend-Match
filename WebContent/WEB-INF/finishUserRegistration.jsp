@@ -8,7 +8,6 @@
 <title>FinishUserRegistration</title>
 </head>
 <body>
-
 <h1>登録が完了しました</h1>
 <input type="submit" value="START">
 </body>

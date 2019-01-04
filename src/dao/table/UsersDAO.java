@@ -55,8 +55,8 @@ public class UsersDAO extends DatabaseAccessor{
 	    try {
 	    	//mysql文の用意
 	    	String mysql = "insert into users(name,mailaddress,password) values(?,?,?)";
-	    	System.out.println(mysql);
-	        // DB へのコネクションを作成する
+
+	    	// DB へのコネクションを作成する
 	        connection = createConnection();
 	        // 実行するSQL文とパラメータを指定する
 	        preparedStatement = connection.prepareStatement(mysql);
