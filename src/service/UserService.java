@@ -1,5 +1,7 @@
 package service;
 
+import java.sql.Connection;
+
 import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,5 +45,12 @@ public class UserService {
 
 		usersDAO.insertUser(name, mailAddress, hashPassword);
 	}
-
+  
+  	public void DeleteUser(User user) {
+		UsersDAO dao = new UsersDAO();
+		this.connection = dao.createConnection();
+		dao.deleteUser(user, connection);
+		this.connection = null;
+	}
 }
+
