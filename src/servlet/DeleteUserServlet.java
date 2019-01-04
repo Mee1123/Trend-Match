@@ -51,12 +51,12 @@ public class DeleteUserServlet extends HttpServlet {
 		User user = new User();
 		user.setUserId(Integer.parseInt(userId));
 
-		//DB[timetable]から授業の削除
+		//DBから授業の削除
 		UserService userService = new UserService();
 		userService.DeleteUser(user);
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/finishUserDelete.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishUserDelete.jsp");
 		dispatcher.forward(request, response);
 
 

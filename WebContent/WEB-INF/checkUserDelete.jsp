@@ -10,7 +10,7 @@
 <body>
 
 <h1>ユーザー削除確認画面</h1>
-<form action="/SE18G2/checkUserDelete" method="post">
+<form action="/SE18G2/DeleteUser" method="post">
 プロフィール画像<br>
 ニックネーム<br>
 所属<br>
@@ -19,7 +19,7 @@
 連絡先<br>
 フリースペース<br>
 このユーザーを削除しますか？<br>
-	<input type="hidden" name="id" value="${User.userId}">
+	<input type="hidden" name="id" value="1">
 <input type="submit" value="はい"> <input type="submit" value="いいえ">
 </form>
 </html>
