@@ -16,7 +16,7 @@ public class DatabaseAccessor {
 	private final static String PASSWORD = "Trend_match1";
 
 	private final static String DRIVER_URL = "jdbc:mysql://" + SERVER_NAME + ":3306/" + DATABASE_NAME
-			+ "?useUnicode=true&characterEncoding=utf-8";
+			+ "?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false";
 
 	private final static String DRIVER_NAME = "com.mysql.jdbc.Driver";
 //開始処理
