@@ -1,11 +1,10 @@
 package service;
 
 import java.sql.Connection;
-
+import java.time.LocalDateTime;
+import form.UpdateUserInfoForm;
 import java.security.NoSuchAlgorithmException;
-
 import javax.servlet.http.HttpServletRequest;
-
 import dao.table.UsersDAO;
 import form.LoginForm;
 import form.checkUserRegistrationForm;
@@ -28,6 +27,24 @@ public class UserService {
 				form.setError(errorStatement);
 			}
 		}
+	}
+
+	public User getMyInfo(int userId) {
+		UsersDAO dao = new UsersDAO();
+		this.connection = dao.createConnection();
+		User user = new User();
+		user = dao.findOne(userId, connection);
+		this.connection = null;
+		return user;
+	}
+
+	public void updateUserInfo(UpdateUserInfoForm form,int userId) {
+		System.out.println("Service,1,success");
+		UsersDAO dao = new UsersDAO();
+		dao.update(form,userId);
+		}
+
+}
 	}
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
@@ -53,4 +70,3 @@ public class UserService {
 		this.connection = null;
 	}
 }
-
