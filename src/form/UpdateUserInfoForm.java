@@ -3,7 +3,7 @@ package form;
 import java.util.ArrayList;
 
 public class UpdateUserInfoForm extends model.User{
-	private ArrayList<String> error = null;
+	private ArrayList<String> error = new ArrayList<String>();
 
 	public UpdateUserInfoForm(String email,String password,String name) {
 		setMailAddress(email);

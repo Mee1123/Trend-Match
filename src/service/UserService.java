@@ -3,11 +3,8 @@ package service;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 
-import javax.servlet.http.HttpServletRequest;
-
 import dao.table.UsersDAO;
 import form.UpdateUserInfoForm;
-import helper.SessionHelper;
 import model.User;
 
 public class UserService {
@@ -16,7 +13,7 @@ public class UserService {
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
 	LocalDateTime dateTime = LocalDateTime.now();
 
-	public void LoginUser(HttpServletRequest request, LoginForm form) {
+	/*public void LoginUser(HttpServletRequest request, LoginForm form) {
 		System.out.println("Service,1,success");
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
 		if (user == null) {
@@ -30,7 +27,7 @@ public class UserService {
 				form.setError(errorStatement);
 			}
 		}
-	}
+	}*/
 
 	public User getMyInfo(int userId) {
 		UsersDAO dao = new UsersDAO();
@@ -41,10 +38,10 @@ public class UserService {
 		return user;
 	}
 
-	public void updateUserInfo(HttpServletRequest request, UpdateUserInfoForm form) {
+	public void updateUserInfo(UpdateUserInfoForm form,int userId) {
 		System.out.println("Service,1,success");
 		UsersDAO dao = new UsersDAO();
-		dao.update(form);
+		dao.update(form,userId);
 		}
 
 }

@@ -25,12 +25,13 @@
 			</div>
 			<div class="form-group">
 				<label for="description">メールアドレス</label> <input class="form-control"
-					name="mailaddress" id="mailaddress" <%=user.getMailAddress()%>>
+					name="mailaddress" id="mailaddress" value="<%=user.getMailAddress()%>">
 			</div>
 			<div class="form-group">
 				<label for="password">パスワード</label> <input class="form-control"
-					name="password" value="<%=user.getPassword()%>">
+					name="password" value="新しいパスワードを入力してください">
 				<button type="submit" class="btn btn-primary">登録</button>
+				<!-- メールアドレスハッシュ値で戻ってきてしまう -->
 			</div>
 		</form>
 	</div>

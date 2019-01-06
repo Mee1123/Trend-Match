@@ -52,12 +52,13 @@ public class UsersDAO extends config.DatabaseAccessor{
 
 	public User findOne(int userId,Connection connection) {
 		try {
-			String sql = "select * from user where user_id = ?";
+			String sql = "select * from users where user_id = ?";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, userId);
 
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.first();
+
 			User user = new User();
 			user.setUserId(userId);
 			user.setMailAddress(resultSet.getString("mailaddress"));
@@ -73,20 +74,21 @@ public class UsersDAO extends config.DatabaseAccessor{
 		}
 	}
 
-	public void update(UpdateUserInfoForm form) {
+	public void update(UpdateUserInfoForm form,int userId) {
 		System.out.println("DAO,1,success");
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 		try {
-			String sql = "update user mailaddress = ? , password = ? , name = ? , where user_id = ? ";
+			String sql = "update users set mailaddress = ? , password = ? , name = ? where user_id = ? ";
 			System.out.println("DAO,2,success");
             connection = createConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
-			//statement.setInt(1, user.getUserId());
+
 			statement.setString(1, form.getMailAddress());
 			statement.setString(2, form.getPassword());
 			statement.setString(3, form.getName());
+			statement.setInt(4, userId);
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
