@@ -14,7 +14,7 @@ public class ValidationHelper {
 	 */
    public static String minimumText(int number, String string, String content) {
          String result = null;
-        if (string.length() <= number) {
+        if (string.length() < number) {
             result = content + "は、" + Integer.toString(number) + "文字以上でなければなりません。";
         }
         return result;
@@ -30,7 +30,7 @@ public class ValidationHelper {
 	 */
 	public static String maximumText(int number, String string, String content) {
 		String result = null;
-		if (string.length() >= number) {
+		if (string.length() > number) {
 			result = content + "は、" + Integer.toString(number) + "文字以内でなければなりません。";
 		}
 		return result;

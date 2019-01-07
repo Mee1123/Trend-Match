@@ -9,6 +9,7 @@ public class LoginForm extends model.User{
 	private ArrayList<String> error = new ArrayList<>();
 
 	public LoginForm(String mailAddress,String password) {
+		super();
 		setMailAddress(mailAddress);
 		setPassword(password);
 	}
