@@ -41,4 +41,9 @@ public class UserService {
 		return users;
 	}
 
+	public User accountView() {
+		User user = new User();
+		return user;
+	}
+
 }
