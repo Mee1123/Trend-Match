@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AccountView
@@ -36,12 +37,13 @@ public class AccountViewServlet extends HttpServlet {
 		String userIdString = request.getParameter("userId");
 		int userId ;
 		if(userIdString == null){
-			userId = 1;
+			HttpSession session = request.getSession();
+			userId = session.getAttribute("userID");
 		}
 		else {
 			userId = Integer.valueOf(userIdString);
 		}
-		
+
 		request.setAttribute("user", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountView.jsp");
 		dispatcher.forward(request, response);
