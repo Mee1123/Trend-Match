@@ -4,9 +4,11 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Part;
 
 import dao.table.UsersDAO;
 import form.LoginForm;
+import form.accountRegistrationCheckForm;
 import form.checkUserRegistrationForm;
 import form.enneagramRegistrationForm;
 import helper.HashHelper;
@@ -72,10 +74,32 @@ public class UserService {
 		int eg8 = form.getEnneagram8();
 		int eg9 = form.getEnneagram9();
 
-		System.out.println(eg1);
+		//System.out.println(eg1);
 
 
 		usersDAO.insertEnneagram(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9,userID);
+	}
+
+	public void RegistrationAccount(HttpServletRequest request, accountRegistrationCheckForm form,int userID) {
+		//型変換の必要なし
+		Part filePart = form.getFilePart();
+		int jobOffer = form.getJobOffer();
+		String nickname = form.getNickname();
+		int graduate = form.getGraduate();
+		String department = form.getDepartment();
+		int occupation = form.getOccupation();
+		int sex = form.getSex();
+		String contact = form.getContact();
+		String freeSpace = form.getFreeSpace();
+		//String value1 = form.getValue1();
+		//String value2 = form.getValue2();
+		//String value3 = form.getValue3();
+
+
+		System.out.println(freeSpace);
+
+
+		usersDAO.insertAccount(filePart,jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,userID);
 	}
 
   	public void DeleteUser(User user) {

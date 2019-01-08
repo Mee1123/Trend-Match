@@ -46,15 +46,16 @@ public class aboutMotivationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		System.out.println("doPost");
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
-		System.out.println(request.getParameter("goto"));
+		//System.out.println(request.getParameter("goto"));
 
+		//clickされたボタンに応じて遷移先を分岐
 		if(request.getParameter("goto").equals("詳しくみる")){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/motivation.jsp");
 			dispatcher.forward(request, response);
 		}else if(request.getParameter("goto").equals("次へ")){
+			//ここでDBに遷移する何かを書く？
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accountRegistration.jsp");
 			dispatcher.forward(request, response);
 		}

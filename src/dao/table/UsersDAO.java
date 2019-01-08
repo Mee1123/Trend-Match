@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.Part;
+
 import config.DatabaseAccessor;
 import model.User;
 
@@ -155,6 +157,52 @@ public class UsersDAO extends DatabaseAccessor{
 	        close(connection, preparedStatement, resultSet);
 	    }
 	}
+
+
+	//アカウント登録
+		@SuppressWarnings("resource")
+		public void insertAccount(Part filePart,int jobOffer,String nickname,int graduate,String department,int occupation,int sex,String contact,String freeSpace,int userID) {
+			Connection connection = null;
+		    PreparedStatement preparedStatement = null;
+		    ResultSet resultSet = null;
+		    try {
+		    	//mysql文の用意
+		    	String mysql = "update users set picturepath = ? ,joboffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ?,  where user_id = ?";
+
+		    	connection = createConnection();
+		    	PreparedStatement statement = connection.prepareStatement(mysql);
+
+
+		    	System.out.println(mysql);
+
+
+		         //resultSet.first();
+
+		    	// DB へのコネクションを作成する
+		        connection = createConnection();
+		        // 実行するSQL文とパラメータを指定する
+		        statement = connection.prepareStatement(mysql);
+		        //statement.setInt(1, filePart);
+		        statement.setInt(2, jobOffer);
+		        statement.setString(3, nickname);
+		        statement.setInt(4,graduate );
+		        statement.setString(5, department);
+		        statement.setInt(6, occupation);
+		        statement.setInt(7, sex);
+		        statement.setString(8, contact);
+		        statement.setString(9, freeSpace);
+		        statement.setInt(10, userID);
+		        statement.executeUpdate();
+
+			} catch (Exception e) {
+				// TODO: handle exception
+		        e.printStackTrace();
+			}
+		    finally {
+		        // クローズ処理
+		        close(connection, preparedStatement, resultSet);
+		    }
+		}
 
 
 	//ユーザー削除
