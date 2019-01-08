@@ -159,4 +159,53 @@ public class UsersDAO extends DatabaseAccessor {
 		}
 	}
 
+	public User selectUserById(int userId) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			// mysql文の用意
+			String mysql = "select * from users where user_id = ?";
+			// DB へのコネクションを作成する
+			connection = createConnection();
+			// 実行するSQL文とパラメータを指定する
+			preparedStatement = connection.prepareStatement(mysql);
+			preparedStatement.setInt(1, userId);
+			// SELECT 文の実行
+			resultSet = preparedStatement.executeQuery();
+			// 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
+			User user = new User();
+			while (resultSet.next()) {
+				user.setID(resultSet.getInt("user_id"));
+				user.setNickname(resultSet.getString("nickname"));
+				user.setGraduate(resultSet.getDate("graduate"));
+				user.setContact(resultSet.getString("contact"));
+				user.setFreespace(resultSet.getString("freespace"));
+				int enneagram[] = new int[9];// エニアグラム
+				enneagram[0] = resultSet.getInt("enneagram_1");
+				enneagram[1] = resultSet.getInt("enneagram_2");
+				enneagram[2] = resultSet.getInt("enneagram_3");
+				enneagram[3] = resultSet.getInt("enneagram_4");
+				enneagram[4] = resultSet.getInt("enneagram_5");
+				enneagram[5] = resultSet.getInt("enneagram_6");
+				enneagram[6] = resultSet.getInt("enneagram_7");
+				enneagram[7] = resultSet.getInt("enneagram_8");
+				enneagram[8] = resultSet.getInt("enneagram_9");
+				user.setEnneagram(enneagram);
+				user.setSex_id(resultSet.getInt("sex_id"));
+				user.setJobofffer_id(resultSet.getInt("jobofffer_id"));
+				user.setValues_id(resultSet.getInt("value_1_id"));
+				user.setValues_id(resultSet.getInt("value_2_id"));
+				user.setValues_id(resultSet.getInt("value_3_id"));
+			}
+			return user;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		} finally {
+			// クローズ処理
+			close(connection, preparedStatement, resultSet);
+		}
+	}
 }

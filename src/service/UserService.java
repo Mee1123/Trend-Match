@@ -41,8 +41,10 @@ public class UserService {
 		return users;
 	}
 
-	public User accountView() {
+	public User accountView(int userId) {
 		User user = new User();
+		user = usersDAO.selectUserById(userId);
+
 		return user;
 	}
 
