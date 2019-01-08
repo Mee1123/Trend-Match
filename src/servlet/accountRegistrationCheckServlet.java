@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import form.accountRegistrationCheckForm;
@@ -100,12 +101,12 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		try {
 			Part part = request.getPart("picturepath");
 			if(part != null){
-				//HttpSession session = request.getSession();
+				HttpSession session = request.getSession();
 				//User user = (User) session.getAttribute("user");
 				//int userId = user.getUserId();
 				System.out.println("ファイルを受け付けます");
-				int userId = 28;
-				part.write(getServletContext().getRealPath("/WEB-INF/uploaded") + "/" + userId);
+				String name = (String) session.getAttribute("id");
+				part.write(getServletContext().getRealPath("/WEB-INF/uploaded") + "/" + name);
 				}
 			}
 			catch (ArithmeticException e) {
