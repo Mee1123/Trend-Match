@@ -1,14 +1,16 @@
 package form;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class UpdateAccountInfoForm extends model.User{
 	private ArrayList<String> error = null;
 
-	public UpdateAccountInfoForm(String nickName,String picturePath,String department,int occupationId,int sexId,String contact,String freeSpace,
+	public UpdateAccountInfoForm(String nickName,String picturePath,Date graduate, String department,int occupationId,int sexId,String contact,String freeSpace,
 			int jobOfferId,int valueId1,int valueId2,int valueId3) {
 		setNickName(nickName);
 		setPicturePath(picturePath);
+		setGraduate(graduate);
 		setDepartment(department);
 		setOccupationId(occupationId);
 		setSexId(sexId);

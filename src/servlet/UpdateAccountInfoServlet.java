@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import form.UpdateAccountInfoForm;
 import model.User;
@@ -38,13 +40,14 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		int userId = user.getUserId();
+		int userId = user.getUserId();*/
+
 		UserService userService = new UserService();
-		//User user = new User();
+		User user = new User();
 		//アカウント情報を取りに行く
-		user = userService.getMyAccountInfo(userId);
+		user = userService.getMyAccountInfo(1);
 		request.setAttribute("user", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/update.jsp");
 		dispatcher.forward(request, response);
@@ -61,6 +64,14 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String nickName = request.getParameter("nickName");
 		String picturePath = request.getParameter("picturePath");
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+		Date graduate = null;
+		try {
+			graduate = (Date) sdFormat.parse(request.getParameter("graduate"));
+		} catch (ParseException e1) {
+			// TODO 自動生成された catch ブロック
+			e1.printStackTrace();
+		}
 		String department = request.getParameter("department");
 		int occupationId = Integer.parseInt(request.getParameter("occupationId"));
 		int sexId = Integer.parseInt(request.getParameter("sexId"));
@@ -70,23 +81,20 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		int valueId1 = Integer.parseInt(request.getParameter("valueId1"));
 		int valueId2 = Integer.parseInt(request.getParameter("valueId2"));
 		int valueId3 = Integer.parseInt(request.getParameter("valueId3"));
+		//HttpSession session = request.getSession();
+		//User user = (User) session.getAttribute("user");
+		//int userId = user.getUserId();
+		//今sessionないから
 
-		//String mailaddress = request.getParameter("mailaddress");
-		//String password = request.getParameter("password");
-		//String name = request.getParameter("name");
-		//User user = new User();
-		//user.setMailAddress(mailaddress);
-		//user.setPassword(password);
-		//user.setName(name);
-
-		UpdateAccountInfoForm form = new UpdateAccountInfoForm(nickName,picturePath,department,occupationId,sexId,contact,freeSpace,
-				jobOfferId,valueId1,valueId2,valueId3);
+		UpdateAccountInfoForm form = new UpdateAccountInfoForm(nickName, picturePath, graduate, department, occupationId, sexId,
+				contact, freeSpace,
+				jobOfferId, valueId1, valueId2, valueId3);
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			UserService userService = new UserService();
 			try {
-				userService.updateAccountInfo(request,form);
+				userService.updateAccountInfo(form, 1);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

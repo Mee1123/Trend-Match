@@ -70,8 +70,6 @@ public class UsersDAO extends config.DatabaseAccessor {
 			user.setMailAddress(resultSet.getString("mailaddress"));
 			user.setPassword(resultSet.getString("password"));
 			user.setName(resultSet.getString("name"));
-			//user.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
-			//user.setUpdatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime());
 			statement.close();
 			resultSet.close();
 			return user;
@@ -165,54 +163,55 @@ public class UsersDAO extends config.DatabaseAccessor {
 
 	public User findOneAll(int userId, Connection connection) {
 		try {
-			String sql = "select * from user where user_id = ?";
+			String sql = "select * from users where user_id = ?";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, userId);
 
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.first();
+
 			User user = new User();
 			user.setUserId(userId);
-			user.setMailAddress(resultSet.getString("mailAddress"));
+			user.setMailAddress(resultSet.getString("mailaddress"));
 			user.setPassword(resultSet.getString("password"));
 			user.setName(resultSet.getString("name"));
-			user.setNickName(resultSet.getString("nickName"));
-			user.setPicturePath(resultSet.getString("picturePath"));
-			user.setGraduate(Integer.parseInt(resultSet.getString("graduate")));
-			user.setContact("contact");
-			user.setDepartment("department");
-			user.setOccupationId(Integer.parseInt(resultSet.getString("occupationId")));
-			user.setSexId(Integer.parseInt(resultSet.getString("sexId")));
-			user.setJobOfferId(Integer.parseInt(resultSet.getString("jobOfferId")));
-			user.setFreeSpace("freeSpace");
-			user.setValueId1(Integer.parseInt(resultSet.getString("valueId1")));
-			user.setValueId2(Integer.parseInt(resultSet.getString("valueId2")));
-			user.setValueId3(Integer.parseInt(resultSet.getString("valueId3")));
-
-			//user.setCreatedAt(resultSet.getTimestamp("created_at").toLocalDateTime());
-			//user.setUpdatedAt(resultSet.getTimestamp("updated_at").toLocalDateTime());
+			user.setNickName(resultSet.getString("nickname"));
+			user.setPicturePath(resultSet.getString("picturepath"));
+			user.setGraduate(resultSet.getDate("graduate"));
+			user.setContact(resultSet.getString("contact"));
+			user.setDepartment(resultSet.getString("department"));
+			user.setOccupationId(Integer.parseInt(resultSet.getString("occupation_id")));
+			user.setSexId(Integer.parseInt(resultSet.getString("sex_id")));
+			user.setJobOfferId(Integer.parseInt(resultSet.getString("jobOffer_id")));
+			user.setFreeSpace(resultSet.getString("freespace"));
+			//user.setValueId1(Integer.parseInt(resultSet.getString("value_1_id")));
+			//user.setValueId2(Integer.parseInt(resultSet.getString("value_2_id")));
+			//user.setValueId3(Integer.parseInt(resultSet.getString("value_3_id")));
 			statement.close();
 			resultSet.close();
+			System.out.println(user.getNickName());
 			return user;
 		} catch (SQLException e) {
 			return null;
 		}
 	}
 
-	public void updateAccount(UpdateAccountInfoForm form) {
+	public void updateAccount(UpdateAccountInfoForm form, int userId) {
 		System.out.println("DAO,1,success");
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			String sql = "update user mailaddress = ? , password = ? , name = ? , where user_id = ? ";
+			String sql = "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?"
+					+ "occupation = ?, sex_id = ?, jobofffer_id = ?, freespace = ?, "
+					+ "value_1_id = ?, value_2_id = ?, value_3_id = ? where user_id = ? ";
 			System.out.println("DAO,2,success");
 			connection = createConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
 
 			statement.setString(1, form.getNickName());
 			statement.setString(2, form.getPicturePath());
-			statement.setInt(3, form.getGraduate());
+			statement.setDate(3, form.getGraduate());
 			statement.setString(4, form.getContact());
 			statement.setString(5, form.getDepartment());
 			statement.setInt(6, form.getOccupationId());
@@ -222,6 +221,7 @@ public class UsersDAO extends config.DatabaseAccessor {
 			statement.setInt(10, form.getValueId1());
 			statement.setInt(11, form.getValueId2());
 			statement.setInt(12, form.getValueId3());
+			statement.setInt(13, userId);
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {

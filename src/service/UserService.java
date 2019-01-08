@@ -43,6 +43,15 @@ public class UserService {
 		return user;
 	}
 
+	public User getMyAccountInfo(int userId) {
+		UsersDAO dao = new UsersDAO();
+		this.connection = dao.createConnection();
+		User user = new User();
+		user = dao.findOneAll(userId, connection);
+		this.connection = null;
+		return user;
+	}
+
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
 		//型変換の必要なし
 		String name = form.getName();
@@ -66,25 +75,16 @@ public class UserService {
 		this.connection = null;
 	}
 
-	public User getMyAccountInfo(int userId) {
-		UsersDAO dao = new UsersDAO();
-		this.connection = dao.createConnection();
-		User account = new User();
-		account = dao.findOne(userId, connection);
-		this.connection = null;
-		return account;
-	}
-
 	public void updateUserInfo(UpdateUserInfoForm form, int userId) {
 		System.out.println("Service,1,success");
 		UsersDAO dao = new UsersDAO();
 		dao.update(form, userId);
 	}
 
-	public void updateAccountInfo(HttpServletRequest request, UpdateAccountInfoForm form) {
+	public void updateAccountInfo(UpdateAccountInfoForm form, int userId) {
 		System.out.println("Service,1,success");
 		UsersDAO dao = new UsersDAO();
-		dao.updateAccount(form);
+		dao.updateAccount(form,userId);
 	}
 
 }

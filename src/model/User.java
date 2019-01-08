@@ -1,6 +1,8 @@
 
 package model;
 
+import java.sql.Date;
+
 public class User extends Deflate {
 	private int userId;
 	private String mailAddress;
@@ -8,7 +10,7 @@ public class User extends Deflate {
 	private String name;
 	private String nickName;
 	private String picturePath;
-	private int graduate;
+	private Date graduate;
 	private String contact;
 	private String department;
 	private int occupationId;
@@ -67,11 +69,11 @@ public class User extends Deflate {
 		this.picturePath = picturePath;
 	}
 
-	public int getGraduate() {
+	public Date getGraduate() {
 		return graduate;
 	}
 
-	public void setGraduate(int graduate) {
+	public void setGraduate(Date graduate) {
 		this.graduate = graduate;
 	}
 

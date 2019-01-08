@@ -18,54 +18,60 @@
 		<h2 class="page-header">アカウント情報編集</h2>
 		<hr>
 		<!-- 水平線 -->
-		<form action="/SE18G2/user/update" method="post">
+		<form action="/SE18G2/account/update" method="post">
 			<div class="form-group">
-				<label for="nickname">ニックネーム</label> <input class="form-control" type="text"
-					name="nickName" id="nickName" value="<%=user.getNickName()%>">
+				<label for="nickname">ニックネーム</label> <input class="form-control"
+					type="text" name="nickName" id="nickName" value="<%=user.getName()%>">
 			</div>
 			<div class="form-group">
 				<label for="picture">プロフィール画像</label>
 				<p>
-					<input type="file" name="picturePath" id="picturePath" value="<%=user.getPicturePath()%>" accept="*" />
+					<input class="form-control" type="text" name="picturePath"
+						id="picturePath" value="<%=user.getPicturePath()%>" />
 				</p>
 			</div>
 			<div class="form-group">
-				<label for="joboffer">内定の有無</label> <input class="form-control" type="button"
-					name="sexId" id="sexId">
+				<label for="graduate">卒業年度</label> <input class="form-control"
+					type="text" name="graduate" id="graduate"
+					value="<%=user.getGraduate()%>" />
+			</div>
+			<div class="form-group">
+				<label for="joboffer">内定の有無</label> <input class="form-control"
+					type="button" name="jobofferId" id="jobofferId">
 			</div>
 			<div class="form-group">
 				<label for="department">所属</label> <input class="form-control"
-					name="department" id="department" value="<%=user.getDepartment()%>">
+					name="department" id="department" value="<%=user.getDepartment()%>" />
 			</div>
 			<div class="form-group">
 				<label for="occupation">職種</label> <input class="form-control"
-					name="occupationId" id="occupationId" value="<%=user.getOccupationId()%>">
+					name="occupationId" id="occupationId"
+					value="<%=user.getOccupationId()%>" />
 				<!-- <button type="submit" class="btn btn-primary">登録</button>  -->
 			</div>
 			<div class="form-group">
-				<label for="sex">性別</label> <input class="form-control"
-					name="sexId" id="sexId" value="<%=user.getSexId()%>">
+				<label for="sex">性別</label> <input class="form-control" name="sexId"
+					id="sexId" value="<%=user.getSexId()%>" />
 			</div>
 			<div class="form-group">
 				<label for="contact">連絡先</label> <input class="form-control"
-					name="contact" id="contact" value="<%=user.getContact()%>">
+					name="contact" id="contact" value="<%=user.getContact()%>" />
 			</div>
 			<div class="form-group">
 				<label for="freespace">フリースペース</label> <input class="form-control"
-					name="freeSpace" id="freeSpace" value="<%=user.getFreeSpace()%>">
+					name="freeSpace" id="freeSpace" value="<%=user.getFreeSpace()%>" />
 			</div>
 			<div class="form-group">
 				<label for="value">価値観</label> <input class="form-control"
-					name="value1" id="value1" value="<%=user.getValueId1()%>">
-					<input class="form-control"
-					name="value2" id="value2" <%=user.getValueId2()%>>
-					<input class="form-control"
-					name="value3" id="value3" <%=user.getValueId3()%>>
+					name="value1" id="value1" value="" /> <input class="form-control"
+					name="value2" id="value2" value="" /> <input class="form-control"
+					name="value3" id="value3" value="" />
 			</div>
+			<button type="submit" class="btn btn-primary">登録</button>
 		</form>
 	</div>
 	<input type="button" onclick="location.href='./unsubscribe.jsp'"
-		value="退会">
+		value="退会" />
 	<!-- javascript -->
 </body>
 </html>
