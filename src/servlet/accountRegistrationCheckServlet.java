@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import form.accountRegistrationCheckForm;;
+import dao.table.ValuesDAO;
+import form.accountRegistrationCheckForm;
+import model.Value;;
 
 /**
  * Servlet implementation class Registration
@@ -38,6 +41,10 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
+		ArrayList<Value> values = new ArrayList<Value>();
+		ValuesDAO valuesDAO = new ValuesDAO();
+		values = valuesDAO.selectValueAll();
+		request.setAttribute("values",values);
 		//遷移元
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accountRegistration.jsp");
 		dispatcher.forward(request, response);
@@ -85,9 +92,9 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		String freeSpace = request.getParameter("freespace");
 		System.out.println(freeSpace);
 
-		String value1 = request.getParameter("value1");
-		String value2 = request.getParameter("value2");
-		String value3 = request.getParameter("value3");
+		String value1 = request.getParameter("valueId1");
+		String value2 = request.getParameter("valueId2");
+		String value3 = request.getParameter("valueId3");
 		System.out.println(value1);
 		System.out.println(value2);
 		System.out.println(value3);
@@ -135,9 +142,5 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 			request.setAttribute("form", form);
 			doGet(request, response);
 		}
-
-
 	}
-
-
 }

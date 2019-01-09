@@ -12,5 +12,4 @@ public class Value extends Deflate{
 	}
 
 
-
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html >
 <html>
@@ -64,9 +65,25 @@
 </p>
 <p>
 価値観<br>
-<input type="text" name="value1"><br>
-<input type="text" name="value2"><br>
-<input type="text" name="value3"><br>
+
+<select name = "valueId1">
+<c:forEach var="value" items="${values}">
+<option value="${value.getId()}"><c:out value="${value.getValue()}"/></option>
+</c:forEach>
+</select>
+
+<select name = "valueId2">
+<c:forEach var="value" items="${values}">
+<option value="${value.getId()}"><c:out value="${value.getValue()}"/></option>
+</c:forEach>
+</select>
+
+<select name = "valueId3">
+<c:forEach var="value" items="${values}">
+<option value="${value.getId()}"><c:out value="${value.getValue()}"/></option>
+</c:forEach>
+</select>
+
 </p>
 <input type="submit" value="次へ">
 

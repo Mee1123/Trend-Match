@@ -1,6 +1,9 @@
 package helper;
 
+import java.util.ArrayList;
 import java.util.regex.Pattern;
+
+import dao.service.AlmightyDAO;
 
 public class ValidationHelper {
 	/**
@@ -62,13 +65,22 @@ public class ValidationHelper {
      * @param content
      * @return
      */
+
     public static String uniqueText(String columnName, String tableName, String string, String content) {
-    	//価値観とメールで使うから実装はよ
         String result = null;
-        /*      System.out.println(tableDAO.selectStudentByEmail(string));
-                result = content + "は、" + "すでに使われています。";
-        }
-        */
+        AlmightyDAO almightyDAO = new AlmightyDAO();
+        ArrayList<String> strings = almightyDAO.selectXByYToId(tableName, columnName, string);
+        if (strings==null) {
+			result = content + "に不正な値が使われている可能性があります.";
+		}
+        else if (strings.isEmpty()) {
+        	//重複なし
+		}else {
+			for(String id :strings){
+				System.out.println("[重複]Id:"+id);
+			}
+			result = content + "は、すでに使われています。";
+		}
         return result;
     }
 }
