@@ -5,10 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FinishUserRegistration</title>
+<title>ユーザー登録完了</title>
 </head>
 <body>
+<form action="/SE18G2/finishUserRegistration" method="post">
 <h1>登録が完了しました</h1>
 <input type="submit" value="START">
+</form>
 </body>
 </html>

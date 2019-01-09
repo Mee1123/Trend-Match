@@ -6,7 +6,7 @@ import helper.ValidationHelper;
 public class accountRegistrationForm extends model.User{
 	private ArrayList<String> error = new ArrayList<String>();
 
-	public accountRegistrationForm(int jobOffer_id, String nickname,int graduate,String department,int occupation_id,int sex_id,String contact,String freeSpace,String value1,String value2,String value3) {
+	public accountRegistrationForm(int jobOffer_id, String nickname,int graduate,String department,int occupation_id,int sex_id,String contact,String freeSpace,int value1,int value2, int value3) {
 
 		setJobOffer_id(jobOffer_id);
 		setNickname(nickname);
@@ -25,9 +25,8 @@ public class accountRegistrationForm extends model.User{
 		departmentValidation();//1~20
 		contactValidation();//1~40
 		freeSpaceValidation();//1~200
-		valueValidation();//1~50
 
-
+		//System.out.println(value1);
 
 		System.out.println("Form,1,success");
 	}
@@ -72,20 +71,7 @@ public class accountRegistrationForm extends model.User{
 		}
 	}
 
-	public void valueValidation(){
-		if(ValidationHelper.maximumText(50,getValue1(), "価値観1")!=null){
-			error.add(ValidationHelper.maximumText(50, getValue1(), "価値観1"));
-			System.out.println("価値観1が長い");
-		}
-		if(ValidationHelper.maximumText(50,getValue2(), "価値観2")!=null){
-			error.add(ValidationHelper.maximumText(50, getValue2(), "価値観2"));
-			System.out.println("価値観2が長い");
-		}
-		if(ValidationHelper.maximumText(50,getValue3(), "価値観3")!=null){
-			error.add(ValidationHelper.maximumText(50, getValue3(), "価値観3"));
-			System.out.println("価値観3が長い");
-		}
-	}
+
 
 
 	public ArrayList<String> getError() {

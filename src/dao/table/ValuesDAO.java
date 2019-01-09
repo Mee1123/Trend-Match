@@ -19,7 +19,7 @@ public class ValuesDAO extends DatabaseAccessor{
 	    ResultSet resultSet = null;
 	    try {
 	    	//mysql文の用意
-	    	String mysql = "select * form `values`(value_name) where values = ?";
+	    	String mysql = "select * from `values` where value_name = ?;";
 
 	    	// DB へのコネクションを作成する
 	        connection = createConnection();
@@ -29,13 +29,14 @@ public class ValuesDAO extends DatabaseAccessor{
 
 	        // SELECT 文の実行
 	        resultSet = preparedStatement.executeQuery();
-	        preparedStatement.execute();
+	        //preparedStatement.execute();
 	        // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
 	        Value value = new Value();
 	        while (resultSet.next()) {
 	            value.setID(resultSet.getInt("value_id"));
 	            value.setValue(resultSet.getString("value_name"));
 	        }
+
 	        return value;
 		} catch (Exception e) {
 			// TODO: handle exception

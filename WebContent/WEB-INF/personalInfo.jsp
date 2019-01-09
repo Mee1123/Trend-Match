@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TOP(アカウント未登録)</title>
+<title>個人情報の公開について</title>
 </head>
 <body>
 

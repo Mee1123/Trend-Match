@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.servlet.http.Part;
-
 import config.DatabaseAccessor;
 import form.UpdateUserInfoForm;
 import model.User;
@@ -162,13 +160,13 @@ public class UsersDAO extends DatabaseAccessor{
 
 	//アカウント登録
 		@SuppressWarnings("resource")
-		public void insertAccount(Part filePart,int jobOffer,String nickname,int graduate,String department,int occupation,int sex,String contact,String freeSpace,int userID) {
+		public void insertAccount(int jobOffer,String nickname,int graduate,String department,int occupation,int sex,String contact,String freeSpace,int value1,int value2, int value3, int userID) {
 			Connection connection = null;
 		    PreparedStatement preparedStatement = null;
 		    ResultSet resultSet = null;
 		    try {
 		    	//mysql文の用意
-		    	String mysql = "update users set jobofffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ? where user_id = ?";
+		    	String mysql = "update users set jobofffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ? ,value_1_id= ? ,value_2_id = ? ,value_3_id= ? where user_id = ?";
 
 		    	connection = createConnection();
 		    	PreparedStatement statement = connection.prepareStatement(mysql);
@@ -192,7 +190,10 @@ public class UsersDAO extends DatabaseAccessor{
 		        statement.setInt(6, sex);
 		        statement.setString(7, contact);
 		        statement.setString(8, freeSpace);
-		        statement.setInt(9, userID);
+		        statement.setInt(9, value1);
+		        statement.setInt(10, value2);
+		        statement.setInt(11, value3);
+		        statement.setInt(12, userID);
 		        statement.executeUpdate();
 
 			} catch (Exception e) {

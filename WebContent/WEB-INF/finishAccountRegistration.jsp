@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FinishAccountRegistration</title>
+<title>アカウント登録完了</title>
 </head>
 <body>
 <h1>登録が完了しました</h1>

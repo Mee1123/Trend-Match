@@ -69,6 +69,7 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int userId = user.getUserId();
+		//int userId =28;
 		UserService userService = new UserService();
 		userService.RegistrationEnneagram(request,form,userId);
 		System.out.println("formから戻りました");

@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import form.accountRegistrationForm;
 import model.User;
-import service.UserService;;
+import model.Value;
+import service.UserService;
+import service.ValueService;;
 
 /**
  * Servlet implementation class Registration
@@ -144,17 +146,33 @@ public class accountRegistrationServlet extends HttpServlet {
 		System.out.println(value3);
 
 		//価値観のID化
+		//まずはサービス
+		ValueService valueService = new ValueService();
+		Value value1_result = valueService.getValueID(value1);
+		Value value2_result = valueService.getValueID(value2);
+		Value value3_result = valueService.getValueID(value3);
+		int value1_id = value1_result.getID();
+		int value2_id = value2_result.getID();
+		int value3_id = value3_result.getID();
+		System.out.println(value1_id);
+		System.out.println(value2_id);
+		System.out.println(value3_id);
 
-		accountRegistrationForm form = new accountRegistrationForm(jobOffer_id,nickname,graduate,department,occupation_id,sex_id,contact,freeSpace,value1,value2,value3);
 
+
+		accountRegistrationForm form = new accountRegistrationForm(jobOffer_id,nickname,graduate,department,occupation_id,sex_id,contact,freeSpace,value1_id,value2_id,value3_id);
+		System.out.println("formから戻りました");
 
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int userId = user.getUserId();
 
+		//int userId = 28;
+
 		UserService userService = new UserService();
+		System.out.println("サービスの生成");
 		userService.RegistrationAccount(request,form,userId);
-		System.out.println("formから戻りました");
+
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if(form.getError().isEmpty()){

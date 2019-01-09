@@ -38,7 +38,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		
+
 		//遷移元
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accountRegistration.jsp");
 		dispatcher.forward(request, response);
@@ -93,7 +93,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		System.out.println(value2);
 		System.out.println(value3);
 
-		accountRegistrationCheckForm form = new accountRegistrationCheckForm(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value1,value2,value3);
+		accountRegistrationCheckForm form = new accountRegistrationCheckForm(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace);
 
 		//プロフィール画像
 		/*try {

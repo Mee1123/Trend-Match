@@ -4,7 +4,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
 
 import dao.table.UsersDAO;
 import form.LoginForm;
@@ -89,9 +88,11 @@ public class UserService {
 	}
 
 	public void RegistrationAccount(HttpServletRequest request, accountRegistrationForm form,int userID) {
+		System.out.println("サービスの処理");
 		//型変換の必要なし
-		Part filePart = form.getFilePart();
+		//Part filePart = form.getFilePart();
 		int jobOffer = form.getJobOffer_id();
+		//System.out.println(jobOffer);
 		String nickname = form.getNickname();
 		int graduate = form.getGraduate();
 		String department = form.getDepartment();
@@ -99,15 +100,16 @@ public class UserService {
 		int sex = form.getSex_id();
 		String contact = form.getContact();
 		String freeSpace = form.getFreeSpace();
-		//String value1 = form.getValue1();
-		//String value2 = form.getValue2();
-		//String value3 = form.getValue3();
+		int value1 = form.getValue1();
+		System.out.println(value1);
+		int value2 = form.getValue2();
+		int value3 = form.getValue3();
 
 
-		System.out.println(freeSpace);
+		System.out.println("DAOにいきます");
 
 
-		usersDAO.insertAccount(filePart,jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,userID);
+		usersDAO.insertAccount(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value1,value2,value3,userID);
 	}
 
   	public void DeleteUser(User user) {
