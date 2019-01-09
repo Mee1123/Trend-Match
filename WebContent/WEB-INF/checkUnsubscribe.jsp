@@ -12,7 +12,6 @@
 <h1>退会確認画面</h1>
 <form action="/SE18G2/Unsubscribe" method="post">
 本当に退会しますか？
-	<input type="hidden" name="id" value="8">
 <input type="submit" value="はい"> <input type="submit" value="いいえ">
 </form>
 </html>

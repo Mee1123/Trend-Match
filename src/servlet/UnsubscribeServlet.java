@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 import service.UserService;
@@ -47,9 +48,11 @@ public class UnsubscribeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		String userId = request.getParameter("id");
+		HttpSession session = request.getSession();
+		int userID = (int)session.getAttribute("userID");
+
 		User user = new User();
-		user.setUserId(Integer.parseInt(userId));
+		user.setUserId(userID);
 
 		//DBから授業の削除
 		UserService userService = new UserService();
