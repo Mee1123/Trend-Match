@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import javax.servlet.http.Part;
 
 import config.DatabaseAccessor;
+import form.UpdateUserInfoForm;
 import model.User;
 
 public class UsersDAO extends DatabaseAccessor{
@@ -225,5 +226,30 @@ public class UsersDAO extends DatabaseAccessor{
 		        close(connection, preparedStatement, resultSet);
 		    }
 		}
+
+		  public void update(UpdateUserInfoForm form,int userId) {
+				System.out.println("DAO,1,success");
+		        Connection connection = null;
+		        PreparedStatement preparedStatement = null;
+		        ResultSet resultSet = null;
+				try {
+					String sql = "update users set mailaddress = ? , password = ? , name = ? where user_id = ? ";
+					System.out.println("DAO,2,success");
+		            connection = createConnection();
+					PreparedStatement statement = connection.prepareStatement(sql);
+					statement.setString(1, form.getMailAddress());
+					statement.setString(2, form.getPassword());
+					statement.setString(3, form.getName());
+					statement.setInt(4, userId);
+					statement.executeUpdate();
+					statement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				finally {
+		            // クローズ処理
+		            close(connection, preparedStatement, resultSet);
+		        }
+			}
 
 }

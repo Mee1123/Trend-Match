@@ -8,12 +8,15 @@ import javax.servlet.http.Part;
 
 import dao.table.UsersDAO;
 import form.LoginForm;
+import form.UpdateUserInfoForm;
 import form.accountRegistrationForm;
 import form.checkUserRegistrationForm;
 import form.enneagramRegistrationForm;
 import helper.HashHelper;
 import helper.SessionHelper;
 import model.User;
+
+
 
 public class UserService {
 	private Connection connection = null;
@@ -43,6 +46,11 @@ public class UserService {
 		return user;
 	}
 
+	public void updateUserInfo(UpdateUserInfoForm form,int userId) {
+		System.out.println("Service,1,success");
+		UsersDAO dao = new UsersDAO();
+		dao.update(form,userId);
+	}
 
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
