@@ -9,8 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 import form.accountRegistrationForm;
 import service.UserService;;
@@ -134,12 +132,16 @@ public class accountRegistrationServlet extends HttpServlet {
 		String freeSpace = request.getParameter("freespace");
 		System.out.println(freeSpace);
 
+
+		//価値観
 		String value1 = request.getParameter("value1");
 		String value2 = request.getParameter("value2");
 		String value3 = request.getParameter("value3");
 		System.out.println(value1);
 		System.out.println(value2);
 		System.out.println(value3);
+
+		//価値観のID化
 
 		accountRegistrationForm form = new accountRegistrationForm(jobOffer_id,nickname,graduate,department,occupation_id,sex_id,contact,freeSpace,value1,value2,value3);
 
@@ -157,13 +159,9 @@ public class accountRegistrationServlet extends HttpServlet {
 			UserService service = new UserService();
 			try {
 				service.RegistrationAccount(request,form, userId);
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			if (form.getError().isEmpty()) {
+
 				//プロフィール画像
-				try {
+				/*try {
 					Part part = request.getPart("picturepath");
 					if(part != null){
 						HttpSession session = request.getSession();
@@ -178,28 +176,21 @@ public class accountRegistrationServlet extends HttpServlet {
 						System.out.println("例外が発生しました。");
 						System.out.println(e);
 						form.setError("ファイルが不適切です");
-					}
+					}*/
 
+				//遷移先
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishAccountRegistration.jsp");
 				dispatcher.forward(request, response);
+
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
 			}
-			else {
-				request.setAttribute("form", form);
-				doGet(request, response);
-				}
 		}else {
 			request.setAttribute("form", form);
 			doGet(request, response);
 		}
 
-
-
-
-
-
-
-
 	}
-
 
 }

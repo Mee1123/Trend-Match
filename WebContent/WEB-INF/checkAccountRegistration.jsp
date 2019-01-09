@@ -12,8 +12,8 @@
 <h1>登録確認画面</h1>
 <form action="/SE18G2/checkAccountRegistration" method="post"enctype="multipart/form-data">
 <!-- headerを入れます -->>
-<input type="file" name="picturepath" size="30"/><br>
-プロフィール画像<br>
+<!-- <input type="file" name="picturepath" size="30"/><br>
+プロフィール画像<br> -->
 <p>
 内定情報<input type="text" name="jobOffer" value= <%=request.getAttribute("jobOffer") %>>
 </p>
