@@ -86,7 +86,7 @@ public class UsersDAO extends DatabaseAccessor{
 	        close(connection, preparedStatement, resultSet);
 	    }
 	}
-  
+
 
 	//ユーザー削除
 		public void deleteUser(User user,Connection connection) {
