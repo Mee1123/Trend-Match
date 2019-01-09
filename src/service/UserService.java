@@ -1,12 +1,12 @@
 package service;
 
-import java.sql.Connection;
-import java.time.LocalDateTime;
-import form.UpdateUserInfoForm;
 import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
+
 import dao.table.UsersDAO;
 import form.LoginForm;
+import form.UpdateUserInfoForm;
 import form.checkUserRegistrationForm;
 import helper.HashHelper;
 import helper.SessionHelper;
@@ -44,8 +44,8 @@ public class UserService {
 		dao.update(form,userId);
 		}
 
-}
-	}
+
+
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
 		//型変換の必要なし
@@ -62,7 +62,7 @@ public class UserService {
 
 		usersDAO.insertUser(name, mailAddress, hashPassword);
 	}
-  
+
   	public void DeleteUser(User user) {
 		UsersDAO dao = new UsersDAO();
 		this.connection = dao.createConnection();
