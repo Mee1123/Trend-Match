@@ -74,6 +74,7 @@ public class UsersDAO extends config.DatabaseAccessor {
 			resultSet.close();
 			return user;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -180,18 +181,19 @@ public class UsersDAO extends config.DatabaseAccessor {
 			user.setGraduate(resultSet.getDate("graduate"));
 			user.setContact(resultSet.getString("contact"));
 			user.setDepartment(resultSet.getString("department"));
-			user.setOccupationId(Integer.parseInt(resultSet.getString("occupation_id")));
-			user.setSexId(Integer.parseInt(resultSet.getString("sex_id")));
-			user.setJobOfferId(Integer.parseInt(resultSet.getString("jobOffer_id")));
+			user.setOccupationId(resultSet.getInt("occupation_id"));
+			user.setSexId(resultSet.getInt("sex_id"));
+			user.setJobOfferId(resultSet.getInt("jobOfffer_id"));
 			user.setFreeSpace(resultSet.getString("freespace"));
-			//user.setValueId1(Integer.parseInt(resultSet.getString("value_1_id")));
-			//user.setValueId2(Integer.parseInt(resultSet.getString("value_2_id")));
-			//user.setValueId3(Integer.parseInt(resultSet.getString("value_3_id")));
+			user.setValueId1(resultSet.getInt("value_1_id"));
+			user.setValueId2(resultSet.getInt("value_2_id"));
+			user.setValueId3(resultSet.getInt("value_3_id"));
 			statement.close();
 			resultSet.close();
-			System.out.println(user.getNickName());
+			System.out.println(user.getGraduate());
 			return user;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -202,8 +204,8 @@ public class UsersDAO extends config.DatabaseAccessor {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			String sql = "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?"
-					+ "occupation = ?, sex_id = ?, jobofffer_id = ?, freespace = ?, "
+			String sql = "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
+					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ?,"
 					+ "value_1_id = ?, value_2_id = ?, value_3_id = ? where user_id = ? ";
 			System.out.println("DAO,2,success");
 			connection = createConnection();
@@ -214,10 +216,10 @@ public class UsersDAO extends config.DatabaseAccessor {
 			statement.setDate(3, form.getGraduate());
 			statement.setString(4, form.getContact());
 			statement.setString(5, form.getDepartment());
-			statement.setInt(6, form.getOccupationId());
-			statement.setInt(7, form.getSexId());
-			statement.setInt(8, form.getJobOfferId());
-			statement.setString(9, form.getFreeSpace());
+			statement.setString(6, form.getFreeSpace());
+			statement.setInt(7, form.getOccupationId());
+			statement.setInt(8, form.getSexId());
+			statement.setInt(9, form.getJobOfferId());
 			statement.setInt(10, form.getValueId1());
 			statement.setInt(11, form.getValueId2());
 			statement.setInt(12, form.getValueId3());

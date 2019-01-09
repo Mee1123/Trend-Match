@@ -28,45 +28,42 @@
 				<label for="picture">プロフィール画像</label>
 				<p>
 					<input class="form-control" type="text" name="picturePath"
-						id="picturePath" value="<%=user.getPicturePath()%>" />
+						id="picturePath" value="<%=user.getPicturePath()%>">
 				</p>
 			</div>
 			<div class="form-group">
 				<label for="graduate">卒業年度</label> <input class="form-control"
-					type="text" name="graduate" id="graduate"
-					value="<%=user.getGraduate()%>" />
+					type="text" name="graduate" id="graduate" value="<%=user.getGraduate()%>">
 			</div>
 			<div class="form-group">
 				<label for="joboffer">内定の有無</label> <input class="form-control"
-					type="button" name="jobofferId" id="jobofferId">
+					type="text" name="jobOfferId" id="jobOfferId" value="<%=user.getJobOfferId()%>">
 			</div>
 			<div class="form-group">
 				<label for="department">所属</label> <input class="form-control"
-					name="department" id="department" value="<%=user.getDepartment()%>" />
+					name="department" id="department" value="<%=user.getDepartment()%>">
 			</div>
 			<div class="form-group">
 				<label for="occupation">職種</label> <input class="form-control"
-					name="occupationId" id="occupationId"
-					value="<%=user.getOccupationId()%>" />
-				<!-- <button type="submit" class="btn btn-primary">登録</button>  -->
+					name="occupationId" id="occupationId" value="<%=user.getOccupationId()%>">
 			</div>
 			<div class="form-group">
 				<label for="sex">性別</label> <input class="form-control" name="sexId"
-					id="sexId" value="<%=user.getSexId()%>" />
+				id="sexId" value="<%=user.getSexId()%>">
 			</div>
 			<div class="form-group">
 				<label for="contact">連絡先</label> <input class="form-control"
-					name="contact" id="contact" value="<%=user.getContact()%>" />
+					name="contact" id="contact" value="<%=user.getContact()%>">
 			</div>
 			<div class="form-group">
 				<label for="freespace">フリースペース</label> <input class="form-control"
-					name="freeSpace" id="freeSpace" value="<%=user.getFreeSpace()%>" />
+					name="freeSpace" id="freeSpace" value="<%=user.getFreeSpace()%>">
 			</div>
 			<div class="form-group">
 				<label for="value">価値観</label> <input class="form-control"
-					name="value1" id="value1" value="" /> <input class="form-control"
-					name="value2" id="value2" value="" /> <input class="form-control"
-					name="value3" id="value3" value="" />
+					name="valueId1" id="valueId1" value="<%=user.getValueId1()%>"> <input class="form-control"
+					name="valueId2" id="valueId2" value="<%=user.getValueId2()%>"> <input class="form-control"
+					name="valueId3" id="valueId3" value="<%=user.getValueId3()%>">
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
 		</form>
