@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import helper.SessionHelper;
 import model.User;
 import service.UserService;
 
@@ -57,6 +58,8 @@ public class UnsubscribeServlet extends HttpServlet {
 		//DBから授業の削除
 		UserService userService = new UserService();
 		userService.Unsubscribe(user);
+		//セッションの削除
+		SessionHelper.destroyUserSession(request);
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishUnsubscribe.jsp");
