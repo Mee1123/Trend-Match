@@ -3,17 +3,17 @@ package form;
 import java.util.ArrayList;
 
 import helper.ValidationHelper;
-public class accountRegistrationCheckForm extends model.User{
+public class accountRegistrationForm extends model.User{
 	private ArrayList<String> error = new ArrayList<String>();
 
-	public accountRegistrationCheckForm(String jobOffer, String nickname,int graduate,String department,String occupation,String sex,String contact,String freeSpace,String value1,String value2,String value3) {
+	public accountRegistrationForm(int jobOffer_id, String nickname,int graduate,String department,int occupation_id,int sex_id,String contact,String freeSpace,String value1,String value2,String value3) {
 
-		setJobOffer(jobOffer);
+		setJobOffer_id(jobOffer_id);
 		setNickname(nickname);
 		setGraduate(graduate);
 		setDepartment(department);
-		setOccupation(occupation);
-		setSex(sex);
+		setOccupation_id(occupation_id);
+		setSex_id(sex_id);
 		setContact(contact);
 		setFreeSpace(freeSpace);
 		setValue1(value1);

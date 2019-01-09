@@ -9,11 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
-import form.accountRegistrationCheckForm;
-import service.UserService;;
+import form.accountRegistrationCheckForm;;
 
 /**
  * Servlet implementation class Registration
@@ -57,7 +54,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 
 
 		//内定情報
-		int jobOffer = Integer.parseInt(request.getParameter("jobOffer"));
+		String jobOffer = request.getParameter("jobOffer");
 		System.out.println(jobOffer);
 
 		//ニックネーム
@@ -65,7 +62,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		System.out.println(nickname);
 
 		//卒業年度
-		int graduate = Integer.parseInt(request.getParameter("graduate"));
+		int graduate = Integer.parseInt(request.getParameter("graduate")+"0331");
 		System.out.println(graduate);
 
 		//所属
@@ -73,11 +70,11 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		System.out.println(department);
 
 		//職種
-		int occupation = Integer.parseInt(request.getParameter("occupation"));
+		String occupation = request.getParameter("occupation");
 		System.out.println(occupation);
 
 		//性別
-		int sex = Integer.parseInt(request.getParameter("sex"));
+		String sex = request.getParameter("sex");
 		System.out.println(sex);
 
 		//連絡先
@@ -98,7 +95,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		accountRegistrationCheckForm form = new accountRegistrationCheckForm(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value1,value2,value3);
 
 		//プロフィール画像
-		try {
+		/*try {
 			Part part = request.getPart("picturepath");
 			if(part != null){
 				HttpSession session = request.getSession();
@@ -108,44 +105,39 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 				String name = (String) session.getAttribute("id");
 				part.write(getServletContext().getRealPath("/WEB-INF/uploaded") + "/" + name);
 				}
-			}
-			catch (ArithmeticException e) {
+		}catch (ArithmeticException e) {
 				System.out.println("例外が発生しました。");
 				System.out.println(e);
 				form.setError("ファイルが不適切です");
-			}
-
-
-		//HttpSession session = request.getSession();
-		//User user = (User) session.getAttribute("user");
-		//int userId = user.getUserId();
-		int userId = 28;
-		UserService userService = new UserService();
-		userService.RegistrationAccount(request,form,userId);
-		System.out.println("formから戻りました");
-
-		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
-		/*if(form.getError().isEmpty()){
-			UserService service = new UserService();
-			try {
-				service.RegistrationEnneagram(request,form, userId);
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-			if (form.getError().isEmpty()) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/unfinishedAccountRegistration.jsp");
-				dispatcher.forward(request, response);
-			}
-			else {
-				request.setAttribute("form", form);
-				doGet(request, response);
-				}
-		}else {
-			request.setAttribute("form", form);
-			doGet(request, response);
 		}*/
 
+
+		if(form.getError().isEmpty()){
+			//System.out.println("エラーなし");
+			request.setAttribute("jobOffer",jobOffer );
+			request.setAttribute("nickname", nickname);
+			request.setAttribute("graduate", graduate);
+			request.setAttribute("department", department);
+			request.setAttribute("occupation", occupation);
+			request.setAttribute("sex", sex);
+			request.setAttribute("contact", contact);
+			request.setAttribute("freeSpace", freeSpace);
+			request.setAttribute("value1", value1);
+			request.setAttribute("value2", value2);
+			request.setAttribute("value3", value3);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkAccountRegistration.jsp");
+			//System.out.println(dispatcher);
+			dispatcher.forward(request, response);
+
+		}else{
+			System.out.println("エラーあり");
+			request.setAttribute("form", form);
+			doGet(request, response);
+		}
+
+
 	}
+
 
 }

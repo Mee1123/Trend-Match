@@ -167,7 +167,7 @@ public class UsersDAO extends DatabaseAccessor{
 		    ResultSet resultSet = null;
 		    try {
 		    	//mysql文の用意
-		    	String mysql = "update users set picturepath = ? ,joboffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ?,  where user_id = ?";
+		    	String mysql = "update users set jobofffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ? where user_id = ?";
 
 		    	connection = createConnection();
 		    	PreparedStatement statement = connection.prepareStatement(mysql);
@@ -183,15 +183,15 @@ public class UsersDAO extends DatabaseAccessor{
 		        // 実行するSQL文とパラメータを指定する
 		        statement = connection.prepareStatement(mysql);
 		        //statement.setInt(1, filePart);
-		        statement.setInt(2, jobOffer);
-		        statement.setString(3, nickname);
-		        statement.setInt(4,graduate );
-		        statement.setString(5, department);
-		        statement.setInt(6, occupation);
-		        statement.setInt(7, sex);
-		        statement.setString(8, contact);
-		        statement.setString(9, freeSpace);
-		        statement.setInt(10, userID);
+		        statement.setInt(1, jobOffer);
+		        statement.setString(2, nickname);
+		        statement.setInt(3,graduate );
+		        statement.setString(4, department);
+		        statement.setInt(5, occupation);
+		        statement.setInt(6, sex);
+		        statement.setString(7, contact);
+		        statement.setString(8, freeSpace);
+		        statement.setInt(9, userID);
 		        statement.executeUpdate();
 
 			} catch (Exception e) {

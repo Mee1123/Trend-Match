@@ -18,17 +18,21 @@ public class User extends Deflate{
 	private int eg9;
 
 	private Part filePart;
-	private int jobOffer;
+	private String jobOffer;
 	private String nickname;
 	private int graduate;
 	private String department;
-	private int occupation;
-	private int sex;
+	private String occupation;
+	private String sex;
 	private String contact;
 	private String freeSpace;
 	private String value1;
 	private String value2;
 	private String value3;
+
+	private int jobOffer_id;
+	private int occupation_id;
+	private int sex_id;
 
 	public int getUserId() {
 		return userId;
@@ -123,10 +127,10 @@ public class User extends Deflate{
 		this.filePart=filePart;
 	}
 
-	public int getJobOffer(){
+	public String getJobOffer(){
 		return jobOffer;
 	}
-	public void setJobOffer(int jobOffer){
+	public void setJobOffer(String jobOffer){
 		this.jobOffer=jobOffer;
 	}
 
@@ -151,18 +155,18 @@ public class User extends Deflate{
 		this.department=department;
 	}
 
-	public int getOccupation(){
+	public String getOccupation(){
 		return occupation;
 	}
-	public void setOccupation(int occupation){
+	public void setOccupation(String occupation){
 		this.occupation = occupation;
 	}
 
-	public int getSex(){
+	public String getSex(){
 		return sex;
 	}
 
-	public void setSex(int sex){
+	public void setSex(String sex){
 		this.sex=sex;
 	}
 
@@ -197,5 +201,26 @@ public class User extends Deflate{
 	}
 	public void setValue3(String value3){
 		this.value3=value3;
+	}
+
+	public int getJobOffer_id(){
+		return jobOffer_id;
+	}
+	public void setJobOffer_id(int jobOffer_id){
+		this.jobOffer_id=jobOffer_id;
+	}
+
+	public int getOccupation_id(){
+		return occupation_id;
+	}
+	public void setOccupation_id(int occupation_id){
+		this.occupation_id=occupation_id;
+	}
+
+	public int getSex_id(){
+		return sex_id;
+	}
+	public void setSex_id(int sex_id){
+		this.sex_id=sex_id;
 	}
 }
