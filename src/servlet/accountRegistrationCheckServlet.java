@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.table.ValuesDAO;
-import form.accountRegistrationCheckForm;
-import model.Value;;
+import form.accountRegistrationCheckForm;;
 
 /**
  * Servlet implementation class Registration
@@ -41,10 +38,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		ArrayList<Value> values = new ArrayList<Value>();
-		ValuesDAO valuesDAO = new ValuesDAO();
-		values = valuesDAO.selectValueAll();
-		request.setAttribute("values",values);
+		
 		//遷移元
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accountRegistration.jsp");
 		dispatcher.forward(request, response);

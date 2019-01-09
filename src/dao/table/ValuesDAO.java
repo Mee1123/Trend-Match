@@ -54,7 +54,7 @@ public class ValuesDAO extends DatabaseAccessor{
         ResultSet resultSet = null;
         try {
             // SQL 文の用意
-            String sql = "select * from `values`";
+            String sql = "select * from `values`;";
             // DB へのコネクションを作成する
             connection = createConnection();
             // 実行するSQL文とパラメータを指定する

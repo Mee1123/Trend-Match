@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import form.accountRegistrationForm;
+import model.User;
 import service.UserService;;
 
 /**
@@ -146,10 +148,10 @@ public class accountRegistrationServlet extends HttpServlet {
 		accountRegistrationForm form = new accountRegistrationForm(jobOffer_id,nickname,graduate,department,occupation_id,sex_id,contact,freeSpace,value1,value2,value3);
 
 
-		//HttpSession session = request.getSession();
-		//User user = (User) session.getAttribute("user");
-		//int userId = user.getUserId();
-		int userId = 27;
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		int userId = user.getUserId();
+
 		UserService userService = new UserService();
 		userService.RegistrationAccount(request,form,userId);
 		System.out.println("formから戻りました");

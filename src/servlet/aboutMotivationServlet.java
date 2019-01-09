@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.table.ValuesDAO;
+import model.Value;
 
 
 /**
@@ -34,6 +38,8 @@ public class aboutMotivationServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/unfinishedAccountRegistration.jsp");
 		dispatcher.forward(request, response);
 
@@ -55,7 +61,14 @@ public class aboutMotivationServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/motivation.jsp");
 			dispatcher.forward(request, response);
 		}else if(request.getParameter("goto").equals("次へ")){
+
 			//ここでDBに遷移する何かを書く？
+			ArrayList<Value> values = new ArrayList<Value>();
+			ValuesDAO valuesDAO = new ValuesDAO();
+			values = valuesDAO.selectValueAll();
+			request.setAttribute("values",values);
+
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accountRegistration.jsp");
 			dispatcher.forward(request, response);
 		}

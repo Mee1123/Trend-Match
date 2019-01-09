@@ -68,23 +68,24 @@
 
 <select name = "valueId1">
 <c:forEach var="value" items="${values}">
-<option value="${value.getId()}"><c:out value="${value.getValue()}"/></option>
+<option value="${value.getID()}"><c:out value="${value.getValue()}"/></option>
 </c:forEach>
 </select>
-
+<br>
 <select name = "valueId2">
 <c:forEach var="value" items="${values}">
-<option value="${value.getId()}"><c:out value="${value.getValue()}"/></option>
+<option value="${value.getID()}"><c:out value="${value.getValue()}"/></option>
 </c:forEach>
 </select>
-
+<br>
 <select name = "valueId3">
 <c:forEach var="value" items="${values}">
-<option value="${value.getId()}"><c:out value="${value.getValue()}"/></option>
+<option value="${value.getID()}"><c:out value="${value.getValue()}"/></option>
 </c:forEach>
 </select>
 
 </p>
+<br>
 <input type="submit" value="次へ">
 
 

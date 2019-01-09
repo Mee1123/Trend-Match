@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import form.enneagramRegistrationForm;
+import model.User;
 import service.UserService;;
 
 /**
@@ -64,10 +66,9 @@ public class enneagramRegistrationServlet extends HttpServlet {
 
 		enneagramRegistrationForm form = new enneagramRegistrationForm(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9);
 
-		//HttpSession session = request.getSession();
-		//User user = (User) session.getAttribute("user");
-		//int userId = user.getUserId();
-		int userId = 28;
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		int userId = user.getUserId();
 		UserService userService = new UserService();
 		userService.RegistrationEnneagram(request,form,userId);
 		System.out.println("formから戻りました");
