@@ -2,6 +2,7 @@ package service;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,18 +17,21 @@ import model.User;
 
 public class UserService {
 
-	UsersDAO usersDAO = new UsersDAO();
+	private Connection connection = null;
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
-	private Connection connection;
+	LocalDateTime dateTime = LocalDateTime.now();
 
 	public void LoginUser(HttpServletRequest request, LoginForm form) {
+		System.out.println("Service,1,success");
+		UsersDAO usersDAO = new UsersDAO();
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
 		if (user == null) {
 			form.setError(errorStatement);
+			System.out.println("Service,2,success");
 		} else {
 			if (form.getPassword().equals(user.getPassword())) {
 				SessionHelper.createUserSession(request, user.getID());
-
+				System.out.println("Service,3,success");
 			} else {
 				form.setError(errorStatement);
 			}
@@ -64,7 +68,7 @@ public class UserService {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-
+		UsersDAO usersDAO = new UsersDAO();
 		usersDAO.insertUser(name, mailAddress, hashPassword);
 	}
 

@@ -4,6 +4,7 @@ package model;
 import java.sql.Date;
 
 public class User extends Deflate {
+
 	private int userId;
 	private String mailAddress;
 	private String password;

@@ -11,6 +11,7 @@ public class UpdateAccountInfoForm extends model.User{
 		setNickName(nickName);
 		setPicturePath(picturePath);
 		setGraduate(graduate);
+
 		setDepartment(department);
 		setOccupationId(occupationId);
 		setSexId(sexId);

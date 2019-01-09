@@ -48,6 +48,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		User user = new User();
 		//アカウント情報を取りに行く
 		user = userService.getMyAccountInfo(1);
+
 		request.setAttribute("user", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/update.jsp");
 		dispatcher.forward(request, response);
@@ -72,6 +73,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 			// TODO 自動生成された catch ブロック
 			e1.printStackTrace();
 		}
+
 		String department = request.getParameter("department");
 		int occupationId = Integer.parseInt(request.getParameter("occupationId"));
 		int sexId = Integer.parseInt(request.getParameter("sexId"));
@@ -90,11 +92,14 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 				contact, freeSpace,
 				jobOfferId, valueId1, valueId2, valueId3);
 
+
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			UserService userService = new UserService();
 			try {
+
 				userService.updateAccountInfo(form, 1);
+
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

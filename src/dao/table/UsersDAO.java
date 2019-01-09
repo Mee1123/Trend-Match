@@ -222,6 +222,7 @@ public class UsersDAO extends config.DatabaseAccessor {
 			statement.setInt(11, form.getValueId2());
 			statement.setInt(12, form.getValueId3());
 			statement.setInt(13, userId);
+
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
