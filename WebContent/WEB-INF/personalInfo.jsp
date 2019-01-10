@@ -8,7 +8,6 @@
 <title>個人情報の公開について</title>
 </head>
 <body>
-
 <form action="/SE18G2/personalInfo" method="post">
 
 注意：個人情報の公開について<br>

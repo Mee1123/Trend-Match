@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 	ユーザー情報 ニックネーム
 	<c:out value="${user.getNickname()}" />
 	<br> 所属:

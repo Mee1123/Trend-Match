@@ -8,7 +8,7 @@
 <title>モチベーショングラフの作成</title>
 </head>
 <body>
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <form action="/SE18G2/motivation" method="post">
 
 <h2>モチベーショングラフの作成</h2><br>

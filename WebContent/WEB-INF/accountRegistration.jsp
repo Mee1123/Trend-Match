@@ -10,7 +10,7 @@
 <title>アカウント登録</title>
 </head>
 <body>
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <form action="/SE18G2/accountRegistration" method="post"enctype="multipart/form-data">
 <!-- headerを入れます -->
 

@@ -8,7 +8,7 @@
 <title>アカウント未登録は完了していません</title>
 </head>
 <body>
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <form action="/SE18G2/unfinishedAccountRegistration" method="post">
 
 <h2>まだ自己分析は完全ではありません</h2><br>

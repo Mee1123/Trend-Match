@@ -9,7 +9,7 @@
 <title>自己分析</title>
 </head>
 <body>
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <form action="/SE18G2/enneagramRegistration" method="post">
 <!-- headerを入れます -->
 

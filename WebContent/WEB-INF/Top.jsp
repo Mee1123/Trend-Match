@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>アカウント登録完了</title>
+<title>Top</title>
 </head>
 <body>
-<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
-<h1>登録が完了しました</h1>
-<input type="submit" value="TOP画面へ">
+<jsp:include page="header.jsp"/>
+<h1>アカウントありのトップページ</h1>
+
 </body>
 </html>

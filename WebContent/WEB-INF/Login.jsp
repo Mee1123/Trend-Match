@@ -13,6 +13,8 @@
 <form action="/SE18G2/Login" method="post">
 メールアドレス:<input type="text" name="mailAddress"><br>
 パスワード:<input type="password" name="password"><br>
-<input type="submit" value="ログイン">
+<input type="submit" name ="goto" value="ログイン"><br>
+登録は<input type="submit" name="goto" value="こちら">
+
 </form>
 </html>

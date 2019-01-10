@@ -8,7 +8,6 @@
 <title>CheckUserRegistration</title>
 </head>
 <body>
-
 <h1>登録確認画面</h1>
 <form action="/SE18G2/checkUserRegistration" method="post">
 氏名:<input type="text" name="Name" value= <%=request.getAttribute("userName") %>><br>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <form action="/SE18G2/AccountSearchInfo" method="post">
 ニックネーム:<input type="text" name="nickname"><br>
 卒業年度:<select name = "graduate">

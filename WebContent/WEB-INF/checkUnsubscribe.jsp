@@ -8,7 +8,7 @@
 <title>checkUnsubscribe</title>
 </head>
 <body>
-
+<jsp:include page="header.jsp"/>
 <h1>退会確認画面</h1>
 <form action="/SE18G2/Unsubscribe" method="post">
 本当に退会しますか？

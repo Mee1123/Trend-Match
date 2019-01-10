@@ -8,7 +8,7 @@
 <title>自分史の作成</title>
 </head>
 <body>
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <form action="/SE18G2/personalHistory" method="post">
 
 <h2>自分史の作成</h2><br>

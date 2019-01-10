@@ -8,7 +8,7 @@
 <title>CheckRegistration</title>
 </head>
 <body>
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <h1>登録確認画面</h1>
 <form action="/SE18G2/checkAccountRegistration" method="post"enctype="multipart/form-data">
 <!-- headerを入れます -->>

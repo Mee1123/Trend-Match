@@ -9,7 +9,7 @@
 </head>
 <body>
 <!-- ヘッダー画像を入れます -->
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
  <form action="/SE18G2/startAccountRegistration" method="post">
 アカウント情報を<br>
 登録してください<br>
