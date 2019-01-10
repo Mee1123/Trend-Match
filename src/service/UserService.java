@@ -126,8 +126,10 @@ public class UserService {
 		String contact = form.getContact();
 		String freeSpace = form.getFreespace();
 		ArrayList<Integer> Values = form.getValue_id();
-		if(Values)
-		int value1 = Values.get(0);
+		int value1 = null;
+		if(Values.size()>0){
+			value1 = Values.get(0);
+		}
 		System.out.println(value1);
 		int value2 = form.getValue2();
 		int value3 = form.getValue3();
