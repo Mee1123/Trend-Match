@@ -7,6 +7,7 @@ import java.util.List;
 public class User extends Deflate{
 	private String mailAddress;
 	private String password;
+	private String name;
 	private String nickname;
 	private String picturepath;// プロフィール画像
 	private Date graduate;// 卒業年度
@@ -35,6 +36,12 @@ public class User extends Deflate{
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public User(String nickname, String picturepath, Date graduate, String contact, String department,
