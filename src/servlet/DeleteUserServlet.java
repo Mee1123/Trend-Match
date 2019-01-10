@@ -49,7 +49,7 @@ public class DeleteUserServlet extends HttpServlet {
 
 		String userId = request.getParameter("id");
 		User user = new User();
-		user.setUserId(Integer.parseInt(userId));
+		user.setId(Integer.parseInt(userId));
 
 		//DBから授業の削除
 		UserService userService = new UserService();

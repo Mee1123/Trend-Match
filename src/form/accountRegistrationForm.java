@@ -5,20 +5,22 @@ import java.util.ArrayList;
 import helper.ValidationHelper;
 public class accountRegistrationForm extends model.User{
 	private ArrayList<String> error = new ArrayList<String>();
+	private int graduate_Int;
+
 
 	public accountRegistrationForm(int jobOffer_id, String nickname,int graduate,String department,int occupation_id,int sex_id,String contact,String freeSpace,int value1,int value2, int value3) {
 
-		setJobOffer_id(jobOffer_id);
+		setJoboffer_id(jobOffer_id);
 		setNickname(nickname);
-		setGraduate(graduate);
+		setGraduate_Int(graduate);
 		setDepartment(department);
 		setOccupation_id(occupation_id);
 		setSex_id(sex_id);
 		setContact(contact);
-		setFreeSpace(freeSpace);
-		setValue1(value1);
-		setValue2(value2);
-		setValue3(value3);
+		setFreespace(freeSpace);
+		setValues_id(value1);
+		setValues_id(value2);
+		setValues_id(value3);
 
 		nicknameValidation();//1~40
 		graduateValidation();//4
@@ -44,8 +46,8 @@ public class accountRegistrationForm extends model.User{
 	}
 
 	public void graduateValidation(){
-		if(ValidationHelper.maximumText(9, String.valueOf(getGraduate()), "卒業年度")!=null){
-			error.add(ValidationHelper.maximumText(9, String.valueOf(getGraduate()), "卒業年度"));
+		if(ValidationHelper.maximumText(9, String.valueOf(getGraduate_Int()), "卒業年度")!=null){
+			error.add(ValidationHelper.maximumText(9, String.valueOf(getGraduate_Int()), "卒業年度"));
 			System.out.println("卒業年度が長い");
 		}
 	}
@@ -65,13 +67,23 @@ public class accountRegistrationForm extends model.User{
 	}
 
 	public void freeSpaceValidation(){
-		if(ValidationHelper.maximumText(40,getFreeSpace(), "フリースペース")!=null){
-			error.add(ValidationHelper.maximumText(40, getFreeSpace(), "フリースペース"));
+		if(ValidationHelper.maximumText(40,getFreespace(), "フリースペース")!=null){
+			error.add(ValidationHelper.maximumText(40, getFreespace(), "フリースペース"));
 			System.out.println("フリースペースが長い");
 		}
 	}
 
 
+
+
+	public int getGraduate_Int() {
+		return graduate_Int;
+	}
+
+
+	public void setGraduate_Int(int graduate_Int) {
+		this.graduate_Int = graduate_Int;
+	}
 
 
 	public ArrayList<String> getError() {

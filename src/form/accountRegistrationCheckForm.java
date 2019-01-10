@@ -5,17 +5,23 @@ import java.util.ArrayList;
 import helper.ValidationHelper;
 public class accountRegistrationCheckForm extends model.User{
 	private ArrayList<String> error = new ArrayList<String>();
+	private String Joboffer_id_String;// 内定ID
+	private String graduate_String;// 卒業年度
+	private String occupation_id_String;// 職種ID
+	private String sex_id_String;// 性別ID
 
-	public accountRegistrationCheckForm(String jobOffer, String nickname,int graduate,String department,String occupation,String sex,String contact,String freeSpace) {
 
-		setJobOffer(jobOffer);
+
+	public accountRegistrationCheckForm(String jobOffer, String nickname,String graduate,String department,String occupation,String sex,String contact,String freeSpace) {
+
+		setJoboffer_id_String(jobOffer);
 		setNickname(nickname);
-		setGraduate(graduate);
+		setGraduate_String(graduate);
 		setDepartment(department);
-		setOccupation(occupation);
-		setSex(sex);
+		setOccupation_id_String(occupation);
+		setSex_id_String(sex);
 		setContact(contact);
-		setFreeSpace(freeSpace);
+		setFreespace(freeSpace);
 
 		nicknameValidation();//1~40
 		graduateValidation();//4
@@ -42,8 +48,8 @@ public class accountRegistrationCheckForm extends model.User{
 	}
 
 	public void graduateValidation(){
-		if(ValidationHelper.maximumText(9, String.valueOf(getGraduate()), "卒業年度")!=null){
-			error.add(ValidationHelper.maximumText(9, String.valueOf(getGraduate()), "卒業年度"));
+		if(ValidationHelper.maximumText(9, getGraduate_String(), "卒業年度")!=null){
+			error.add(ValidationHelper.maximumText(9, getGraduate_String(), "卒業年度"));
 			System.out.println("卒業年度が長い");
 		}
 	}
@@ -63,12 +69,52 @@ public class accountRegistrationCheckForm extends model.User{
 	}
 
 	public void freeSpaceValidation(){
-		if(ValidationHelper.maximumText(40,getFreeSpace(), "フリースペース")!=null){
-			error.add(ValidationHelper.maximumText(40, getFreeSpace(), "フリースペース"));
+		if(ValidationHelper.maximumText(40,getFreespace(), "フリースペース")!=null){
+			error.add(ValidationHelper.maximumText(40, getFreespace(), "フリースペース"));
 			System.out.println("フリースペースが長い");
 		}
 	}
 
+
+
+	public String getJoboffer_id_String() {
+		return Joboffer_id_String;
+	}
+
+
+	public void setJoboffer_id_String(String joboffer_id_String) {
+		Joboffer_id_String = joboffer_id_String;
+	}
+
+
+	public String getGraduate_String() {
+		return graduate_String;
+	}
+
+
+	public void setGraduate_String(String graduate_String) {
+		this.graduate_String = graduate_String;
+	}
+
+
+	public String getOccupation_id_String() {
+		return occupation_id_String;
+	}
+
+
+	public void setOccupation_id_String(String occupation_id_String) {
+		this.occupation_id_String = occupation_id_String;
+	}
+
+
+	public String getSex_id_String() {
+		return sex_id_String;
+	}
+
+
+	public void setSex_id_String(String sex_id_String) {
+		this.sex_id_String = sex_id_String;
+	}
 
 
 	public ArrayList<String> getError() {

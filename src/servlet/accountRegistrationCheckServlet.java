@@ -63,7 +63,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		System.out.println(nickname);
 
 		//卒業年度
-		int graduate = Integer.parseInt(request.getParameter("graduate")+"0331");
+		String graduate = request.getParameter("graduate")+"0331";
 		System.out.println(graduate);
 
 		//所属

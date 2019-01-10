@@ -53,7 +53,7 @@ public class UnsubscribeServlet extends HttpServlet {
 		int userID = (int)session.getAttribute("userID");
 
 		User user = new User();
-		user.setUserId(userID);
+		user.setId(userID);
 
 		//DBから授業の削除
 		UserService userService = new UserService();

@@ -33,7 +33,7 @@ public class ValuesDAO extends DatabaseAccessor{
 	        // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
 	        Value value = new Value();
 	        while (resultSet.next()) {
-	            value.setID(resultSet.getInt("value_id"));
+	            value.setId(resultSet.getInt("value_id"));
 	            value.setValue(resultSet.getString("value_name"));
 	        }
 
@@ -66,7 +66,7 @@ public class ValuesDAO extends DatabaseAccessor{
             ArrayList<Value> values = new ArrayList<Value>();
             while (resultSet.next()) {
             	Value value =new Value();
-                value.setID(resultSet.getInt("value_id"));
+                value.setId(resultSet.getInt("value_id"));
                 value.setValue(resultSet.getString("value_name"));
                 values.add(value);
             }

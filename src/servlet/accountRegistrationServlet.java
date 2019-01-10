@@ -151,9 +151,9 @@ public class accountRegistrationServlet extends HttpServlet {
 		Value value1_result = valueService.getValueID(value1);
 		Value value2_result = valueService.getValueID(value2);
 		Value value3_result = valueService.getValueID(value3);
-		int value1_id = value1_result.getID();
-		int value2_id = value2_result.getID();
-		int value3_id = value3_result.getID();
+		int value1_id = value1_result.getId();
+		int value2_id = value2_result.getId();
+		int value3_id = value3_result.getId();
 		System.out.println(value1_id);
 		System.out.println(value2_id);
 		System.out.println(value3_id);
@@ -165,7 +165,7 @@ public class accountRegistrationServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		int userId = user.getUserId();
+		int userId = user.getId();
 
 		//int userId = 28;
 
