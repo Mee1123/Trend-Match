@@ -10,6 +10,7 @@
 <body>
 
 <h1>ユーザー削除確認画面</h1>
+<jsp:include page="header.jsp"/>
 <form action="/SE18G2/DeleteUser" method="post">
 プロフィール画像<br>
 ニックネーム<br>

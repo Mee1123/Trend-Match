@@ -8,8 +8,8 @@
 <title>UserRegistration</title>
 </head>
 <body>
-
 <h1>ユーザ登録</h1>
+
 <form action="/SE18G2/userRegistration" method="post">
 氏名:<input type="text" name="userName"><br>
 メールアドレス:<input type="text" name="mailAddress"><br>
