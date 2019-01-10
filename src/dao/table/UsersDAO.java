@@ -6,9 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
 import config.DatabaseAccessor;
+import form.UpdateAccountInfoForm;
 import form.UpdateUserInfoForm;
+import helper.DateHelper;
 import model.User;
 
 public class UsersDAO extends DatabaseAccessor {
@@ -217,13 +218,19 @@ public class UsersDAO extends DatabaseAccessor {
 
 
 	//登録されているユーザーを見つける
-	public User findOne(int userId,Connection connection) {
+	public User findOne(int userId) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
 		try {
+			// DB へのコネクションを作成する
+			connection = createConnection();
+			//sql文の作成
 			String sql = "select * from user where user_id = ?";
-			PreparedStatement statement = connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setInt(1, userId);
 
-			ResultSet resultSet = statement.executeQuery();
+			resultSet = statement.executeQuery();
 			resultSet.first();
 
 			User user = new User();
@@ -231,12 +238,13 @@ public class UsersDAO extends DatabaseAccessor {
 			user.setMailAddress(resultSet.getString("mailaddress"));
 			user.setPassword(resultSet.getString("password"));
 			user.setName(resultSet.getString("name"));
-			statement.close();
-			resultSet.close();
 			return user;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		}finally {
+			// クローズ処理
+			close(connection, statement, resultSet);
 		}
 	}
 
@@ -376,10 +384,12 @@ public class UsersDAO extends DatabaseAccessor {
 
 	//ユーザー削除
 
-		public void deleteUser(User user,Connection connection) {
+		public void deleteUser(User user) {
 	        PreparedStatement preparedStatement = null;
 	        ResultSet resultSet = null;
+			Connection connection = null;
 		    try {
+				connection = createConnection();
 		    	String sql = "delete from users where user_id = ?";
 				PreparedStatement statement = connection.prepareStatement(sql);
 				statement.setInt(1, user.getId());
@@ -395,7 +405,7 @@ public class UsersDAO extends DatabaseAccessor {
 		        close(connection, preparedStatement, resultSet);
 		    }
     }
-	}
+
 
 	public void update(UpdateUserInfoForm form, int userId) {
 		System.out.println("DAO,1,success");
@@ -421,39 +431,43 @@ public class UsersDAO extends DatabaseAccessor {
 		}
 	}
 
-	public User findOneAll(int userId, Connection connection) {
+	public User findOneAll(int userId) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
 		try {
+			connection = createConnection();
 			String sql = "select * from users where user_id = ?";
-			PreparedStatement statement = connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setInt(1, userId);
-
-			ResultSet resultSet = statement.executeQuery();
+			resultSet = statement.executeQuery();
 			resultSet.first();
 
 			User user = new User();
-			user.setUserId(userId);
+			user.setId(userId);
 			user.setMailAddress(resultSet.getString("mailaddress"));
 			user.setPassword(resultSet.getString("password"));
 			user.setName(resultSet.getString("name"));
-			user.setNickName(resultSet.getString("nickname"));
-			user.setPicturePath(resultSet.getString("picturepath"));
+			user.setNickname(resultSet.getString("nickname"));
+			user.setPicturepath(resultSet.getString("picturepath"));
 			user.setGraduate(resultSet.getDate("graduate"));
 			user.setContact(resultSet.getString("contact"));
 			user.setDepartment(resultSet.getString("department"));
-			user.setOccupationId(resultSet.getInt("occupation_id"));
-			user.setSexId(resultSet.getInt("sex_id"));
-			user.setJobOfferId(resultSet.getInt("jobOfffer_id"));
-			user.setFreeSpace(resultSet.getString("freespace"));
-			user.setValueId1(resultSet.getInt("value_1_id"));
-			user.setValueId2(resultSet.getInt("value_2_id"));
-			user.setValueId3(resultSet.getInt("value_3_id"));
-			statement.close();
-			resultSet.close();
+			user.setOccupation_id(resultSet.getInt("occupation_id"));
+			user.setSex_id(resultSet.getInt("sex_id"));
+			user.setJoboffer_id(resultSet.getInt("jobOfffer_id"));
+			user.setFreespace(resultSet.getString("freespace"));
+			user.setValues_id(resultSet.getInt("value_1_id"));
+			user.setValues_id(resultSet.getInt("value_2_id"));
+			user.setValues_id(resultSet.getInt("value_3_id"));
 			System.out.println(user.getGraduate());
 			return user;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
+		}finally {
+			// クローズ処理
+			close(connection, statement, resultSet);
 		}
 	}
 
@@ -470,18 +484,19 @@ public class UsersDAO extends DatabaseAccessor {
 			connection = createConnection();
 			PreparedStatement statement = connection.prepareStatement(sql);
 
-			statement.setString(1, form.getNickName());
-			statement.setString(2, form.getPicturePath());
-			statement.setDate(3, form.getGraduate());
+			statement.setString(1, form.getNickname());
+			statement.setString(2, form.getPicturepath());
+			statement.setDate(3, DateHelper.toSqlDate(form.getGraduate()));
 			statement.setString(4, form.getContact());
 			statement.setString(5, form.getDepartment());
-			statement.setString(6, form.getFreeSpace());
-			statement.setInt(7, form.getOccupationId());
-			statement.setInt(8, form.getSexId());
-			statement.setInt(9, form.getJobOfferId());
-			statement.setInt(10, form.getValueId1());
-			statement.setInt(11, form.getValueId2());
-			statement.setInt(12, form.getValueId3());
+			statement.setString(6, form.getFreespace());
+			statement.setInt(7, form.getOccupation_id());
+			statement.setInt(8, form.getSex_id());
+			statement.setInt(9, form.getJoboffer_id());
+			ArrayList<Integer> values = form.getValue_id();
+			statement.setInt(10, values.get(0));
+			statement.setInt(11, values.get(1));
+			statement.setInt(12, values.get(2));
 			statement.setInt(13, userId);
 
 			statement.executeUpdate();

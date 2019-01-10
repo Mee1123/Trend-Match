@@ -1,9 +1,9 @@
 package service;
 
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 
 import dao.table.UsersDAO;
@@ -19,7 +19,6 @@ import helper.SessionHelper;
 import model.User;
 
 public class UserService {
-	private Connection connection = null;
 	UsersDAO usersDAO = new UsersDAO();
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
 	LocalDateTime dateTime = LocalDateTime.now();
@@ -64,26 +63,18 @@ public class UserService {
 
 	public User getMyInfo(int userId) {
 		UsersDAO dao = new UsersDAO();
-		this.connection = dao.createConnection();
 		User user = new User();
-		user = dao.findOne(userId, connection);
-		this.connection = null;
+		user = dao.findOne(userId);
 		return user;
 	}
-//ここ
+
 	public User getMyAccountInfo(int userId) {
 		UsersDAO dao = new UsersDAO();
 
-		this.connection = dao.createConnection();
 		User user = new User();
-		user = dao.findOneAll(userId, connection);
-		this.connection = null;
+		user = dao.findOneAll(userId);
 		return user;
 	}
-		dao.update(form,userId);
-		}
-//ここまで
-
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
 		//型変換の必要なし
@@ -155,9 +146,7 @@ public class UserService {
 
   	public void DeleteUser(User user) {
 		UsersDAO dao = new UsersDAO();
-		this.connection = dao.createConnection();
-		dao.deleteUser(user, connection);
-		this.connection = null;
+		dao.deleteUser(user);
 	}
 	public void updateUserInfo(UpdateUserInfoForm form, int userId) {
 		System.out.println("Service,1,success");
@@ -169,6 +158,10 @@ public class UserService {
 		System.out.println("Service,1,success");
 		UsersDAO dao = new UsersDAO();
 		dao.updateAccount(form,userId);
+	}
+  	public void Unsubscribe(User user) {
+		UsersDAO dao = new UsersDAO();
+		dao.deleteUser(user);
 	}
 
 }

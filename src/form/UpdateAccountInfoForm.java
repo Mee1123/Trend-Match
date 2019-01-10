@@ -8,19 +8,19 @@ public class UpdateAccountInfoForm extends model.User{
 
 	public UpdateAccountInfoForm(String nickName,String picturePath,Date graduate, String department,int occupationId,int sexId,String contact,String freeSpace,
 			int jobOfferId,int valueId1,int valueId2,int valueId3) {
-		setNickName(nickName);
-		setPicturePath(picturePath);
+		setNickname(nickName);
+		setPicturepath(picturePath);
 		setGraduate(graduate);
 
 		setDepartment(department);
-		setOccupationId(occupationId);
-		setSexId(sexId);
+		setOccupation_id(occupationId);
+		setSex_id(sexId);
 		setContact(contact);
-		setFreeSpace(freeSpace);
-		setJobOfferId(jobOfferId);
-		setValueId1(valueId1);
-		setValueId2(valueId2);
-		setValueId3(valueId3);
+		setFreespace(freeSpace);
+		setJoboffer_id(jobOfferId);
+		setValues_id(valueId1);
+		setValues_id(valueId2);
+		setValues_id(valueId3);
 
 		System.out.println("Form,1,success");
 	}

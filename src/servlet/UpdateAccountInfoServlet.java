@@ -98,7 +98,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 				contact, freeSpace,
 				jobOfferId, valueId1, valueId2, valueId3);
 
-		System.out.println(form.getJobOfferId());
+		System.out.println(form.getJoboffer_id());
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			UserService userService = new UserService();

@@ -28,7 +28,7 @@
 				<label for="picture">プロフィール画像</label>
 				<p>
 					<input class="form-control" type="text" name="picturePath"
-						id="picturePath" value="<%=user.getPicturePath()%>">
+						id="picturePath" value="<%=user.getPicturepath()%>">
 				</p>
 			</div>
 			<div class="form-group">
@@ -37,7 +37,7 @@
 			</div>
 			<div class="form-group">
 				<label for="joboffer">内定の有無</label> <input class="form-control"
-					type="text" name="jobOfferId" id="jobOfferId" value="<%=user.getJobOfferId()%>">
+					type="text" name="jobOfferId" id="jobOfferId" value="<%=user.getJoboffer_id()%>">
 			</div>
 			<div class="form-group">
 				<label for="department">所属</label> <input class="form-control"
@@ -45,11 +45,11 @@
 			</div>
 			<div class="form-group">
 				<label for="occupation">職種</label> <input class="form-control"
-					name="occupationId" id="occupationId" value="<%=user.getOccupationId()%>">
+					name="occupationId" id="occupationId" value="<%=user.getOccupation_id()%>">
 			</div>
 			<div class="form-group">
 				<label for="sex">性別</label> <input class="form-control" name="sexId"
-				id="sexId" value="<%=user.getSexId()%>">
+				id="sexId" value="<%=user.getSex_id()%>">
 			</div>
 			<div class="form-group">
 				<label for="contact">連絡先</label> <input class="form-control"
@@ -57,13 +57,13 @@
 			</div>
 			<div class="form-group">
 				<label for="freespace">フリースペース</label> <input class="form-control"
-					name="freeSpace" id="freeSpace" value="<%=user.getFreeSpace()%>">
+					name="freeSpace" id="freeSpace" value="<%=user.getFreespace()%>">
 			</div>
 			<div class="form-group">
 				<label for="value">価値観</label> <input class="form-control"
-					name="valueId1" id="valueId1" value="<%=user.getValueId1()%>"> <input class="form-control"
-					name="valueId2" id="valueId2" value="<%=user.getValueId2()%>"> <input class="form-control"
-					name="valueId3" id="valueId3" value="<%=user.getValueId3()%>">
+					name="valueId1" id="valueId1" value="<%=user.getValue_id().get(0)%>"> <input class="form-control"
+					name="valueId2" id="valueId2" value="<%=user.getValue_id().get(1)%>"> <input class="form-control"
+					name="valueId3" id="valueId3" value="<%=user.getValue_id().get(2)%>">
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
 		</form>
