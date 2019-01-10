@@ -1,13 +1,14 @@
 package service;
 
 
-import java.util.ArrayList;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 
 import dao.table.UsersDAO;
+import form.AccountSearchInfoForm;
 import form.LoginForm;
 import form.UpdateUserInfoForm;
 import form.accountRegistrationForm;
@@ -28,7 +29,7 @@ public class UserService {
 			form.setError(errorStatement);
 		} else {
 			if (form.getPassword().equals(user.getPassword())) {
-				SessionHelper.createUserSession(request, user.getID());
+				SessionHelper.createUserSession(request, user.getId());
 			} else {
 				form.setError(errorStatement);
 			}
@@ -94,15 +95,16 @@ public class UserService {
 
 	public void RegistrationEnneagram(HttpServletRequest request, enneagramRegistrationForm form,int userID) {
 		//型変換の必要なし
-		int eg1 = form.getEnneagram1();
-		int eg2 = form.getEnneagram2();
-		int eg3 = form.getEnneagram3();
-		int eg4 = form.getEnneagram4();
-		int eg5 = form.getEnneagram5();
-		int eg6 = form.getEnneagram6();
-		int eg7 = form.getEnneagram7();
-		int eg8 = form.getEnneagram8();
-		int eg9 = form.getEnneagram9();
+		int[] enneagram = form.getEnneagram();
+		int eg1 = enneagram[1];
+		int eg2 = enneagram[2];
+		int eg3 = enneagram[3];
+		int eg4 = enneagram[4];
+		int eg5 = enneagram[5];
+		int eg6 = enneagram[6];
+		int eg7 = enneagram[7];
+		int eg8 = enneagram[8];
+		int eg9 = enneagram[9];
 
 		//System.out.println(eg1);
 
@@ -114,16 +116,18 @@ public class UserService {
 		System.out.println("サービスの処理");
 		//型変換の必要なし
 		//Part filePart = form.getFilePart();
-		int jobOffer = form.getJobOffer_id();
+		int jobOffer = form.getJoboffer_id();
 		//System.out.println(jobOffer);
 		String nickname = form.getNickname();
-		int graduate = form.getGraduate();
+		int graduate = form.getGraduate_Int();
 		String department = form.getDepartment();
 		int occupation = form.getOccupation_id();
 		int sex = form.getSex_id();
 		String contact = form.getContact();
-		String freeSpace = form.getFreeSpace();
-		int value1 = form.getValue1();
+		String freeSpace = form.getFreespace();
+		ArrayList<Integer> Values = form.getValue_id();
+		if(Values)
+		int value1 = Values.get(0);
 		System.out.println(value1);
 		int value2 = form.getValue2();
 		int value3 = form.getValue3();

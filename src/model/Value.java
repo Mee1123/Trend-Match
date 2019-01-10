@@ -1,6 +1,6 @@
 package model;
 
-public class Value extends Deflate{
+public class Value extends Default{
 
 	private String value;
 

@@ -51,13 +51,13 @@ public class AccountViewServlet extends HttpServlet {
 		}
 		UserService service = new UserService();
 		User user = service.accountView(userId);
-		if (user.getID()==0) {
+		if (user.getId()==0) {
 			HttpSession session = request.getSession();
 			userId =  (int) session.getAttribute("userID");
 			request.setAttribute("session", 1);
 			user = service.accountView(userId);
 		}
-		System.out.println("Serv_userID:"+user.getID());
+		System.out.println("Serv_userID:"+user.getId());
 		request.setAttribute("user", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountView.jsp");
 		dispatcher.forward(request, response);

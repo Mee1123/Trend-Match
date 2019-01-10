@@ -3,8 +3,8 @@ package dao.table;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import config.DatabaseAccessor;
 import form.UpdateUserInfoForm;
@@ -36,7 +36,7 @@ public class UsersDAO extends DatabaseAccessor {
 			// 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
 			User user = new User();
 			while (resultSet.next()) {
-				user.setID(resultSet.getInt("user_id"));
+				user.setId(resultSet.getInt("user_id"));
 				user.setPassword(resultSet.getString("password"));
 			}
 			return user;
@@ -128,7 +128,7 @@ public class UsersDAO extends DatabaseAccessor {
 			ArrayList<User> users = new ArrayList<>();
 			while (resultSet.next()) {
 				User user = new User();
-				user.setID(resultSet.getInt("user_id"));
+				user.setId(resultSet.getInt("user_id"));
 				user.setNickname(resultSet.getString("nickname"));
 				user.setGraduate(resultSet.getDate("graduate"));
 				user.setContact(resultSet.getString("contact"));
@@ -145,7 +145,7 @@ public class UsersDAO extends DatabaseAccessor {
 				enneagram[8] = resultSet.getInt("enneagram_9");
 				user.setEnneagram(enneagram);
 				user.setSex_id(resultSet.getInt("sex_id"));
-				user.setJobofffer_id(resultSet.getInt("jobofffer_id"));
+				user.setJoboffer_id(resultSet.getInt("jobofffer_id"));
 				user.setValues_id(resultSet.getInt("value_1_id"));
 				user.setValues_id(resultSet.getInt("value_2_id"));
 				user.setValues_id(resultSet.getInt("value_3_id"));
@@ -179,7 +179,7 @@ public class UsersDAO extends DatabaseAccessor {
 			// 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
 			User user = new User();
 			while (resultSet.next()) {
-				user.setID(resultSet.getInt("user_id"));
+				user.setId(resultSet.getInt("user_id"));
 				user.setNickname(resultSet.getString("nickname"));
 				user.setGraduate(resultSet.getDate("graduate"));
 				user.setContact(resultSet.getString("contact"));
@@ -196,7 +196,7 @@ public class UsersDAO extends DatabaseAccessor {
 				enneagram[8] = resultSet.getInt("enneagram_9");
 				user.setEnneagram(enneagram);
 				user.setSex_id(resultSet.getInt("sex_id"));
-				user.setJobofffer_id(resultSet.getInt("jobofffer_id"));
+				user.setJoboffer_id(resultSet.getInt("jobofffer_id"));
 				user.setValues_id(resultSet.getInt("value_1_id"));
 				user.setValues_id(resultSet.getInt("value_2_id"));
 				user.setValues_id(resultSet.getInt("value_3_id"));
@@ -223,7 +223,7 @@ public class UsersDAO extends DatabaseAccessor {
 			resultSet.first();
 
 			User user = new User();
-			user.setUserId(userId);
+			user.setId(userId);
 			user.setMailAddress(resultSet.getString("mailaddress"));
 			user.setPassword(resultSet.getString("password"));
 			user.setName(resultSet.getString("name"));
@@ -379,7 +379,7 @@ public class UsersDAO extends DatabaseAccessor {
 		    try {
 		    	String sql = "delete from users where user_id = ?";
 				PreparedStatement statement = connection.prepareStatement(sql);
-				statement.setInt(1, user.getUserId());
+				statement.setInt(1, user.getId());
 				statement.executeUpdate();
 				statement.close();
 			} catch (Exception e) {

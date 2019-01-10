@@ -2,10 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import javax.servlet.http.Part;
 
-public class User extends Deflate{
+public class User extends Default{
 	private String mailAddress;
 	private String password;
 	private String name;
@@ -18,7 +16,7 @@ public class User extends Deflate{
 	private int enneagram[];// エニアグラム
 	private int occupation_id;// 職種ID
 	private int sex_id;// 性別ID
-	private int jobofffer_id;// 内定ID
+	private int joboffer_id;// 内定ID
 	private ArrayList<Integer> values_id;// 価値観
 
 	public User() {
@@ -58,7 +56,7 @@ public class User extends Deflate{
 		this.enneagram = enneagram;
 		this.occupation_id = occupation_id;
 		this.sex_id = sex_id;
-		this.jobofffer_id = jobofffer_id;
+		this.joboffer_id = jobofffer_id;
 		this.values_id = values_id;
 	}
 
@@ -77,7 +75,7 @@ public class User extends Deflate{
 				enneagram_7, enneagram_8, enneagram_9, };
 		this.occupation_id = occupation_id;
 		this.sex_id = sex_id;
-		this.jobofffer_id = jobofffer_id;
+		this.joboffer_id = jobofffer_id;
 		this.values_id = new ArrayList<>(3);
 		values_id.add(values_1_id);
 		if (!values_id.contains(values_2_id)) {
@@ -168,15 +166,15 @@ public class User extends Deflate{
 		this.sex_id = sex_id;
 	}
 
-	public int getJobofffer_id() {
-		return jobofffer_id;
+	public int getJoboffer_id() {
+		return joboffer_id;
 	}
 
-	public void setJobofffer_id(int jobofffer_id) {
-		this.jobofffer_id = jobofffer_id;
+	public void setJoboffer_id(int jobofffer_id) {
+		this.joboffer_id = jobofffer_id;
 	}
 
-	public List<Integer> getValue_id() {
+	public ArrayList<Integer> getValue_id() {
 		return values_id;
 	}
 
