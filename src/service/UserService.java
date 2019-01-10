@@ -1,15 +1,15 @@
 package service;
 
-
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.util.ArrayList;
-
+import java.time.LocalDateTime;
 import javax.servlet.http.HttpServletRequest;
 
 import dao.table.UsersDAO;
 import form.AccountSearchInfoForm;
 import form.LoginForm;
+import form.UpdateAccountInfoForm;
 import form.UpdateUserInfoForm;
 import form.accountRegistrationForm;
 import form.checkUserRegistrationForm;
@@ -22,11 +22,15 @@ public class UserService {
 	private Connection connection = null;
 	UsersDAO usersDAO = new UsersDAO();
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
+	LocalDateTime dateTime = LocalDateTime.now();
 
 	public void LoginUser(HttpServletRequest request, LoginForm form) {
+		System.out.println("Service,1,success");
+		UsersDAO usersDAO = new UsersDAO();
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
 		if (user == null) {
 			form.setError(errorStatement);
+			System.out.println("Service,2,success");
 		} else {
 			if (form.getPassword().equals(user.getPassword())) {
 				SessionHelper.createUserSession(request, user.getId());
@@ -66,14 +70,19 @@ public class UserService {
 		this.connection = null;
 		return user;
 	}
-
-	public void updateUserInfo(UpdateUserInfoForm form,int userId) {
-		System.out.println("Service,1,success");
+//ここ
+	public User getMyAccountInfo(int userId) {
 		UsersDAO dao = new UsersDAO();
+
+		this.connection = dao.createConnection();
+		User user = new User();
+		user = dao.findOneAll(userId, connection);
+		this.connection = null;
+		return user;
+	}
 		dao.update(form,userId);
 		}
-
-
+//ここまで
 
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
@@ -88,10 +97,9 @@ public class UserService {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		}
-
+		UsersDAO usersDAO = new UsersDAO();
 		usersDAO.insertUser(name, mailAddress, hashPassword);
 	}
-
 
 	public void RegistrationEnneagram(HttpServletRequest request, enneagramRegistrationForm form,int userID) {
 		//型変換の必要なし
@@ -151,11 +159,16 @@ public class UserService {
 		dao.deleteUser(user, connection);
 		this.connection = null;
 	}
-
-  	public void Unsubscribe(User user) {
+	public void updateUserInfo(UpdateUserInfoForm form, int userId) {
+		System.out.println("Service,1,success");
 		UsersDAO dao = new UsersDAO();
-		this.connection = dao.createConnection();
-		dao.deleteUser(user, connection);
-		this.connection = null;
+		dao.update(form, userId);
 	}
+
+	public void updateAccountInfo(UpdateAccountInfoForm form, int userId) {
+		System.out.println("Service,1,success");
+		UsersDAO dao = new UsersDAO();
+		dao.updateAccount(form,userId);
+	}
+
 }

@@ -1,5 +1,6 @@
 package model;
 
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,26 +23,30 @@ public class User extends Default{
 	public User() {
 		// TODO 自動生成されたコンストラクター・スタブ
 	}
-
-
 	public String getMailAddress() {
 		return mailAddress;
 	}
+
 	public void setMailAddress(String email) {
 		this.mailAddress = email;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public User(String nickname, String picturepath, Date graduate, String contact, String department,
 			String freespace, int[] enneagram, int occupation_id, int sex_id, int jobofffer_id,
@@ -133,6 +138,7 @@ public class User extends Default{
 	public void setDepartment(String department) {
 		this.department = department;
 	}
+
 
 	public String getFreespace() {
 		return freespace;
