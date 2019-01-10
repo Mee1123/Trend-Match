@@ -1,8 +1,9 @@
 package service;
 
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +18,7 @@ import model.User;
 public class UserService {
 	UsersDAO usersDAO = new UsersDAO();
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
+	private Connection connection=null;
 
 	public void LoginUser(HttpServletRequest request, LoginForm form) {
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
@@ -88,6 +90,13 @@ public class UserService {
 	}
 
   	public void DeleteUser(User user) {
+		UsersDAO dao = new UsersDAO();
+		this.connection = dao.createConnection();
+		dao.deleteUser(user, connection);
+		this.connection = null;
+	}
+
+  	public void Unsubscribe(User user) {
 		UsersDAO dao = new UsersDAO();
 		this.connection = dao.createConnection();
 		dao.deleteUser(user, connection);
