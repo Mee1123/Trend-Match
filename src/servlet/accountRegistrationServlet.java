@@ -165,7 +165,7 @@ public class accountRegistrationServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		int userId = user.getUserId();
+		int userId = user.getId();
 
 		//int userId = 28;
 

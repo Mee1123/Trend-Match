@@ -126,19 +126,23 @@ public class UserService {
 		String contact = form.getContact();
 		String freeSpace = form.getFreespace();
 		ArrayList<Integer> Values = form.getValue_id();
-		int value1 = null;
+		int[] value = {1,1,1};
 		if(Values.size()>0){
-			value1 = Values.get(0);
+			value[0] = Values.get(0);
 		}
-		System.out.println(value1);
-		int value2 = form.getValue2();
-		int value3 = form.getValue3();
+		System.out.println(value[0]);
+		if(Values.size()>1){
+			value[1] = Values.get(1);
+		}
+		if(Values.size()>2){
+			value[2] = Values.get(2);
+		}
 
 
 		System.out.println("DAOにいきます");
 
 
-		usersDAO.insertAccount(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value1,value2,value3,userID);
+		usersDAO.insertAccount(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value[0],value[1],value[2],userID);
 	}
 
   	public void DeleteUser(User user) {
