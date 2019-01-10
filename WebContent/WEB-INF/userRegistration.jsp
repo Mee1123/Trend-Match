@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>UserRegistration</title>
+<title>ユーザー登録</title>
 </head>
 <body>
 <h1>ユーザ登録</h1>

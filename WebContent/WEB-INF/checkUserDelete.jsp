@@ -20,7 +20,7 @@
 連絡先<br>
 フリースペース<br>
 このユーザーを削除しますか？<br>
-	<input type="hidden" name="id" value="2">
+	<input type="hidden" name="id" value="4">
 <input type="submit" value="はい"> <input type="submit" value="いいえ">
 </form>
 </html>

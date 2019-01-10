@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import form.UpdateUserInfoForm;
 import model.User;
-import service.UserService;;
+import service.UserService;
 
 /**
  * Servlet implementation class UpdateUserInfoServlet
