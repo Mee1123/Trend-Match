@@ -67,6 +67,7 @@ public class ValidationHelper {
      * @param content 判定する内容
      * @return
      */
+
     public static String uniqueText(String columnName, String tableName, String string, String content) {
         String result = null;
         AlmightyDAO almightyDAO = new AlmightyDAO();

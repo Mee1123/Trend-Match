@@ -10,15 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import dao.table.UsersDAO;
 import form.LoginForm;
 import form.UpdateUserInfoForm;
+import form.accountRegistrationForm;
 import form.checkUserRegistrationForm;
+import form.enneagramRegistrationForm;
 import helper.HashHelper;
 import helper.SessionHelper;
 import model.User;
 
 public class UserService {
+	private Connection connection = null;
 	UsersDAO usersDAO = new UsersDAO();
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
-	private Connection connection=null;
 
 	public void LoginUser(HttpServletRequest request, LoginForm form) {
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
@@ -87,6 +89,50 @@ public class UserService {
 		}
 
 		usersDAO.insertUser(name, mailAddress, hashPassword);
+	}
+
+
+	public void RegistrationEnneagram(HttpServletRequest request, enneagramRegistrationForm form,int userID) {
+		//型変換の必要なし
+		int eg1 = form.getEnneagram1();
+		int eg2 = form.getEnneagram2();
+		int eg3 = form.getEnneagram3();
+		int eg4 = form.getEnneagram4();
+		int eg5 = form.getEnneagram5();
+		int eg6 = form.getEnneagram6();
+		int eg7 = form.getEnneagram7();
+		int eg8 = form.getEnneagram8();
+		int eg9 = form.getEnneagram9();
+
+		//System.out.println(eg1);
+
+
+		usersDAO.insertEnneagram(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9,userID);
+	}
+
+	public void RegistrationAccount(HttpServletRequest request, accountRegistrationForm form,int userID) {
+		System.out.println("サービスの処理");
+		//型変換の必要なし
+		//Part filePart = form.getFilePart();
+		int jobOffer = form.getJobOffer_id();
+		//System.out.println(jobOffer);
+		String nickname = form.getNickname();
+		int graduate = form.getGraduate();
+		String department = form.getDepartment();
+		int occupation = form.getOccupation_id();
+		int sex = form.getSex_id();
+		String contact = form.getContact();
+		String freeSpace = form.getFreeSpace();
+		int value1 = form.getValue1();
+		System.out.println(value1);
+		int value2 = form.getValue2();
+		int value3 = form.getValue3();
+
+
+		System.out.println("DAOにいきます");
+
+
+		usersDAO.insertAccount(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value1,value2,value3,userID);
 	}
 
   	public void DeleteUser(User user) {

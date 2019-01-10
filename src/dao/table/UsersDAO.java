@@ -18,6 +18,7 @@ public class UsersDAO extends DatabaseAccessor {
 	 * @param mailAddress
 	 * @return model.User
 	 */
+	//登録されているユーザー情報の一意性の確認
 	public User selectUserByMailAddress(String mailAddress) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -211,9 +212,10 @@ public class UsersDAO extends DatabaseAccessor {
 		}
 	}
 
+	//登録されているユーザーを見つける
 	public User findOne(int userId,Connection connection) {
 		try {
-			String sql = "select * from users where user_id = ?";
+			String sql = "select * from user where user_id = ?";
 			PreparedStatement statement = connection.prepareStatement(sql);
 			statement.setInt(1, userId);
 
@@ -274,6 +276,100 @@ public class UsersDAO extends DatabaseAccessor {
 	        close(connection, preparedStatement, resultSet);
 	    }
 	}
+
+	//アカウント(エニアグラム)登録
+	@SuppressWarnings("resource")
+	public void insertEnneagram(int eg1,int eg2,int eg3,int eg4,int eg5,int eg6,int eg7,int eg8,int eg9,int userID) {
+		Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    try {
+	    	//mysql文の用意
+	    	String mysql = "update users set enneagram_1 = ? ,enneagram_2 = ? ,enneagram_3 = ? ,enneagram_4 = ? ,enneagram_5 = ? ,enneagram_6 = ? ,enneagram_7 = ? ,enneagram_8 = ? ,enneagram_9 = ? where user_id = ?";
+
+	    	connection = createConnection();
+	    	PreparedStatement statement = connection.prepareStatement(mysql);
+
+
+	    	System.out.println(mysql);
+
+
+	         //resultSet.first();
+
+	    	// DB へのコネクションを作成する
+	        connection = createConnection();
+	        // 実行するSQL文とパラメータを指定する
+	        statement = connection.prepareStatement(mysql);
+	        statement.setInt(1, eg1);
+	        statement.setInt(2, eg2);
+	        statement.setInt(3, eg3);
+	        statement.setInt(4, eg4);
+	        statement.setInt(5, eg5);
+	        statement.setInt(6, eg6);
+	        statement.setInt(7, eg7);
+	        statement.setInt(8, eg8);
+	        statement.setInt(9, eg9);
+	        statement.setInt(10, userID);
+	        statement.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+	        e.printStackTrace();
+		}
+	    finally {
+	        // クローズ処理
+	        close(connection, preparedStatement, resultSet);
+	    }
+	}
+
+
+	//アカウント登録
+		@SuppressWarnings("resource")
+		public void insertAccount(int jobOffer,String nickname,int graduate,String department,int occupation,int sex,String contact,String freeSpace,int value1,int value2, int value3, int userID) {
+			Connection connection = null;
+		    PreparedStatement preparedStatement = null;
+		    ResultSet resultSet = null;
+		    try {
+		    	//mysql文の用意
+		    	String mysql = "update users set jobofffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ? ,value_1_id= ? ,value_2_id = ? ,value_3_id= ? where user_id = ?";
+
+		    	connection = createConnection();
+		    	PreparedStatement statement = connection.prepareStatement(mysql);
+
+
+		    	System.out.println(mysql);
+
+
+		         //resultSet.first();
+
+		    	// DB へのコネクションを作成する
+		        connection = createConnection();
+		        // 実行するSQL文とパラメータを指定する
+		        statement = connection.prepareStatement(mysql);
+		        //statement.setInt(1, filePart);
+		        statement.setInt(1, jobOffer);
+		        statement.setString(2, nickname);
+		        statement.setInt(3,graduate );
+		        statement.setString(4, department);
+		        statement.setInt(5, occupation);
+		        statement.setInt(6, sex);
+		        statement.setString(7, contact);
+		        statement.setString(8, freeSpace);
+		        statement.setInt(9, value1);
+		        statement.setInt(10, value2);
+		        statement.setInt(11, value3);
+		        statement.setInt(12, userID);
+		        statement.executeUpdate();
+
+			} catch (Exception e) {
+				// TODO: handle exception
+		        e.printStackTrace();
+			}
+		    finally {
+		        // クローズ処理
+		        close(connection, preparedStatement, resultSet);
+		    }
+		}
 
 
 	//ユーザー削除

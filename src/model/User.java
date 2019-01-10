@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.http.Part;
 
 public class User extends Deflate{
 	private String mailAddress;
