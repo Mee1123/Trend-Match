@@ -72,4 +72,5 @@ public class AccountViewServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+
 }
