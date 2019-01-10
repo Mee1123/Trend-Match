@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import form.LoginForm;
+import helper.ValidationHelper;
 import service.UserService;
 
 /**
@@ -33,6 +34,9 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println(ValidationHelper.uniqueText("user_id", "users", "2", "ユーザーID1"));//被ってる
+		System.out.println(ValidationHelper.uniqueText("user_id", "users", "5", "ユーザーID2"));//null
+		System.out.println(ValidationHelper.uniqueText("value_name", "values", "test1", "ユーザーID3"));//被ってる
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());

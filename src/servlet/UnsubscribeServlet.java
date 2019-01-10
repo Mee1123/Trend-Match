@@ -8,21 +8,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import helper.SessionHelper;
 import model.User;
 import service.UserService;
 
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/DeleteUser")
-public class DeleteUserServlet extends HttpServlet {
+@WebServlet("/Unsubscribe")
+public class UnsubscribeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteUserServlet() {
+    public UnsubscribeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,7 +38,7 @@ public class DeleteUserServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkUserDelete.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkUnsubscribe.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -47,16 +49,20 @@ public class DeleteUserServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		String userId = request.getParameter("id");
+		HttpSession session = request.getSession();
+		int userID = (int)session.getAttribute("userID");
+
 		User user = new User();
-		user.setId(Integer.parseInt(userId));
+		user.setId(userID);
 
 		//DBから授業の削除
 		UserService userService = new UserService();
-		userService.DeleteUser(user);
+		userService.Unsubscribe(user);
+		//セッションの削除
+		SessionHelper.destroyUserSession(request);
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishUserDelete.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishUnsubscribe.jsp");
 		dispatcher.forward(request, response);
 
 

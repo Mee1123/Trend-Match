@@ -1,35 +1,28 @@
-
 package model;
 
-import java.sql.Date;
 
-public class User extends Deflate {
+import java.util.ArrayList;
+import java.util.Date;
 
-	private int userId;
+public class User extends Default{
 	private String mailAddress;
 	private String password;
 	private String name;
-	private String nickName;
-	private String picturePath;
-	private Date graduate;
-	private String contact;
-	private String department;
-	private int occupationId;
-	private int sexId;
-	private int jobOfferId;
-	private String freeSpace;
-	private int valueId1;
-	private int valueId2;
-	private int valueId3;
+	private String nickname;
+	private String picturepath;// プロフィール画像
+	private Date graduate;// 卒業年度
+	private String contact;// 連絡先
+	private String department;// 所属
+	private String freespace;// フリースペース
+	private int enneagram[];// エニアグラム
+	private int occupation_id;// 職種ID
+	private int sex_id;// 性別ID
+	private int joboffer_id;// 内定ID
+	private ArrayList<Integer> values_id;// 価値観
 
-	public int getUserId() {
-		return userId;
+	public User() {
+		// TODO 自動生成されたコンストラクター・スタブ
 	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
 	public String getMailAddress() {
 		return mailAddress;
 	}
@@ -54,20 +47,72 @@ public class User extends Deflate {
 		this.name = name;
 	}
 
-	public String getNickName() {
-		return nickName;
+
+	public User(String nickname, String picturepath, Date graduate, String contact, String department,
+			String freespace, int[] enneagram, int occupation_id, int sex_id, int jobofffer_id,
+			ArrayList<Integer> values_id) {
+		super();
+		this.nickname = nickname;
+		this.picturepath = picturepath;
+		this.graduate = graduate;
+		this.contact = contact;
+		this.department = department;
+		this.freespace = freespace;
+		this.enneagram = enneagram;
+		this.occupation_id = occupation_id;
+		this.sex_id = sex_id;
+		this.joboffer_id = jobofffer_id;
+		this.values_id = values_id;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public User(String nickname, String picturepath, Date graduate, String contact, String department,
+			String freespace, int enneagram_1, int enneagram_2, int enneagram_3, int enneagram_4, int enneagram_5,
+			int enneagram_6, int enneagram_7, int enneagram_8, int enneagram_9, int occupation_id, int sex_id,
+			int jobofffer_id, int values_1_id, int values_2_id, int values_3_id) {
+		super();
+		this.nickname = nickname;
+		this.picturepath = picturepath;
+		this.graduate = graduate;
+		this.contact = contact;
+		this.department = department;
+		this.freespace = freespace;
+		enneagram = new int[] { enneagram_1, enneagram_2, enneagram_3, enneagram_4, enneagram_5, enneagram_6,
+				enneagram_7, enneagram_8, enneagram_9, };
+		this.occupation_id = occupation_id;
+		this.sex_id = sex_id;
+		this.joboffer_id = jobofffer_id;
+		this.values_id = new ArrayList<>(3);
+		values_id.add(values_1_id);
+		if (!values_id.contains(values_2_id)) {
+			values_id.add(values_2_id);
+		}
+		if (!values_id.contains(values_3_id)) {
+			values_id.add(values_3_id);
+		}
 	}
 
-	public String getPicturePath() {
-		return picturePath;
+	public User(String nickname, String department, String freespace) {
+		super();
+		this.nickname = nickname;
+
+		this.department = department;
+		this.freespace = freespace;
 	}
 
-	public void setPicturePath(String picturePath) {
-		this.picturePath = picturePath;
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getPicturepath() {
+		return picturepath;
+	}
+
+	public void setPicturepath(String picturepath) {
+		this.picturepath = picturepath;
 	}
 
 	public Date getGraduate() {
@@ -94,59 +139,71 @@ public class User extends Deflate {
 		this.department = department;
 	}
 
-	public int getOccupationId() {
-		return occupationId;
+
+	public String getFreespace() {
+		return freespace;
 	}
 
-	public void setOccupationId(int occupationId) {
-		this.occupationId = occupationId;
+	public void setFreespace(String freespace) {
+		this.freespace = freespace;
 	}
 
-	public int getSexId() {
-		return sexId;
+	public int[] getEnneagram() {
+		return enneagram;
 	}
 
-	public void setSexId(int sexId) {
-		this.sexId = sexId;
+	public void setEnneagram(int[] enneagram) {
+		this.enneagram = enneagram;
 	}
 
-	public int getJobOfferId() {
-		return jobOfferId;
+	public int getOccupation_id() {
+		return occupation_id;
 	}
 
-	public void setJobOfferId(int jobOfferId) {
-		this.jobOfferId = jobOfferId;
+	public void setOccupation_id(int occupation_id) {
+		this.occupation_id = occupation_id;
 	}
 
-	public String getFreeSpace() {
-		return freeSpace;
+	public int getSex_id() {
+		return sex_id;
 	}
 
-	public void setFreeSpace(String freeSpace) {
-		this.freeSpace = freeSpace;
+	public void setSex_id(int sex_id) {
+		this.sex_id = sex_id;
 	}
 
-	public int getValueId1() {
-		return valueId1;
+	public int getJoboffer_id() {
+		return joboffer_id;
 	}
 
-	public void setValueId1(int valueId1) {
-		this.valueId1 = valueId1;
+	public void setJoboffer_id(int jobofffer_id) {
+		this.joboffer_id = jobofffer_id;
 	}
 
-	public int getValueId2() {
-		return valueId2;
+	public ArrayList<Integer> getValue_id() {
+		return values_id;
 	}
 
-	public void setValueId2(int valueId2) {
-		this.valueId2 = valueId2;
+	public boolean setValues_id(int value_id) {
+		if (values_id ==null) {
+			values_id = new ArrayList<>();
+		}
+		if (!this.values_id.contains(value_id)) {
+			if (this.values_id.size() <= 3) {
+				this.values_id.add(value_id);
+				return true;
+			} else {
+				this.values_id.remove(0);
+				this.values_id.add(value_id);
+				return false;
+			}
+		} else {
+			return true;
+		}
 	}
 
-	public int getValueId3() {
-		return valueId3;
+	public void clearValues_id() {
+		this.values_id.clear();
 	}
 
-	public void setValueId3(int valueId3) {
-		this.valueId3 = valueId3;
-	}
 }
