@@ -104,8 +104,10 @@ public class UserService {
 	}
 
 	public void RegistrationEnneagram(HttpServletRequest request, enneagramRegistrationForm form,int userID) {
+		System.out.println("Service,1,Success");
 		//型変換の必要なし
 		int[] enneagram = form.getEnneagram();
+
 		int eg1 = enneagram[0];
 		int eg2 = enneagram[1];
 		int eg3 = enneagram[2];
@@ -117,7 +119,6 @@ public class UserService {
 		int eg9 = enneagram[8];
 
 		//System.out.println(eg1);
-
 
 		usersDAO.insertEnneagram(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9,userID);
 	}
