@@ -20,7 +20,7 @@
 				value=<%=request.getAttribute("userName")%>><br>
 			メールアドレス:<input type="text" name="MailAddress"
 				value=<%=request.getAttribute("mailAddress")%>><br>
-			パスワード:<input type="text" name="Password"
+			パスワード:<input type="Password" name="Password"
 				value=<%=request.getAttribute("password")%>><br>
 			上記の内容で登録します。よろしいですか？<br>
 			<p>
