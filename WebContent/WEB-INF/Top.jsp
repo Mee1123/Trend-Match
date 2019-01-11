@@ -22,5 +22,6 @@
 		</c:forEach>
 	</table>
 	<a href = "AccountMatchingResult">もっと見る</a>
+	<a href ="AccountSearchInfo">アカウント検索</a>
 </body>
 </html>
