@@ -9,7 +9,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta charset="UTF-8">
-<title>finishUserDelete</title>
+<title>ユーザー削除完了</title>
 </head>
 <body>
 <jsp:include page="headerForAdmin.jsp"/>

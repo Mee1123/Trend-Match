@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>ユーザ登録</h1>
+		<h1>ユーザー登録</h1>
 		<form action="/SE18G2/userRegistration" method="post">
 			氏名:<input class="form-control" type="text" name="userName"><br>
 			メールアドレス:<input class="form-control" type="text" name="mailAddress"><br>

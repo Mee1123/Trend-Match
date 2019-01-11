@@ -8,17 +8,15 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登録完了</title>
+<title>アカウント情報編集完了</title>
 </head>
 <body>
 	<div class="container">
 		<div class="form-group">
-			<label for="finish"><h2>登録が完了しました</h2></label>
+			<label for="finish"><h2>編集が完了しました</h2></label>
 		</div>
-		<button class="btn btn-primary" type="forward" class="btn btn-primary">
-			<a herf="">Start</a>
+		<a href="/SE18G2/Top"><button class="btn btn-primary">Topへ</button></a>
 			<!-- ホーム画面に戻る -->
-		</button>
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
