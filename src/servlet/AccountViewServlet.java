@@ -69,9 +69,9 @@ public class AccountViewServlet extends HttpServlet {
 		System.out.println("AccountViewServlet:user_id="+user.getId());
 		request.setAttribute("user", user);
 		System.out.println(valuesStrings[0]);
-		request.setAttribute("Value1", valuesStrings[0]);
-		request.setAttribute("Value2", valuesStrings[1]);
-		request.setAttribute("Value3", valuesStrings[2]);
+		request.setAttribute("value1", valuesStrings[0]);
+		request.setAttribute("value2", valuesStrings[1]);
+		request.setAttribute("value3", valuesStrings[2]);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountView.jsp");
 		dispatcher.forward(request, response);
 
