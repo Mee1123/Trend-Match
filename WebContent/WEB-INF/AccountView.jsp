@@ -30,7 +30,9 @@
 		<br> 連絡先:
 		<c:out value="${user.getContact()}" />
 		<br> 価値観:
-		<c:out value="${user.getNickname()}" />
+		<c:out value="${value1}" /><br>
+		<c:out value="${value2}" /><br>
+		<c:out value="${value3}" />
 		<br> フリースペース:
 		<c:out value="${user.getFreespace()}" />
 		<br> エニアグラム

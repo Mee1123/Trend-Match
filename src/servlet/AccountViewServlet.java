@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import model.User;
 import service.UserService;
+import service.ValueService;
 
 /**
  * Servlet implementation class AccountView
@@ -57,8 +59,26 @@ public class AccountViewServlet extends HttpServlet {
 			request.setAttribute("session", 1);
 			user = service.accountView(userId);
 		}
+		ValueService valueService = new ValueService();
+		ArrayList<String> values = new ArrayList<>();
+		for(int value_id:user.getValue_id()) {
+		values.add(valueService.getValueName(value_id).getValue())	;
+		}
+		String valueStrings[]= {"","",""};
+		if(values.size()<1) {
+			valueStrings[0] = values.get(0);
+		}if(values.size()<2) {
+			valueStrings[1] = values.get(1);
+		}if(values.size()<3) {
+			valueStrings[2] = values.get(2);
+		}
+
 		System.out.println("Serv_userID:"+user.getId());
 		request.setAttribute("user", user);
+		System.out.println(valueStrings[0]);
+		request.setAttribute("Value1", valueStrings[0]);
+		request.setAttribute("Value2", valueStrings[1]);
+		request.setAttribute("Value3", valueStrings[2]);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountView.jsp");
 		dispatcher.forward(request, response);
 
