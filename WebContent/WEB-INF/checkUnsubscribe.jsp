@@ -19,9 +19,11 @@
 			<div class="form-group">
 				本当に退会しますか？ <br>
 			</div>
-			<input class="btn btn-primary" type="submit" value="はい"> <input
-				class="btn btn-primary" type="submit" value="いいえ">
-		</form>
+			<input class="btn btn-primary" type="submit" value="はい"></form>
+	<a href="/SE18G2/HeaderUserInfo">
+				<input class="btn btn-primary" type="submit" value="いいえ">
+				</a>
+
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
