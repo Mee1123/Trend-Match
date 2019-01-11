@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import form.enneagramRegistrationForm;
-import model.User;
 import service.UserService;;
 
 /**
@@ -53,7 +52,6 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		//jspからformの内容を取り出し
-		System.out.println("ServletのdoPost");
 		int eg1 = Integer.parseInt(request.getParameter("enneagram1"));
 		int eg2 = Integer.parseInt(request.getParameter("enneagram2"));
 		int eg3 = Integer.parseInt(request.getParameter("enneagram3"));
@@ -67,8 +65,8 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		enneagramRegistrationForm form = new enneagramRegistrationForm(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9);
 
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		int userId = user.getId();
+		int userId = (int) session.getAttribute("userID");
+		System.out.println("エニアグラム登録:userId="+userId);
 		//int userId =28;
 		UserService userService = new UserService();
 		userService.RegistrationEnneagram(request,form,userId);
