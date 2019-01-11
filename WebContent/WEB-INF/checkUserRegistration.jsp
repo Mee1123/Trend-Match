@@ -24,11 +24,10 @@
 				value=<%=request.getAttribute("password")%>><br>
 			上記の内容で登録します。よろしいですか？<br>
 			<p>
-				<input class="btn btn-primary" type="button"
-					onclick="location.href='/WEB-INF/userRegistration'" value="戻る">
+				<input class="btn btn-primary" type="submit" name="goto" value="戻る">
 			</p>
 			<p>
-				<input class="btn btn-primary" type="submit" value="確認">
+				<input class="btn btn-primary" type="submit" name="goto" value="確認">
 			</p>
 		</form>
 	</div>
