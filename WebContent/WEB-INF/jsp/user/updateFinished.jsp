@@ -11,6 +11,7 @@
 <title>ユーザー情報編集完了</title>
 </head>
 <body>
+<jsp:include page="./../../header.jsp" />
 	<div class="container">
 		<div class="form-group">
 			<h2>

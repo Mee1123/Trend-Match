@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <title>header</title>
-<link rel="stylesheet" type="text/css" href="CSS/headerDesign.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/headerDesign.css">
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
@@ -17,11 +17,11 @@
 <br>
 <nav>
 	<ul>
-		<li><a href="/SE18G2/Top"><img src="header/home(black).jpg" ><br>Home</a></li>
-		<li><a href="/SE18G2/AccountView"><img src="header/account(black).jpg" ><br>ACCOUNT</a></li>
-		<li><a href=""><img src="header/DM(black).jpg" ><br>DIRECT MESSAGE</a></li>
-		<li><a href="/SE18G2/HeaderUserInfo"><img src="header/Edit(black).jpg" ><br>EDIT USER INFO.</a></li>
-		<li><a href="/SE18G2/Logout"><img src="header/Logout(black).jpg" ><br>LOGOUT</a></li>
+		<li><a href="/SE18G2/HeaderHome"><img src="/SE18G2/header/home(black).jpg" ><br>Home</a></li>
+		<li><a href="/SE18G2/AccountView"><img src="/SE18G2/header/account(black).jpg" ><br>ACCOUNT</a></li>
+		<li><a href=""><img src="/SE18G2/header/DM(black).jpg" ><br>DIRECT MESSAGE</a></li>
+		<li><a href="/SE18G2/HeaderUserInfo"><img src="/SE18G2/header/Edit(black).jpg" ><br>EDIT USER INFO.</a></li>
+		<li><a href="/SE18G2/Logout"><img src="/SE18G2/header/Logout(black).jpg" ><br>LOGOUT</a></li>
 	</ul>
 </nav>
 <!-- javascript -->
