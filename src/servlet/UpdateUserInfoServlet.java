@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import form.UpdateUserInfoForm;
 import model.User;
@@ -34,22 +35,15 @@ public class UpdateUserInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		request.setCharacterEncoding("UTF-8");
 
-		//HttpSession session = request.getSession();
-		//User user = (User) session.getAttribute("user");
-		//sessionまだないから下記で
-
-		//User user = new User();
-		//user.setUserId(1);
-
-		//int userId = user.getUserId();
+		HttpSession session = request.getSession();
+		int userId = (int) session.getAttribute("userID");
 
 		UserService userService = new UserService();
 		User user = new User();
-		user = userService.getMyInfo(1);
+		user = userService.getMyInfo(userId);
 		request.setAttribute("user", user);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/update.jsp");
 		dispatcher.forward(request, response);
@@ -67,10 +61,9 @@ public class UpdateUserInfoServlet extends HttpServlet {
 		String mailaddress = request.getParameter("mailaddress");
 		String password = request.getParameter("password");
 		String name = request.getParameter("name");
-		//HttpSession session = request.getSession();
-		//User user = (User) session.getAttribute("user");
-		//int userId = user.getUserId();
-		//今sessionないから
+
+		HttpSession session = request.getSession();
+		int userId = (int) session.getAttribute("userID");
 
 		UpdateUserInfoForm form = new UpdateUserInfoForm(mailaddress, password, name);
 		System.out.println(form.getName());
@@ -82,15 +75,16 @@ public class UpdateUserInfoServlet extends HttpServlet {
 			UserService userService = new UserService();
 			try {
 				//userService.updateUserInfo(request,form);
-				userService.updateUserInfo(form,1);
+				userService.updateUserInfo(form,userId);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
 			if (form.getError().isEmpty()) {
 				System.out.println("Servlet,2,success");
-				//response.sendRedirect("/SE18G2/Top");
-				//response.sendRedirect("/WEB-INF/jsp/user/updateFinished.jsp");//登録完了画面へ移行させる
+				request.setCharacterEncoding("UTF-8");
+				response.setContentType("text/html; charset=UTF-8");
+				response.getWriter().append("Served at: ").append(request.getContextPath());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/updateFinished.jsp");
 				dispatcher.forward(request, response);
 			} else {

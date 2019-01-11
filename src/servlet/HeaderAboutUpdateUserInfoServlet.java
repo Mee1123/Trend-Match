@@ -35,9 +35,9 @@ public class HeaderAboutUpdateUserInfoServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		//System.out.println("1");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/update.jsp");
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/update.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/user/update");
 		dispatcher.forward(request, response);
-
 	}
 
 	/**
