@@ -22,7 +22,8 @@
 			<div class="form-group">
 				パスワード<input class="form-control" type="password" name="password"><br>
 			</div>
-			<input class="btn btn-primary" type="submit" value="ログイン">
+			<input class="btn btn-primary" type="submit" name="goto" value="ログイン"><br>
+			登録は<input class="btn btn-primary" type="submit" name="goto" value="こちら"><br>
 		</form>
 	</div>
 	<!-- javascript -->
