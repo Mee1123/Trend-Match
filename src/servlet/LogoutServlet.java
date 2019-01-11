@@ -35,7 +35,7 @@ public class LogoutServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Logout.jsp");
 		dispatcher.forward(request, response);
 	}
 
