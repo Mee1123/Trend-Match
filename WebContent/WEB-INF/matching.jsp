@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>マッチング結果一覧</title>
 </head>
 <body>
 	<!-- ヘッダー -->

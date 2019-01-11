@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="/SE18G2/CSS/table.css">
 <link rel="stylesheet" type="text/css" href="/SE18G2/CSS/box.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>アカウント閲覧</title>
 </head>
 <body>
 	<jsp:include page="header.jsp" />

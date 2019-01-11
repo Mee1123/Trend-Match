@@ -9,7 +9,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta charset="UTF-8">
-<title>CheckUserRegistration</title>
+<title>ユーザー登録内容確認</title>
 </head>
 <body>
 	<div class="container">
