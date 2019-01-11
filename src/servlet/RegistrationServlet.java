@@ -72,7 +72,6 @@ public class RegistrationServlet extends HttpServlet {
 				// System.out.println("新しいサービスを生成しました");
 				try {
 					service.RegistrationUser(request, form);
-
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishUserRegistration.jsp");
 					dispatcher.forward(request, response);
 				} catch (Exception e) {

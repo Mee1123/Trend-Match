@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import form.enneagramRegistrationForm;
-import model.User;
 import service.UserService;;
 
 /**
@@ -65,14 +64,14 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		int eg9 = Integer.parseInt(request.getParameter("enneagram9"));
 
 		enneagramRegistrationForm form = new enneagramRegistrationForm(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9);
+		System.out.println("formから戻りました");
 
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		int userId = user.getId();
-		//int userId =28;
-		UserService userService = new UserService();
-		userService.RegistrationEnneagram(request,form,userId);
-		System.out.println("formから戻りました");
+		//User user = (User) session.getAttribute("user");
+		int userId = (int) session.getAttribute("userID");
+
+		System.out.println("セッションからID引っ張る");
+		System.out.println(userId);
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if(form.getError().isEmpty()){

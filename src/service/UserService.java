@@ -104,20 +104,21 @@ public class UserService {
 	}
 
 	public void RegistrationEnneagram(HttpServletRequest request, enneagramRegistrationForm form,int userID) {
+		System.out.println("Service,1,Success");
 		//型変換の必要なし
 		int[] enneagram = form.getEnneagram();
-		int eg1 = enneagram[1];
-		int eg2 = enneagram[2];
-		int eg3 = enneagram[3];
-		int eg4 = enneagram[4];
-		int eg5 = enneagram[5];
-		int eg6 = enneagram[6];
-		int eg7 = enneagram[7];
-		int eg8 = enneagram[8];
-		int eg9 = enneagram[9];
+
+		int eg1 = enneagram[0];
+		int eg2 = enneagram[1];
+		int eg3 = enneagram[2];
+		int eg4 = enneagram[3];
+		int eg5 = enneagram[4];
+		int eg6 = enneagram[5];
+		int eg7 = enneagram[6];
+		int eg8 = enneagram[7];
+		int eg9 = enneagram[8];
 
 		//System.out.println(eg1);
-
 
 		usersDAO.insertEnneagram(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9,userID);
 	}
