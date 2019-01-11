@@ -40,7 +40,23 @@
 			職種:
 			<div class="box1">
 				<p>
-		<c:out value="${user.getOccupation_id()}" />
+		<c:choose>
+			<c:when test="${user.getOccupation_id()==1}">学部生</c:when>
+			<c:when test="${user.getOccupation_id()==2}">大学院生</c:when>
+			<c:when test="${user.getOccupation_id()==3}">農業・水産</c:when>
+			<c:when test="${user.getOccupation_id()==4}">林業</c:when>
+			<c:when test="${user.getOccupation_id()==5}">漁業</c:when>
+			<c:when test="${user.getOccupation_id()==6}">鉱業</c:when>
+			<c:when test="${user.getOccupation_id()==7}">建設業</c:when>
+			<c:when test="${user.getOccupation_id()==8}">製造業</c:when>
+			<c:when test="${user.getOccupation_id()==9}">電気・ガス</c:when>
+			<c:when test="${user.getOccupation_id()==10}">運輸・通信業</c:when>
+			<c:when test="${user.getOccupation_id()==11}">卸売・小売・飲食業</c:when>
+			<c:when test="${user.getOccupation_id()==12}">金融・保険業</c:when>
+			<c:when test="${user.getOccupation_id()==13}">不動産業</c:when>
+			<c:when test="${user.getOccupation_id()==14}">サービス業</c:when>
+			<c:when test="${user.getOccupation_id()==15}">その他</c:when>
+		</c:choose>
 				</p>
 			</div>
 		</div>
