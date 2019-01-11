@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>アカウント検索結果</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
@@ -18,8 +18,8 @@
 		<c:forEach var="user" items="${users}">
 			<tr>
 				<div class="form-group">
-					<td><c:out value="${user.getNickname()}" />|</td>
-					<td><c:out value="${user.getFreespace()}" />,</td>
+					<td><c:out value="${user.getNickname()}" /></td>
+					<td><c:out value="${user.getFreespace()}" /></td>
 				</div>
 			</tr>
 		</c:forEach>

@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登録完了</title>
+<title>アカウント情報編集完了</title>
 </head>
 <body>
 <jsp:include page="./../../header.jsp" />

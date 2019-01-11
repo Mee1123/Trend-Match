@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.table.ValuesDAO;
 import form.accountRegistrationForm;
 import model.Value;
 import service.UserService;
@@ -59,6 +61,12 @@ public class accountRegistrationServlet extends HttpServlet {
 		// jspからformの内容を取り出し
 		System.out.println("ServletのdoPost");
 		if (request.getParameter("goto").equals("いいえ")) {
+
+			ArrayList<Value> values = new ArrayList<Value>();
+			ValuesDAO valuesDAO = new ValuesDAO();
+			values = valuesDAO.selectValueAll();
+			request.setAttribute("values", values);
+
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accountRegistration.jsp");
 			dispatcher.forward(request, response);
 		} else if (request.getParameter("goto").equals("はい")) {

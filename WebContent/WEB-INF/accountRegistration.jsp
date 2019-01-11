@@ -42,7 +42,7 @@
 				職種<select name="occupation">
 					<option value="学部生">学部生</option>
 					<option value="大学院生">大学院生</option>
-					<option value="農林・水産">農林・水産</option>
+					<option value="農業・水産">農林・水産</option>
 					<option value="林業">林業</option>
 					<option value="漁業">漁業</option>
 					<option value="鉱業">鉱業</option>

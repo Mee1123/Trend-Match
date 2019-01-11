@@ -187,9 +187,11 @@ public class UsersDAO extends DatabaseAccessor {
 				user.setId(resultSet.getInt("user_id"));
 				user.setNickname(resultSet.getString("nickname"));
 				user.setGraduate(resultSet.getDate("graduate"));
+				user.setOccupation_id(resultSet.getInt("occupation_id"));
 				user.setContact(resultSet.getString("contact"));
 				user.setDepartment(resultSet.getString("department"));
 				user.setFreespace(resultSet.getString("freespace"));
+
 				int enneagram[] = new int[9];// エニアグラム
 				enneagram[0] = resultSet.getInt("enneagram_1");
 				enneagram[1] = resultSet.getInt("enneagram_2");

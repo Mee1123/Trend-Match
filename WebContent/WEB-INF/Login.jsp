@@ -9,7 +9,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta charset="UTF-8">
-<title>login</title>
+<title>ログイン</title>
 </head>
 <body>
 	<div class="container">

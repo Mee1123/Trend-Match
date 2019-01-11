@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>登録完了</title>
+<title>ユーザー情報編集完了</title>
 </head>
 <body>
 <jsp:include page="./../../header.jsp" />
@@ -18,7 +18,7 @@
 				<label for="finish">登録が完了しました</label>
 			</h2>
 		</div>
-		<a href="/SE18G2/Top">Start</a>
+		<a href="/SE18G2/Top"><button class="btn btn-primary">Topへ</button></a>
 		<!-- ホーム画面に戻る -->
 	</div>
 	<!-- javascript -->
