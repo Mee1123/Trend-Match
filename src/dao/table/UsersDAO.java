@@ -54,7 +54,7 @@ public class UsersDAO extends DatabaseAccessor {
 		}
 	}
 
-	public ArrayList<User> selectUserBySearch(String nickname, String department, String freespace, String graduate,
+	public ArrayList<User> selectUserBySearch(String nickname, String department, String freespace, Integer graduate,
 			String occupation_id_String, String sex_id_String, String jobofffer_id_String, String display) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -66,7 +66,7 @@ public class UsersDAO extends DatabaseAccessor {
 			connection = createConnection();
 			// 実行するSQL文とパラメータを指定する
 			int parameterCount = 0;
-			if (!nickname.equals("") || !department.equals("") || !freespace.equals("") || !graduate.equals("")
+			if (!nickname.equals("") || !department.equals("") || !freespace.equals("") || !(graduate==null)
 					|| !occupation_id_String.equals("") || !sex_id_String.equals("")
 					|| !jobofffer_id_String.equals("")) {
 				mysql += "where ";
@@ -98,7 +98,7 @@ public class UsersDAO extends DatabaseAccessor {
 				if (parameterCount != 2) {
 					mysql = mysql + " and ";
 				}
-				mysql = mysql + "graduate = '" + graduate + "' ";
+				mysql = mysql + "graduate > '" + graduate + "' and graduate < '"+graduate+1+"'";
 			}
 			if (!occupation_id_String.equals("")) {
 				parameterCount++;

@@ -35,7 +35,7 @@ public class AccountSearchInfoForm extends User {
 			error.add(ValidationHelper.minimumText(0, getNickname(), "ニックネーム"));
 		}
 		if (ValidationHelper.maximumText(10, getNickname(), "ニックネーム") != null) {
-			error.add(ValidationHelper.maximumText(0, getNickname(), "ニックネーム"));
+			error.add(ValidationHelper.maximumText(10, getNickname(), "ニックネーム"));
 		}
 	}
 
@@ -45,7 +45,7 @@ public class AccountSearchInfoForm extends User {
 				error.add(ValidationHelper.minimumText(0, graduate_String, "卒業年度"));
 			}
 			if (ValidationHelper.maximumText(4, graduate_String, "卒業年度") != null) {
-				error.add(ValidationHelper.maximumText(0, graduate_String, "卒業年度"));
+				error.add(ValidationHelper.maximumText(4, graduate_String, "卒業年度"));
 			}
 			if (ValidationHelper.regularExpressionText("^[1234567890]+", graduate_String, "卒業年度") != null) {
 				error.add(ValidationHelper.regularExpressionText("^[1234567890]+", graduate_String, "卒業年度"));
@@ -76,7 +76,7 @@ public class AccountSearchInfoForm extends User {
 			error.add(ValidationHelper.minimumText(0, sex_id_String, "性別"));
 		}
 		if (ValidationHelper.maximumText(1, sex_id_String, "性別") != null) {
-			error.add(ValidationHelper.maximumText(20, sex_id_String, "性別"));
+			error.add(ValidationHelper.maximumText(1, sex_id_String, "性別"));
 		}
 
 	}
