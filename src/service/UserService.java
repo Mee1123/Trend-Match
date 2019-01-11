@@ -166,11 +166,12 @@ public class UserService {
 		dao.update(form, userId);
 	}
 
-	public void updateAccountInfo(UpdateAccountInfoForm form, int userId) {
+	public void updateAccountInfo(UpdateAccountInfoForm form, int userId, int value1, int value2, int value3) {
 		System.out.println("Service,1,success");
 		UsersDAO dao = new UsersDAO();
-		dao.updateAccount(form,userId);
+		dao.updateAccount(form,userId,value1,value2,value3);
 	}
+
   	public void Unsubscribe(User user) {
 		UsersDAO dao = new UsersDAO();
 		dao.deleteUser(user);

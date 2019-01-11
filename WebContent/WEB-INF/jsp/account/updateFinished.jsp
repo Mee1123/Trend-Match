@@ -11,14 +11,15 @@
 <title>登録完了</title>
 </head>
 <body>
+<jsp:include page="./../../header.jsp" />
 	<div class="container">
 		<div class="form-group">
-			<label for="finish"><h2>登録が完了しました</h2></label>
+			<h2>
+				<label for="finish">登録が完了しました</label>
+			</h2>
 		</div>
-		<button class="btn btn-primary" type="forward" class="btn btn-primary">
-			<a herf="">Start</a>
-			<!-- ホーム画面に戻る -->
-		</button>
+		<a href="/SE18G2/Top"><button class="btn btn-primary">Topへ</button></a>
+		<!-- ホーム画面に戻る -->
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>

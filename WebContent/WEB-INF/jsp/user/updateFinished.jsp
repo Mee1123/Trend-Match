@@ -11,6 +11,7 @@
 <title>登録完了</title>
 </head>
 <body>
+<jsp:include page="./../../header.jsp" />
 	<div class="container">
 		<div class="form-group">
 			<h2>

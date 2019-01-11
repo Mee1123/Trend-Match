@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -21,6 +22,7 @@ import service.ValueService;
 /**
  * Servlet implementation class UpdateAccountInfoServlet
  */
+
 @WebServlet("/account/update")
 public class UpdateAccountInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -53,14 +55,14 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		user = userService.getMyAccountInfo(userId);
 
 		ValueService valueService = new ValueService();
-		String valuesStrings[]= {"","",""};
-		int i=0;
-		for(int valueId:user.getValue_id()){
-			valuesStrings[i]= valueService.getValueName(valueId).getValue();
+		String valuesStrings[] = { "", "", "" };
+		int i = 0;
+		for (int valueId : user.getValue_id()) {
+			valuesStrings[i] = valueService.getValueName(valueId).getValue();
 			i++;
 		}
 
-		System.out.println("AccountViewServlet:user_id="+user.getId());
+		System.out.println("AccountViewServlet:user_id=" + user.getId());
 		request.setAttribute("user", user);
 		System.out.println(valuesStrings[0]);
 		request.setAttribute("value1", valuesStrings[0]);
@@ -90,8 +92,9 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 			e1.printStackTrace();
 		}
 		// java.util.Dateからjava.sql.Dateに変換する。
-        java.sql.Date graduate = new java.sql.Date(utilGraduate.getTime());
-        System.out.println(utilGraduate.toString());
+		Date graduate = new java.sql.Date(utilGraduate.getTime());
+		System.out.println(utilGraduate.toString());
+		//int graduate = Integer.parseInt(request.getParameter("graduate"));
 
 		String department = request.getParameter("department");
 		System.out.println(request.getParameter("department"));
@@ -119,7 +122,8 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		int value2_id = value2_result.getId();
 		int value3_id = value3_result.getId();
 
-		UpdateAccountInfoForm form = new UpdateAccountInfoForm(nickName, picturePath, graduate, department, occupationId, sexId,
+		UpdateAccountInfoForm form = new UpdateAccountInfoForm(nickName, picturePath, graduate, department,
+				occupationId, sexId,
 				contact, freeSpace,
 				jobOffer_id, value1_id, value2_id, value3_id);
 
@@ -132,7 +136,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 			UserService userService = new UserService();
 			try {
 
-				userService.updateAccountInfo(form,userId);
+				userService.updateAccountInfo(form, userId, value1_id, value2_id, value3_id);
 
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -147,7 +151,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 				request.setAttribute("form", form);
 				doGet(request, response);
 			}
-		}else {
+		} else {
 			request.setAttribute("form", form);
 			doGet(request, response);
 		}
