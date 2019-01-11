@@ -50,7 +50,10 @@ public class UserService {
 		String nickname = form.getNickname();
 		String department =form.getDepartment();
 		String freespace = form.getFreespace();
-		String graduate=form.getGraduate_String();
+		Integer graduate = null;
+		if(!form.getGraduate_String().equals("")){
+			graduate=Integer.valueOf(form.getGraduate_String());
+		}
 		String occupation_id_String= form.getOccupation_id_String();
 		String sex_id_String = form.getSex_id_String();
 		String display_id_String = form.getDisplay();
