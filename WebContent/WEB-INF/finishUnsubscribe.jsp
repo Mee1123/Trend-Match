@@ -14,8 +14,8 @@
 <body>
 	<div class="container">
 		<h1>退会完了画面</h1>
-		退会しました<br> <input class="btn btn-primary" type="submit"
-			value="トップ画面へ">
+		退会しました<br>
+		<input class="btn btn-primary" type="submit"value="トップ画面へ">
 		</form>
 	</div>
 	<!-- javascript -->
