@@ -16,7 +16,7 @@
 	<div class="container">
 		<h1>登録が完了しました</h1>
 		<div class="form-group">
-			<input class="btn btn-primary" type="submit" value="TOP画面へ">
+			<a href="/SE18G2/Top"><input class="btn btn-primary" type="submit" value="TOP画面へ"></a>
 		</div>
 	</div>
 	<!-- javascript -->
