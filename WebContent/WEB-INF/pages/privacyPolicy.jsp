@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
   <title>プライバシーポリシー</title>
-  <link rel="stylesheet" type="text/css" href="SE18G2/WebContent/CSS/pageDesign.css">
 
 </head>
 <body>
@@ -44,6 +43,6 @@
 
 管理ユーザーへお問い合わせください。<br>​
 
-<a href="#"class="square_btn">戻る</a>
+<input class="btn btn-primary" type="submit" value="戻る">
 </body>
 </html>
