@@ -5,70 +5,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
 <!-- CSS -->
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/table.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/box.css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="container">
-		ユーザー情報 ニックネーム
-		<c:out value="${user.getNickname()}" />
-		<br> 所属:
-		<c:out value="${user.getDepartment()}" />
-		<br> 職種:
-		<c:out value="${user.getOccupation_id()}" />
-		<br> 性別:
-		<c:choose>
-			<c:when test="${user.getSex_id()==0}">-</c:when>
-			<c:when test="${user.getSex_id()==1}">男</c:when>
-			<c:when test="${user.getSex_id()==2}">女</c:when>
-		</c:choose>
-		<br> 連絡先:
-		<c:out value="${user.getContact()}" />
-		<br> 価値観:
-		<c:out value="${user.getNickname()}" />
-		<br> フリースペース:
-		<c:out value="${user.getFreespace()}" />
-		<br> エニアグラム
-		<table border>
-			<tr bgcolor="#ffb6c1">
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
-			</tr>
-			<tr>
-				<td><c:out value="${user.getEnneagram()[0]}" /></td>
-				<td><c:out value="${user.getEnneagram()[1]}" /></td>
-				<td><c:out value="${user.getEnneagram()[2]}" /></td>
-			</tr>
-			<tr bgcolor="#ffb6c1">
-				<td>4</td>
-				<td>5</td>
-				<td>6</td>
-			</tr>
-			<tr>
-				<td><c:out value="${user.getEnneagram()[3]}" /></td>
-				<td><c:out value="${user.getEnneagram()[4]}" /></td>
-				<td><c:out value="${user.getEnneagram()[5]}" /></td>
-			</tr>
-			<tr bgcolor="#ffb6c1">
-				<td>7</td>
-				<td>8</td>
-				<td>9</td>
-			</tr>
-			<tr>
-				<td><c:out value="${user.getEnneagram()[6]}" /></td>
-				<td><c:out value="${user.getEnneagram()[7]}" /></td>
-				<td><c:out value="${user.getEnneagram()[8]}" /></td>
-			</tr>
-		</table>
+		<br>
+		<h2 class="page-header">アカウント情報</h2>
+		<br>
+		<div class="form-group">
+			ニックネーム:
+			<div class="box1">
+				<p>
+					<c:out value="${user.getNickname()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			所属:
+			<div class="box1">
+				<p>
+					<c:out value="${user.getDepartment()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			職種:
+			<div class="box1">
+				<p>
+					<c:out value="${user.getOccupation_id()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			性別:
+			<div class="box1">
+				<p>
+					<c:choose>
+						<c:when test="${user.getSex_id()==0}">-</c:when>
+						<c:when test="${user.getSex_id()==1}">男</c:when>
+						<c:when test="${user.getSex_id()==2}">女</c:when>
+					</c:choose>
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			連絡先:
+			<div class="box1">
+				<p>
+					<c:out value="${user.getContact()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			価値観:
+			<div class="box1">
+				<p>
+					<c:out value="${user.getNickname()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			フリースペース:
+			<div class="box2">
+				<p>
+					<c:out value="${user.getFreespace()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">エニアグラム</div>
+		<div class="table">
+			<table border>
+				<!-- <tr bgcolor="#ffb6c1">  -->
+				<tr>
+					<td>タイプ１（改革する人）</td>
+					<td>タイプ2（人を助ける人）</td>
+					<td>タイプ3（達成する人）</td>
+				</tr>
+				<tr>
+					<td><c:out value="${user.getEnneagram()[0]}" /></td>
+					<td><c:out value="${user.getEnneagram()[1]}" /></td>
+					<td><c:out value="${user.getEnneagram()[2]}" /></td>
+				</tr>
+				<!-- <tr bgcolor="#ffb6c1">  -->
+				<tr>
+					<td>タイプ4（個性的な人）</td>
+					<td>タイプ5（調べる人）</td>
+					<td>タイプ6（忠実な人）</td>
+				</tr>
+				<tr>
+					<td><c:out value="${user.getEnneagram()[3]}" /></td>
+					<td><c:out value="${user.getEnneagram()[4]}" /></td>
+					<td><c:out value="${user.getEnneagram()[5]}" /></td>
+				</tr>
+				<!-- <tr bgcolor="#ffb6c1">  -->
+				<tr>
+					<td>タイプ7（熱中する人）</td>
+					<td>タイプ8（挑戦する人）</td>
+					<td>タイプ9（平和をもたらす人）</td>
+				</tr>
+				<tr>
+					<td><c:out value="${user.getEnneagram()[6]}" /></td>
+					<td><c:out value="${user.getEnneagram()[7]}" /></td>
+					<td><c:out value="${user.getEnneagram()[8]}" /></td>
+				</tr>
+			</table>
+		</div>
 		<c:choose>
 			<c:when test="${session == 1 }">
-				<a href=/SE18G2/account/update>編集</a>
+				<div align="right">
+					<a href=/SE18G2/account/update><img
+						src="header/Edit(black).jpg"><br>EDIT ACCOUNT INFO.</a>
+				</div>
+				<br>
 			</c:when>
 			<c:when test="${session ==2 }">
 通報
