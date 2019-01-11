@@ -16,6 +16,7 @@
 
 	要素1:<input type="text" name="1"><br>
 	要素2:<input type="text" name="2"><br>
+
 	<input type="submit" value="遷移">
 </form>
 </body>

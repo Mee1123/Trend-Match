@@ -226,7 +226,7 @@ public class UsersDAO extends DatabaseAccessor {
 			// DB へのコネクションを作成する
 			connection = createConnection();
 			//sql文の作成
-			String sql = "select * from user where user_id = ?";
+			String sql = "select * from users where user_id = ?";
 			statement = connection.prepareStatement(sql);
 			statement.setInt(1, userId);
 

@@ -8,6 +8,9 @@
 <html>
 <head>
 <!-- CSS -->
+<link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>アカウント情報編集</title>
 </head>
@@ -21,7 +24,8 @@
 		<form action="/SE18G2/account/update" method="post">
 			<div class="form-group">
 				<label for="nickname">ニックネーム</label> <input class="form-control"
-					type="text" name="nickName" id="nickName" value="<%=user.getName()%>">
+					type="text" name="nickName" id="nickName"
+					value="<%=user.getName()%>">
 
 			</div>
 			<div class="form-group">
@@ -33,11 +37,13 @@
 			</div>
 			<div class="form-group">
 				<label for="graduate">卒業年度</label> <input class="form-control"
-					type="text" name="graduate" id="graduate" value="<%=user.getGraduate()%>">
+					type="text" name="graduate" id="graduate"
+					value="<%=user.getGraduate()%>">
 			</div>
 			<div class="form-group">
 				<label for="joboffer">内定の有無</label> <input class="form-control"
-					type="text" name="jobOfferId" id="jobOfferId" value="<%=user.getJoboffer_id()%>">
+					type="text" name="jobOfferId" id="jobOfferId"
+					value="<%=user.getJoboffer_id()%>">
 			</div>
 			<div class="form-group">
 				<label for="department">所属</label> <input class="form-control"
@@ -45,11 +51,12 @@
 			</div>
 			<div class="form-group">
 				<label for="occupation">職種</label> <input class="form-control"
-					name="occupationId" id="occupationId" value="<%=user.getOccupation_id()%>">
+					name="occupationId" id="occupationId"
+					value="<%=user.getOccupation_id()%>">
 			</div>
 			<div class="form-group">
 				<label for="sex">性別</label> <input class="form-control" name="sexId"
-				id="sexId" value="<%=user.getSex_id()%>">
+					id="sexId" value="<%=user.getSex_id()%>">
 			</div>
 			<div class="form-group">
 				<label for="contact">連絡先</label> <input class="form-control"
@@ -61,9 +68,12 @@
 			</div>
 			<div class="form-group">
 				<label for="value">価値観</label> <input class="form-control"
-					name="valueId1" id="valueId1" value="<%=user.getValue_id().get(0)%>"> <input class="form-control"
-					name="valueId2" id="valueId2" value="<%=user.getValue_id().get(1)%>"> <input class="form-control"
-					name="valueId3" id="valueId3" value="<%=user.getValue_id().get(2)%>">
+					name="valueId1" id="valueId1"
+					value="<%=user.getValue_id().get(0)%>"> <input
+					class="form-control" name="valueId2" id="valueId2"
+					value="<%=user.getValue_id().get(1)%>"> <input
+					class="form-control" name="valueId3" id="valueId3"
+					value="<%=user.getValue_id().get(2)%>">
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
 		</form>
@@ -71,5 +81,7 @@
 	<input type="button" onclick="location.href='./unsubscribe.jsp'"
 		value="退会" />
 	<!-- javascript -->
+	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/SE18G2/CSS/js/bootstrap.min.js"></script>
 </body>
 </html>
