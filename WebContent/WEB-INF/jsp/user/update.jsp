@@ -41,8 +41,7 @@
 				</div>
 			</div>
 		</form>
-		<input class="btn btn-primary" type="button"
-			onclick="location.href='./unsubscribe.jsp'" value="退会">
+		<a href="/SE18G2/Unsubscribe"><input class="btn btn-primary" type="button" value="退会"></a>
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
