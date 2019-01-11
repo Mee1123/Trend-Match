@@ -17,7 +17,7 @@
 </nav>
 <nav>
 	<ul>
-		<li ><a href="/SE18G2/NoAccountHeaderHome"><img src="header/home(black).jpg" ><br>Home</a></li>
+		<li ><a href="/SE18G2/Top"><img src="header/home(black).jpg" ><br>Home</a></li>
 		<li><img src="header/account(gray).jpg" ><br>ACCOUNT</li>
 		<li><img src="header/DM(gray).jpg" ><br>DIRECT MESSAGE</li>
 		<li><a href="/SE18G2/HeaderUserInfo"><img src="header/Edit(black).jpg" ><br>EDIT USER INFO.</a></li>
