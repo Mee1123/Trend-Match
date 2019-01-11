@@ -52,7 +52,6 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		//jspからformの内容を取り出し
-		System.out.println("ServletのdoPost");
 		int eg1 = Integer.parseInt(request.getParameter("enneagram1"));
 		int eg2 = Integer.parseInt(request.getParameter("enneagram2"));
 		int eg3 = Integer.parseInt(request.getParameter("enneagram3"));
@@ -67,12 +66,13 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		System.out.println("formから戻りました");
 
 		HttpSession session = request.getSession();
-		//User user = (User) session.getAttribute("user");
+    
 		int userId = (int) session.getAttribute("userID");
-
+		System.out.println("エニアグラム登録:userId="+userId);
+		
 		System.out.println("セッションからID引っ張る");
 		System.out.println(userId);
-
+    
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if(form.getError().isEmpty()){
 			UserService service = new UserService();

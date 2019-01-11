@@ -16,7 +16,7 @@ import form.accountRegistrationCheckForm;;
  * Servlet implementation class Registration
  */
 @WebServlet("/accountRegistration")
-@MultipartConfig(maxFileSize=2147483647)
+@MultipartConfig(location="/tmp", maxFileSize=2147483647)
 public class accountRegistrationCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,6 +48,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		//jspからformの内容を取り出し
@@ -96,22 +97,22 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		accountRegistrationCheckForm form = new accountRegistrationCheckForm(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace);
 
 		//プロフィール画像
-		/*try {
-			Part part = request.getPart("picturepath");
+		/*
+		try {
+			Part part = request.getPart("file");
 			if(part != null){
 				HttpSession session = request.getSession();
-				//User user = (User) session.getAttribute("user");
-				//int userId = user.getUserId();
-				System.out.println("ファイルを受け付けます");
-				String name = (String) session.getAttribute("id");
-				part.write(getServletContext().getRealPath("/WEB-INF/uploaded") + "/" + name);
+				int userId = (int) session.getAttribute("userID");
+				System.out.println("ファイルを受け付けます:userID="+userId);
+				int name = 1;
+				part.write(getServletContext().getRealPath("/WebContent/picture") + "/" + name);
 				}
 		}catch (ArithmeticException e) {
 				System.out.println("例外が発生しました。");
 				System.out.println(e);
 				form.setError("ファイルが不適切です");
-		}*/
-
+		}
+*/
 
 		if(form.getError().isEmpty()){
 			//System.out.println("エラーなし");

@@ -10,6 +10,7 @@
 <body>
 <jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <h1>アカウントなしのトップページ</h1>
+<a href="/SE18G2/startAccountRegistration">リンク先</a>
 
 </body>
 </html>

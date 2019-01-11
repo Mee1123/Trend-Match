@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import form.accountRegistrationForm;
-import model.User;
 import model.Value;
 import service.UserService;
 import service.ValueService;;
@@ -164,8 +163,7 @@ public class accountRegistrationServlet extends HttpServlet {
 		System.out.println("formから戻りました");
 
 		HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("user");
-		int userId = user.getId();
+		int userId = (int) session.getAttribute("userID");
 
 		//int userId = 28;
 
@@ -181,14 +179,14 @@ public class accountRegistrationServlet extends HttpServlet {
 				service.RegistrationAccount(request,form, userId);
 
 				//プロフィール画像
-				/*try {
+				/*
+				try {
 					Part part = request.getPart("picturepath");
 					if(part != null){
-						HttpSession session = request.getSession();
 						//User user = (User) session.getAttribute("user");
 						//int userId = user.getUserId();
 						System.out.println("ファイルを受け付けます");
-						String name = (String) session.getAttribute("id");
+						String name = (String) session.getAttribute("userID");
 						part.write(getServletContext().getRealPath("/WEB-INF/uploaded") + "/" + name);
 						}
 					}
@@ -196,8 +194,8 @@ public class accountRegistrationServlet extends HttpServlet {
 						System.out.println("例外が発生しました。");
 						System.out.println(e);
 						form.setError("ファイルが不適切です");
-					}*/
-
+					}
+*/
 				//遷移先
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishAccountRegistration.jsp");
 				dispatcher.forward(request, response);

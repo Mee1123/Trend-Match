@@ -19,8 +19,10 @@
 <!-- headerを入れます -->
 
 <h1>アカウント登録(※は必須項目です)</h1>
-<!-- <input type="file" name="picturepath" size="30"/><br>
-プロフィール画像<br> -->
+<!--
+<input type="file" name="file" size="30"/><br>
+プロフィール画像<br>
+-->
 <p>
 <input type="radio" name="jobOffer" value="内定あり">内定あり<br>
 <input type="radio" name="jobOffer" value="内定なし"  checked="checked">内定なし<br>
