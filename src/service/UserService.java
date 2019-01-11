@@ -191,7 +191,7 @@ public class UserService {
   			//価値観の一致率
   			int valueMatch=0;
   			for(int userValue:userValues){
-  				System.out.println("sa-bisu:"+instantUser.getValue_id());
+  		//		System.out.println("sa-bisu:"+instantUser.getValue_id());
   				if(instantUser.getValue_id().contains(userValue)){
   	  				valueMatch+=5;
   	  			}
@@ -200,8 +200,10 @@ public class UserService {
   			int enneagram2[] =instantUser.getEnneagram();
   			double similarity=0;
   			for(int i=0; i<9;i++){
-  				similarity =similarity + ((enneagram1[i]-enneagram2[i])^2);
+  				similarity =similarity + Math.pow(enneagram1[i]-enneagram2[i],2);
+  				System.out.println("En:["+enneagram1[i]+","+enneagram2[i]+"]:"+similarity);
   			}
+  			System.out.println("ユークリ前:"+similarity);
   			similarity = Math.sqrt(similarity);
   			System.out.println("ユークリ:"+similarity);
   			System.out.println("価値観"+valueMatch);

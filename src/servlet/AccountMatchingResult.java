@@ -57,7 +57,7 @@ public class AccountMatchingResult extends HttpServlet {
 		for(SimilarityUserForm user:users){
 			users2.add(userService.accountView(user.getId()));
 		}
-		System.out.println("サーブレット:"+users2.get(0).getNickname());
+		System.out.println("サーブレット:"+users2.size());
 		request.setAttribute("users", users2);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountMatchingResult.jsp");
