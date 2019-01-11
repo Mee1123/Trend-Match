@@ -18,8 +18,8 @@
 		<c:forEach var="user" items="${users}">
 			<tr>
 				<div class="form-group">
-					<td><c:out value="${user.getNickname()}" />|</td>
-					<td><c:out value="${user.getFreespace()}" />,</td>
+					<td><c:out value="${user.getNickname()}" /></td>
+					<td><c:out value="${user.getFreespace()}" /></td>
 				</div>
 			</tr>
 		</c:forEach>
