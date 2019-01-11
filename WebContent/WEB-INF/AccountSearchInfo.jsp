@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>アカウント検索</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
