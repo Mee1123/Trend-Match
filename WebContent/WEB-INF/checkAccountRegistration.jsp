@@ -72,11 +72,10 @@
 
 			上記の内容で登録します。よろしいですか？<br>
 			<p>
-				<input class="btn btn-primary" type="button"
-					onclick="location.href='/WEB-INF/accountRegistration'" value="いいえ">
+				<input class="btn btn-primary" type="submit" name="goto" value="いいえ">
 			</p>
 			<p>
-				<input class="btn btn-primary" type="submit" value="はい">
+				<input class="btn btn-primary" type="submit" name="goto" value="はい">
 			</p>
 		</form>
 	</div>
