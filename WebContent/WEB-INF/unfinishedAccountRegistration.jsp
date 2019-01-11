@@ -12,6 +12,7 @@
 <title>アカウント未登録は完了していません</title>
 </head>
 <body>
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 	<div class="container">
 		<form action="/SE18G2/unfinishedAccountRegistration" method="post">
 

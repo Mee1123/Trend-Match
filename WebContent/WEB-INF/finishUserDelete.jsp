@@ -12,7 +12,7 @@
 <title>finishUserDelete</title>
 </head>
 <body>
-
+<jsp:include page="headerForAdmin.jsp"/>
 	<h1>ユーザー削除完了画面</h1>
 	<form action="/SE18G2/finishUserDelete" method="post">
 		プロフィール画像<br> ニックネーム<br> 所属<br> 職種<br> 性別<br>

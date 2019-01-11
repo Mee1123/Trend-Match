@@ -12,6 +12,7 @@
 <title>login</title>
 </head>
 <body>
+<h1>Login</h1>
 	<div class="container">
 		<h1 class="page-header">Login</h1>
 		<form action="/SE18G2/Login" method="post">

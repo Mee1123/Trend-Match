@@ -12,6 +12,7 @@
 <title>checkUnsubscribe</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 	<div class="container">
 		<h1>退会確認画面</h1>
 		<form action="/SE18G2/Unsubscribe" method="post">

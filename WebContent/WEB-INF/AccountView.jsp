@@ -13,6 +13,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <body>
+<jsp:include page="header.jsp"/>
 	<div class="container">
 		ユーザー情報 ニックネーム
 		<c:out value="${user.getNickname()}" />

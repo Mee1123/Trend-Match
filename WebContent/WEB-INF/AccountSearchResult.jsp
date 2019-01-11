@@ -13,6 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 	<div class="container">
 		<c:forEach var="user" items="${users}">
 			<tr>

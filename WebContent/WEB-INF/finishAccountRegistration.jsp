@@ -12,6 +12,7 @@
 <title>アカウント登録完了</title>
 </head>
 <body>
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 	<div class="container">
 		<h1>登録が完了しました</h1>
 		<div class="form-group">

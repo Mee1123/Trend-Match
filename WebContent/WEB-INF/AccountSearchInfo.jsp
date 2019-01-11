@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 	<div class="container">
 		<form action="/SE18G2/AccountSearchInfo" method="post">
 			<div class="form-group">

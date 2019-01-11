@@ -12,6 +12,7 @@
 <title>CheckRegistration</title>
 </head>
 <body>
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 	<div class="container">
 
 		<h1 class="page-header">登録確認画面</h1>

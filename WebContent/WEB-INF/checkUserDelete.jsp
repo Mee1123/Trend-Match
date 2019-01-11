@@ -12,6 +12,7 @@
 <title>checkUserDelete</title>
 </head>
 <body>
+<jsp:include page="headerForAdmin.jsp"/>
 	<div class="container">
 		<h1>ユーザー削除確認画面</h1>
 		<form action="/SE18G2/DeleteUser" method="post">
