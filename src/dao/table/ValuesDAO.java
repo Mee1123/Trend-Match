@@ -49,6 +49,42 @@ public class ValuesDAO extends DatabaseAccessor{
 	    }
 	}
 
+	public Value selectValueByID(int valueID) {
+		Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    try {
+	    	//mysql文の用意
+	    	String mysql = "select * from `values` where value_id = ?;";
+
+	    	// DB へのコネクションを作成する
+	        connection = createConnection();
+	        // 実行するSQL文とパラメータを指定する
+	        preparedStatement = connection.prepareStatement(mysql);
+	        preparedStatement.setInt(1, valueID);
+
+	        // SELECT 文の実行
+	        resultSet = preparedStatement.executeQuery();
+	        //preparedStatement.execute();
+	        // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
+	        Value value = new Value();
+	        while (resultSet.next()) {
+	            value.setId(resultSet.getInt("value_id"));
+	            value.setValue(resultSet.getString("value_name"));
+	        }
+
+	        return value;
+		} catch (Exception e) {
+			// TODO: handle exception
+	        e.printStackTrace();
+	        return null;
+		}
+	    finally {
+	        // クローズ処理
+	        close(connection, preparedStatement, resultSet);
+	    }
+	}
+
 	public ArrayList<Value> selectValueAll() {
         Connection connection = null;
         PreparedStatement preparedStatement = null;

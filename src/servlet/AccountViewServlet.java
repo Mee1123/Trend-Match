@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.User;
 import service.UserService;
+import service.ValueService;
 
 /**
  * Servlet implementation class AccountView
@@ -57,8 +58,20 @@ public class AccountViewServlet extends HttpServlet {
 			request.setAttribute("session", 1);
 			user = service.accountView(userId);
 		}
-		System.out.println("Serv_userID:"+user.getId());
+		ValueService valueService = new ValueService();
+		String valuesStrings[]= {"","",""};
+		int i=0;
+		for(int valueId:user.getValue_id()){
+			valuesStrings[i]= valueService.getValueName(valueId).getValue();
+			i++;
+		}
+
+		System.out.println("AccountViewServlet:user_id="+user.getId());
 		request.setAttribute("user", user);
+		System.out.println(valuesStrings[0]);
+		request.setAttribute("value1", valuesStrings[0]);
+		request.setAttribute("value2", valuesStrings[1]);
+		request.setAttribute("value3", valuesStrings[2]);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountView.jsp");
 		dispatcher.forward(request, response);
 

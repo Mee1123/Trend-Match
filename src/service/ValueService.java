@@ -16,5 +16,12 @@ public class ValueService {
 		return value;
 	}
 
+	public Value getValueName(int valueID) {
+		ValuesDAO dao = new ValuesDAO();
+		Value value = new Value();
+		value = dao.selectValueByID(valueID);
+		return value;
+	}
+
 
 }
