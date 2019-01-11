@@ -290,26 +290,20 @@ public class UsersDAO extends DatabaseAccessor {
 	//アカウント(エニアグラム)登録
 	@SuppressWarnings("resource")
 	public void insertEnneagram(int eg1,int eg2,int eg3,int eg4,int eg5,int eg6,int eg7,int eg8,int eg9,int userID) {
+		System.out.println("Dao,1,Success");
 		Connection connection = null;
 	    PreparedStatement preparedStatement = null;
 	    ResultSet resultSet = null;
 	    try {
 	    	//mysql文の用意
 	    	String mysql = "update users set enneagram_1 = ? ,enneagram_2 = ? ,enneagram_3 = ? ,enneagram_4 = ? ,enneagram_5 = ? ,enneagram_6 = ? ,enneagram_7 = ? ,enneagram_8 = ? ,enneagram_9 = ? where user_id = ?";
-
+	    	System.out.println("DAO,2,success");
 	    	connection = createConnection();
-	    	PreparedStatement statement = connection.prepareStatement(mysql);
-
 
 	    	System.out.println(mysql);
 
-
-	         //resultSet.first();
-
-	    	// DB へのコネクションを作成する
-	        connection = createConnection();
 	        // 実行するSQL文とパラメータを指定する
-	        statement = connection.prepareStatement(mysql);
+	    	PreparedStatement statement = connection.prepareStatement(mysql);
 	        statement.setInt(1, eg1);
 	        statement.setInt(2, eg2);
 	        statement.setInt(3, eg3);
@@ -321,12 +315,11 @@ public class UsersDAO extends DatabaseAccessor {
 	        statement.setInt(9, eg9);
 	        statement.setInt(10, userID);
 	        statement.executeUpdate();
-
+	        statement.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 	        e.printStackTrace();
-		}
-	    finally {
+		}finally {
 	        // クローズ処理
 	        close(connection, preparedStatement, resultSet);
 	    }
