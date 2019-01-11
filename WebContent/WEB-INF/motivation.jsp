@@ -18,8 +18,8 @@
 
 			<h2>モチベーショングラフの作成</h2>
 			<br> 手元に紙とペンを用意してください。<br> <br> 出生から現在を振り返り<br>
-			どんなときに喜び、どんなときに悲しんだのか考えてみよう<br> <input class="btn btn-primary"
-				type="submit" value="次へ">
+			どんなときに喜び、どんなときに悲しんだのか考えてみよう<br> 
+			<input class="btn btn-primary"type="submit" value="次へ">
 
 		</form>
 	</div>

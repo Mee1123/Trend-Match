@@ -20,10 +20,9 @@
 			<br> 次のアカウント登録画面で自分に最も当てはまる価値観を登録すると、<br>
 			より正確なマッチングを受けることができます。<br> ぜひ登録してください！<br>
 
-			<!-- <a href="aboutMotivationServlet">詳しくみる</a><br>-->
-			<input class="btn btn-primary" type="submit" name="goto"
-				value="詳しく見る"><br> <input class="btn btn-primary"
-				type="submit" name="goto" value="次へ">
+
+			<input class="btn btn-primary" type="submit" name="goto" value="詳しく見る"><br> 
+			<input class="btn btn-primary" type="submit" name="goto" value="次へ">
 		</form>
 	</div>
 	<!-- javascript -->
