@@ -23,15 +23,18 @@ public class UserService {
 	private String errorStatement = "メールアドレス、又はパスワードが違います.";
 	LocalDateTime dateTime = LocalDateTime.now();
 
-	public void LoginUser(HttpServletRequest request, LoginForm form) {
+	public void LoginUser(HttpServletRequest request, LoginForm form) throws NoSuchAlgorithmException {
 		System.out.println("Service,1,success");
+		System.out.println(form.getMailAddress());
 		UsersDAO usersDAO = new UsersDAO();
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
+		System.out.println(form.getPassword());
+		System.out.println(HashHelper.getHash(form.getMailAddress(), form.getPassword()));
 		if (user == null) {
 			form.setError(errorStatement);
 			System.out.println("Service,2,success");
 		} else {
-			if (form.getPassword().equals(user.getPassword())) {
+			if (HashHelper.getHash(form.getMailAddress(), form.getPassword()).equals(user.getPassword())) {
 				SessionHelper.createUserSession(request, user.getId());
 			} else {
 				form.setError(errorStatement);
@@ -83,7 +86,7 @@ public class UserService {
 		String password = form.getPassword();
 		String hashPassword = null;
 		try {
-			hashPassword = HashHelper.getHash(name, password);
+			hashPassword = HashHelper.getHash(mailAddress, password);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
