@@ -5,9 +5,9 @@ services:
     ports:
     - "3336:3306"
     environment:
-      MYSQL_DATABASE: ここにデータベース名
-      MYSQL_USER: ここにmysqlのユーザ名
-      MYSQL_PASSWORD: ここに作成したユーザのパスワード
+      MYSQL_DATABASE: trendmatch
+      MYSQL_USER: se18g2
+      MYSQL_PASSWORD: Trend_match1
     hostname: se18g2_db
     volumes:
     -  "./init:/docker-entrypoint-initdb.d"
