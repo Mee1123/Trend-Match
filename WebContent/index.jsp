@@ -6,6 +6,8 @@
 <title>Hello, world</title>
 </head>
 <body>
+	
+	<h1><a href="/SE18G2/Login">login</a></h1><br>
 	<p>Hello, world!!!</p>
 	<form action="/SE18G2/" method="post">
 		要素1:<input type="text" name="1"><br>
