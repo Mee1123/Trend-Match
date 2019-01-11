@@ -68,8 +68,13 @@
 	</table>
 
 このユーザーを削除しますか？<br>
+
+
 <form action="/SE18G2/DeleteUserCheck" method="post">
-	<input type="hidden" name="id" value=<%=request.getAttribute("id") %>>
-<input type="submit" value="はい"> <input type="submit" value="いいえ">
+	<input type="hidden" name="id" value="${user.getId()}">
+<input type="submit" value="はい"> </form>
+	<form action="/SE18G2/AccountView" method="get">
+		<input type="hidden" name="userId" value="${user.getId() }">
+	<input type="submit" value="いいえ">
 </form>
 </html>

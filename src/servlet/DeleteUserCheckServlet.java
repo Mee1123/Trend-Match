@@ -74,18 +74,29 @@ public class DeleteUserCheckServlet extends HttpServlet {
 		System.out.println("Serv_userID");
 
 
-		String userId = request.getParameter("id");
-		System.out.println(userId);
-		User user = new User();
-		user.setId(Integer.parseInt(userId));
 
-		//DBから授業の削除
-		UserService userService = new UserService();
-		userService.DeleteUser(user);
+			String userIdString = request.getParameter("id");
+			System.out.println(userIdString);
+			//User user = new User();
+			//user.setId(Integer.parseInt(userIdString));
+
+			int userId = Integer.valueOf(userIdString);
+			//DBから授業の削除
+			UserService Service = new UserService();
+			User user = Service.accountView(userId);
+
+			Service.DeleteUser(user);
 
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishUserDelete.jsp");
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/finishUserDelete.jsp");
+			dispatcher.forward(request, response);
+	/*		if(request.getParameter("submit").equals("はい")){
+		}else if(request.getParameter("submit").equals("いいえ")){
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountView.jsp");
+			dispatcher.forward(request, response);
+		}
+
+*/
 
 
 		}

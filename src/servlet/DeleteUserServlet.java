@@ -77,10 +77,14 @@ public class DeleteUserServlet extends HttpServlet {
 		//jspからformの内容を取り出し
 		System.out.println("ServletのdoPost");
 
-		String userId = request.getParameter("id");
-		System.out.println("サーブレット"+userId);
+		String userIdString = request.getParameter("id");
+		System.out.println("サーブレット"+userIdString);
+		int userId = Integer.valueOf(userIdString);
 
-		request.setAttribute("id", userId);
+		UserService Service = new UserService();
+		User user = Service.accountView(userId);
+
+		request.setAttribute("user", user);
 
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkUserDelete.jsp");
