@@ -31,14 +31,17 @@
 					value="<%=user.getMailAddress()%>">
 			</div>
 			<div class="form-group">
-				<label for="password">パスワード</label> <input class="form-control"
-					name="password" value="新しいパスワードを入力してください"> <br>
+				<label for="password">新しいパスワードを入力してください</label> <input
+					class="form-control" type="password" name="password" id="password">
+				<br> <label for="password2">パスワード確認用</label> <input
+					class="form-control" type="password" name="password2" id="password2">
+				<br>
+				<div align="right">
 				<button type="submit" class="btn btn-primary">登録</button>
-				<!-- メールアドレスハッシュ値で戻ってきてしまう -->
+				</div>
 			</div>
 		</form>
-		<input class="btn btn-primary" type="button"
-			onclick="location.href='./unsubscribe.jsp'" value="退会">
+		<a href="/SE18G2/Unsubscribe"><input class="btn btn-primary" type="button" value="退会"></a>
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>

@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,25 +59,19 @@ public class AccountViewServlet extends HttpServlet {
 			user = service.accountView(userId);
 		}
 		ValueService valueService = new ValueService();
-		ArrayList<String> values = new ArrayList<>();
-		for(int value_id:user.getValue_id()) {
-		values.add(valueService.getValueName(value_id).getValue())	;
-		}
-		String valueStrings[]= {"","",""};
-		if(values.size()<1) {
-			valueStrings[0] = values.get(0);
-		}if(values.size()<2) {
-			valueStrings[1] = values.get(1);
-		}if(values.size()<3) {
-			valueStrings[2] = values.get(2);
+		String valuesStrings[]= {"","",""};
+		int i=0;
+		for(int valueId:user.getValue_id()){
+			valuesStrings[i]= valueService.getValueName(valueId).getValue();
+			i++;
 		}
 
-		System.out.println("Serv_userID:"+user.getId());
+		System.out.println("AccountViewServlet:user_id="+user.getId());
 		request.setAttribute("user", user);
-		System.out.println(valueStrings[0]);
-		request.setAttribute("Value1", valueStrings[0]);
-		request.setAttribute("Value2", valueStrings[1]);
-		request.setAttribute("Value3", valueStrings[2]);
+		System.out.println(valuesStrings[0]);
+		request.setAttribute("Value1", valuesStrings[0]);
+		request.setAttribute("Value2", valuesStrings[1]);
+		request.setAttribute("Value3", valuesStrings[2]);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountView.jsp");
 		dispatcher.forward(request, response);
 

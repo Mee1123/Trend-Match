@@ -71,10 +71,12 @@ public class LoginServlet extends HttpServlet {
 				if (form.getError().isEmpty()) {
 					response.sendRedirect("/SE18G2/Top");
 				} else {
+					for(String error:form.getError())System.out.println(error);
 					request.setAttribute("form", form);
 					doGet(request, response);
 				}
 			} else {
+				for(String error:form.getError())System.out.println(error);
 				request.setAttribute("form", form);
 				doGet(request, response);
 			}

@@ -57,7 +57,7 @@ public class aboutMotivationServlet extends HttpServlet {
 		// System.out.println(request.getParameter("goto"));
 
 		// clickされたボタンに応じて遷移先を分岐
-		if (request.getParameter("goto").equals("詳しくみる")) {
+		if (request.getParameter("goto").equals("詳しく見る")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/motivation.jsp");
 			dispatcher.forward(request, response);
 		} else if (request.getParameter("goto").equals("次へ")) {

@@ -16,7 +16,7 @@ import form.accountRegistrationCheckForm;;
  * Servlet implementation class Registration
  */
 @WebServlet("/accountRegistration")
-@MultipartConfig(location="/tmp", maxFileSize=2147483647)
+@MultipartConfig( maxFileSize=2147483647)
 public class accountRegistrationCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

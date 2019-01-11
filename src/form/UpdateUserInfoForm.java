@@ -2,6 +2,8 @@ package form;
 
 import java.util.ArrayList;
 
+import helper.ValidationHelper;
+
 
 public class UpdateUserInfoForm extends model.User{
 	private ArrayList<String> error = new ArrayList<>();
@@ -10,7 +12,48 @@ public class UpdateUserInfoForm extends model.User{
 		setMailAddress(email);
 		setPassword(password);
 		setName(name);
+		emailValidation();
+		passwordValidation();
+		nameValidation();
 		System.out.println("Form,1,success");
+	}
+
+	public void nameValidation(){
+		if (ValidationHelper.minimumText(1, getName(), "名前")!=null){
+			error.add(ValidationHelper.minimumText(1, getName(), "名前"));
+			System.out.println("名前が短い");
+		}
+		if(ValidationHelper.maximumText(20, getName(), "名前")!=null){
+			error.add(ValidationHelper.maximumText(20, getName(), "名前"));
+			System.out.println("名前が長い");
+		}
+	}
+
+	public void emailValidation(){
+		if (ValidationHelper.minimumText(1, getMailAddress(), "メールアドレス")!=null){
+			error.add(ValidationHelper.minimumText(1, getMailAddress(), "メールアドレス"));
+			System.out.println("メアドが短い");
+		}
+		if(ValidationHelper.maximumText(40, getMailAddress(), "メールアドレス")!=null){
+			error.add(ValidationHelper.maximumText(40, getMailAddress(), "メールアドレス"));
+			System.out.println("メアドが長い");
+		}
+		if (ValidationHelper.regularExpressionText("^.+@.+",getMailAddress(), "メールアドレス")!=null){
+			error.add(ValidationHelper.regularExpressionText("^.+@.+",getMailAddress(), "メールアドレス"));
+			System.out.println("メアドの形エラー");
+		}
+	}
+
+	public void passwordValidation() {
+		if (ValidationHelper.minimumText(8, getPassword(), "パスワード")!=null){
+			error.add(ValidationHelper.minimumText(8, getPassword(), "パスワード"));
+			System.out.println("パスワードが短い");
+		}
+		if (ValidationHelper.maximumText(20,getPassword(), "パスワード")!=null){
+			error.add(ValidationHelper.maximumText(20,getPassword(), "パスワード"));
+			System.out.println("パスワードが長い");
+		}
+
 	}
 
 	public ArrayList<String> getError() {

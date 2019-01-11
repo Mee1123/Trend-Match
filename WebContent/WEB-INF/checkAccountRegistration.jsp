@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html >
 <html>
@@ -19,52 +20,64 @@
 		<form action="/SE18G2/checkAccountRegistration" method="post"
 			enctype="multipart/form-data">
 			<!-- headerを入れます -->
-			>
 			<!-- <input type="file" name="picturepath" size="30"/><br>
 プロフィール画像<br> -->
 			<p>
 			<div class="form-group">
-				<label for="jobOffer">内定情報</label><input class="form-control" type="text" name="jobOffer"
+				<label for="jobOffer">内定情報</label>
+				<c:out value="${jobOffer}"></c:out>
+				<input class="form-control" type="hidden" name="jobOffer"
 					value=<%=request.getAttribute("jobOffer")%>>
 			</p>
 			</div>
 			<p>
 			<div class="form-group">
-				ニックネーム※<input class="form-control" type="text" name="nickname"
+				ニックネーム※<c:out value="${ nickname}"></c:out>
+				<input class="form-control" type="hidden" name="nickname"
 					value=<%=request.getAttribute("nickname")%>><br>
 			</p>
 			</div>
 			<p>
-				卒業(yyyymmdd)<input class="form-control" type="text" name="graduate"
+				卒業(yyyymmdd)<c:out value="${ graduate}"></c:out>
+				<input class="form-control" type="hidden" name="graduate"
 					value=<%=request.getAttribute("graduate")%>><br>
 			</p>
 			<p>
-				所属<input class="form-control" type="text" name="department"
+				所属 <c:out value="${ department}"></c:out>
+				<input class="form-control" type="hidden" name="department"
 					value=<%=request.getAttribute("department")%>><br>
 			</p>
 			<p>
-				職種<input class="form-control" type="text" name="occupation"
+				職種<c:out value="${occupation }"></c:out>
+				<input class="form-control" type="hidden" name="occupation"
 					value=<%=request.getAttribute("occupation")%>><br>
 			</p>
 			<p>
-				性別<input class="form-control" type="text" name="sex"
+				性別<c:out value="${sex }"></c:out>
+				<input class="form-control" type="hidden" name="sex"
 					value=<%=request.getAttribute("sex")%>><br>
 			</p>
 			<p>
-				連絡先<input class="form-control" type="text" name="contact"
+				連絡先<c:out value="${contact}"></c:out>
+				<input class="form-control" type="hidden" name="contact"
 					value=<%=request.getAttribute("contact")%>><br>
 			</p>
 			<p>
 				フリースペース(アピールポイントや興味があること等を書いてください)<br>
-				<textarea class="form-control" name="freespace"><%=request.getAttribute("freeSpace")%></textarea>
+				<c:out value="${ freeSpace}"></c:out>
+				<input class="form-control" type="hidden" name="freespace" value=<%=request.getAttribute("freeSpace")%>>
 				<br>
 			</p>
 			<p>
-				価値観<br> <input class="form-control" type="text" name="value1"
+				価値観<br>
+				<c:out value="${value1 }"></c:out><br>
+				<c:out value="${value2 }"></c:out><br>
+				<c:out value="${value3 }"></c:out><br>
+				 <input class="form-control" type="hidden" name="value1"
 					value=<%=request.getAttribute("value1")%>><br> <input class="form-control"
-					type="text" name="value2"
+					type="hidden" name="value2"
 					value=<%=request.getAttribute("value2")%>><br> <input class="form-control"
-					type="text" name="value3"
+					type="hidden" name="value3"
 					value=<%=request.getAttribute("value3")%>><br>
 			</p>
 
@@ -72,11 +85,10 @@
 
 			上記の内容で登録します。よろしいですか？<br>
 			<p>
-				<input class="btn btn-primary" type="button"
-					onclick="location.href='/WEB-INF/accountRegistration'" value="いいえ">
+				<input class="btn btn-primary" type="submit" name="goto" value="いいえ">
 			</p>
 			<p>
-				<input class="btn btn-primary" type="submit" value="はい">
+				<input class="btn btn-primary" type="submit" name="goto" value="はい">
 			</p>
 		</form>
 	</div>
