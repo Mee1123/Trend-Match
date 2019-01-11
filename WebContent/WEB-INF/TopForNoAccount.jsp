@@ -8,8 +8,8 @@
 <title>Top</title>
 </head>
 <body>
-<jsp:include page="headerForAdmin.jsp"/>
-<h1>管理者のトップページ</h1>
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
+<h1>アカウントなしのトップページ</h1>
 
 </body>
 </html>
