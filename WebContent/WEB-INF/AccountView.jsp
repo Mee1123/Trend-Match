@@ -13,7 +13,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <body>
-<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp" />
 	<div class="container">
 		ユーザー情報 ニックネーム
 		<c:out value="${user.getNickname()}" />
@@ -68,8 +68,8 @@
 		</table>
 		<c:choose>
 			<c:when test="${session == 1 }">
-編集
-</c:when>
+				<a href=/SE18G2/account/update>編集</a>
+			</c:when>
 			<c:when test="${session ==2 }">
 通報
 連絡
