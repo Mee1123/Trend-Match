@@ -80,10 +80,10 @@ public class UserService {
 	}
 
 	public User getMyAccountInfo(int userId) {
+		System.out.println("Service,1,Success");
 		UsersDAO dao = new UsersDAO();
-
 		User user = new User();
-		user = dao.findOneAll(userId);
+		user = dao.selectUserById(userId);
 		return user;
 	}
 

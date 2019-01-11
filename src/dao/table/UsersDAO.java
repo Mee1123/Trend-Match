@@ -167,6 +167,7 @@ public class UsersDAO extends DatabaseAccessor {
 	}
 
 	public User selectUserById(int userId) {
+		System.out.println("DAO,1,Success");
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -187,6 +188,7 @@ public class UsersDAO extends DatabaseAccessor {
 				user.setNickname(resultSet.getString("nickname"));
 				user.setGraduate(resultSet.getDate("graduate"));
 				user.setContact(resultSet.getString("contact"));
+				user.setDepartment(resultSet.getString("department"));
 				user.setFreespace(resultSet.getString("freespace"));
 				int enneagram[] = new int[9];// エニアグラム
 				enneagram[0] = resultSet.getInt("enneagram_1");
@@ -424,7 +426,8 @@ public class UsersDAO extends DatabaseAccessor {
 		}
 	}
 
-	public User findOneAll(int userId) {
+
+	/*public User findOneAll(int userId) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -462,7 +465,7 @@ public class UsersDAO extends DatabaseAccessor {
 			// クローズ処理
 			close(connection, statement, resultSet);
 		}
-	}
+	}*/
 
 	public void updateAccount(UpdateAccountInfoForm form, int userId) {
 		System.out.println("DAO,1,success");
