@@ -7,8 +7,8 @@
 </head>
 <body>
 	<p>Hello, world!!!</p>
-	<form action="/SE18G2/" method="post">
-		要素1:<input type="text" name="1"><br>
+	<form action="/SE18G2/AccountView" method="get">
+		要素1:<input type="text" name="userId"><br>
 		要素2:<input type="test" name="2"><br>
 	<input type="submit" value="遷移">
 </body>
