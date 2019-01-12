@@ -15,6 +15,7 @@
 <title>アカウント情報編集</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/header.jsp" />
 	<!-- ナビゲーションバー -->
 	<!-- コンテンツ -->
 	<div class="container">
@@ -40,7 +41,7 @@
 			<div class="form-group">
 				<label for="nickname">ニックネーム</label> <input class="form-control"
 					type="text" name="nickName" id="nickName"
-					value="<%=user.getName()%>">
+					value="<%=user.getNickname()%>">
 			</div>
 			<!-- <div class="form-group">
 				<label for="picture">プロフィール画像</label>
