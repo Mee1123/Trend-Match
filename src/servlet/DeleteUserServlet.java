@@ -1,3 +1,5 @@
+
+
 package servlet;
 
 import java.io.IOException;
@@ -12,7 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.User;
-import service.UserService;;
+import service.UserService;
+import service.ValueService;;
 
 /**
  * Servlet implementation class DeleteUser
@@ -84,8 +87,20 @@ public class DeleteUserServlet extends HttpServlet {
 		UserService Service = new UserService();
 		User user = Service.accountView(userId);
 
-		request.setAttribute("user", user);
+		ValueService valueService = new ValueService();
+		String valuesStrings[]= {"","",""};
+		int i=0;
+		for(int valueId:user.getValue_id()){
+			valuesStrings[i]= valueService.getValueName(valueId).getValue();
+			i++;
+		}
 
+
+		request.setAttribute("user", user);
+		System.out.println(valuesStrings[0]);
+		request.setAttribute("value1", valuesStrings[0]);
+		request.setAttribute("value2", valuesStrings[1]);
+		request.setAttribute("value3", valuesStrings[2]);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkUserDelete.jsp");
 		dispatcher.forward(request, response);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import model.User;
 import service.UserService;
+import service.ValueService;
 
 /**
  * Servlet implementation class Login
@@ -84,6 +85,20 @@ public class DeleteUserCheckServlet extends HttpServlet {
 			//DBから授業の削除
 			UserService Service = new UserService();
 			User user = Service.accountView(userId);
+
+			ValueService valueService = new ValueService();
+			String valuesStrings[]= {"","",""};
+			int i=0;
+			for(int valueId:user.getValue_id()){
+				valuesStrings[i]= valueService.getValueName(valueId).getValue();
+				i++;
+			}
+
+			request.setAttribute("user", user);
+			System.out.println(valuesStrings[0]);
+			request.setAttribute("value1", valuesStrings[0]);
+			request.setAttribute("value2", valuesStrings[1]);
+			request.setAttribute("value3", valuesStrings[2]);
 
 			Service.DeleteUser(user);
 
