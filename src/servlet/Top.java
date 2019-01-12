@@ -58,7 +58,8 @@ public class Top extends HttpServlet {
 			// アカウントなし
 			if (user.getNickname() == null) {
 				System.out.println("Top:アカウントなしユーザー");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/TopForNoAccount.jsp");
+				//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/TopForNoAccount.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/startAccountRegistration.jsp");
 				dispatcher.forward(request, response);
 			} // アカウントあり
 			else {

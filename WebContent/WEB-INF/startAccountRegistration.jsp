@@ -12,14 +12,16 @@
 <title>TOP(アカウント未登録)</title>
 </head>
 <body>
-<!-- ヘッダー画像を入れます -->
-<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
+	<!-- ヘッダー画像を入れます -->
+	<jsp:include page="headerForUnfinishAccountRegistration.jsp" />
 
 	<!-- ヘッダー画像を入れます -->
 	<div class="container">
 		<form action="/SE18G2/startAccountRegistration" method="post">
-			アカウント情報を<br> 登録してください<br> 登録は<input class="btn btn-primary"
-				type="submit" value="こちら">
+			<h3>
+				<br> アカウント情報を登録してください<br> <br> 登録は<input
+					class="btn btn-primary" type="submit" value="こちら">
+			</h3>
 
 		</form>
 	</div>
