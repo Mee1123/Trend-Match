@@ -28,6 +28,7 @@ public class ValuesDAO extends DatabaseAccessor{
 	        preparedStatement.setString(1, valueName);
 
 	        // SELECT 文の実行
+	        System.out.println("mysql >"+preparedStatement.toString());
 	        resultSet = preparedStatement.executeQuery();
 	        //preparedStatement.execute();
 	        // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
@@ -36,7 +37,6 @@ public class ValuesDAO extends DatabaseAccessor{
 	            value.setId(resultSet.getInt("value_id"));
 	            value.setValue(resultSet.getString("value_name"));
 	        }
-
 	        return value;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -64,6 +64,7 @@ public class ValuesDAO extends DatabaseAccessor{
 	        preparedStatement.setInt(1, valueID);
 
 	        // SELECT 文の実行
+	        System.out.println("mysql >"+preparedStatement.toString());
 	        resultSet = preparedStatement.executeQuery();
 	        //preparedStatement.execute();
 	        // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
@@ -97,6 +98,7 @@ public class ValuesDAO extends DatabaseAccessor{
             // 実行するSQL文とパラメータを指定する
             preparedStatement = connection.prepareStatement(sql);
             // SELECT 文の実行
+	        System.out.println("mysql >"+preparedStatement.toString());
             resultSet = preparedStatement.executeQuery();
             // 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）
             ArrayList<Value> values = new ArrayList<Value>();
@@ -132,6 +134,7 @@ public class ValuesDAO extends DatabaseAccessor{
 			preparedStatement.setString(1, value);
 
 			// SELECT 文の実行
+	        System.out.println("mysql >"+preparedStatement.toString());
 			//resultSet = preparedStatement.executeQuery();
 			preparedStatement.execute();
 			// 取得した結果を全件取得する（複数 SELECT する場合は，リストを活用する）

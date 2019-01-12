@@ -47,7 +47,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
-		System.out.println(userId);
+		System.out.println("UpdateAccountInfoServlet[get]:userId="+userId);
 
 		UserService userService = new UserService();
 		User user = new User();
@@ -62,12 +62,12 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 			i++;
 		}
 
-		System.out.println("AccountViewServlet:user_id=" + user.getId());
 		request.setAttribute("user", user);
-		System.out.println(valuesStrings[0]);
+		System.out.println("UpdateAccountInfoServlet[post]:valuesString="+valuesStrings[0]);
 		request.setAttribute("value1", valuesStrings[0]);
 		request.setAttribute("value2", valuesStrings[1]);
 		request.setAttribute("value3", valuesStrings[2]);
+		request.setAttribute("values",valueService.getAllValue());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/update.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -93,17 +93,17 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		}
 		// java.util.Dateからjava.sql.Dateに変換する。
 		Date graduate = new java.sql.Date(utilGraduate.getTime());
-		System.out.println(utilGraduate.toString());
+		System.out.println("UpdateAccountInfoServlet[post]:graduate="+utilGraduate.toString());
 		//int graduate = Integer.parseInt(request.getParameter("graduate"));
 
 		String department = request.getParameter("department");
-		System.out.println(request.getParameter("department"));
+		System.out.println("UpdateAccountInfoServlet[post]:department="+request.getParameter("department"));
 		int occupationId = Integer.parseInt(request.getParameter("occupationId"));
-		System.out.println(request.getParameter("occupationId"));
+		System.out.println("UpdateAccountInfoServlet[post]:occupationId="+request.getParameter("occupationId"));
 		int sexId = Integer.parseInt(request.getParameter("sexId"));
-		System.out.println(request.getParameter("sexId"));
+		System.out.println("UpdateAccountInfoServlet[post]:sexId="+request.getParameter("sexId"));
 		String contact = request.getParameter("contact");
-		System.out.println(request.getParameter("contact"));
+		System.out.println("UpdateAccountInfoServlet[post]:contact="+request.getParameter("contact"));
 		String freeSpace = request.getParameter("freeSpace");
 
 		int jobOffer_id = 0;
@@ -115,9 +115,9 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		}
 
 		ValueService valueService = new ValueService();
-		Value value1_result = valueService.getValueID(request.getParameter("value1"));
-		Value value2_result = valueService.getValueID(request.getParameter("value2"));
-		Value value3_result = valueService.getValueID(request.getParameter("value3"));
+		Value value1_result = valueService.getAndCreateValueByName(request.getParameter("value1"));
+		Value value2_result = valueService.getAndCreateValueByName(request.getParameter("value2"));
+		Value value3_result = valueService.getAndCreateValueByName(request.getParameter("value3"));
 		int value1_id = value1_result.getId();
 		int value2_id = value2_result.getId();
 		int value3_id = value3_result.getId();
@@ -130,7 +130,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
-		System.out.println(form.getJoboffer_id());
+		System.out.println("UpdateAccountInfoServlet[post]:Joboffer_id="+form.getJoboffer_id());
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			UserService userService = new UserService();
@@ -143,15 +143,19 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (form.getError().isEmpty()) {
-				System.out.println("Servlet,2,success");
+				System.out.println("UpdateAccountInfoServlet[post]:[fromエラーなし]success");
 				//response.sendRedirect("/SE18G2/Top");
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/updateFinished.jsp");
 				dispatcher.forward(request, response);
 			} else {
+				System.out.println("UpdateAccountInfoServlet[post]:[formError]");
+				for(String error:form.getError())System.out.println(error);
 				request.setAttribute("form", form);
 				doGet(request, response);
 			}
 		} else {
+			System.out.println("UpdateAccountInfoServlet[post]:[formError]");
+			for(String error:form.getError())System.out.println(error);
 			request.setAttribute("form", form);
 			doGet(request, response);
 		}
