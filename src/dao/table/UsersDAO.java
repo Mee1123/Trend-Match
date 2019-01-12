@@ -193,7 +193,6 @@ public class UsersDAO extends DatabaseAccessor {
 				user.setContact(resultSet.getString("contact"));
 				user.setDepartment(resultSet.getString("department"));
 				user.setFreespace(resultSet.getString("freespace"));
-
 				int enneagram[] = new int[9];// エニアグラム
 				enneagram[0] = resultSet.getInt("enneagram_1");
 				enneagram[1] = resultSet.getInt("enneagram_2");
@@ -448,7 +447,7 @@ public class UsersDAO extends DatabaseAccessor {
 		ResultSet resultSet = null;
 		try {
 			String mysql= "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
-					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ?,";
+					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ? ";
 	    	if(value1 != 0)mysql = mysql +",value_1_id= ? ";
 	    	if(value2 != 0)mysql = mysql +",value_2_id= ? ";
 	    	if(value3 != 0)mysql = mysql +",value_3_id= ? ";
@@ -458,7 +457,7 @@ public class UsersDAO extends DatabaseAccessor {
 
 			preparedStatement.setString(1, form.getNickname());
 			preparedStatement.setString(2, form.getPicturepath());
-			preparedStatement.setDate(3, (Date) form.getGraduate());
+			preparedStatement.setDate(3, (Date) form.getGraduate_Int());
 			preparedStatement.setString(4, form.getContact());
 			preparedStatement.setString(5, form.getDepartment());
 			preparedStatement.setString(6, form.getFreespace());

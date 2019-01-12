@@ -207,6 +207,12 @@ public class User extends Default{
 		}
 	}
 
+	public void createValues(){
+		if(values_id == null){
+			this.values_id = new ArrayList<>();
+		}
+	}
+
 	public void clearValues_id() {
 		this.values_id.clear();
 	}

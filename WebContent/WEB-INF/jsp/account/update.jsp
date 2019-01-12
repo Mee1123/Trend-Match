@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User"%>
 <%
 	User user = (User) request.getAttribute("user");
@@ -40,7 +41,7 @@
 			<div class="form-group">
 				<label for="nickname">ニックネーム</label> <input class="form-control"
 					type="text" name="nickName" id="nickName"
-					value="<%=user.getName()%>">
+					value="<%=user.getNickname()%>">
 			</div>
 			<!-- <div class="form-group">
 				<label for="picture">プロフィール画像</label>
@@ -79,13 +80,15 @@
 					value="<%=user.getFreespace()%>">
 			</div>
 			<div class="form-group">
-				<label for="value">価値観</label> <input class="form-control"
-					type="text" name="valueId1" id="valueId1"
-					value="<%=request.getAttribute("value1")%>"> <input
-					class="form-control" type="text" name="valueId2" id="valueId2"
-					value="<%=request.getAttribute("value2")%>"> <input
-					class="form-control" type="text" name="valueId3" id="valueId3"
-					value="<%=request.getAttribute("value3")%>">
+				<label for="value">価値観</label>
+				 <input class="form-control" type="text" name="value1" id="value1" value="<%=request.getAttribute("value1")%>"  autocomplete="on"list="values">
+				  <input class="form-control" type="text" name="value2" id="value2" value="<%=request.getAttribute("value2")%>" autocomplete="on"list="values">
+				  <input class="form-control" type="text" name="value3" id="value3" value="<%=request.getAttribute("value3")%>" autocomplete="on"list="values">
+				  	<datalist id="values">
+					<c:forEach var="value" items="${values}">
+						<option value="${value.getValue()}">
+					</c:forEach>
+				</datalist>
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
 		</form>

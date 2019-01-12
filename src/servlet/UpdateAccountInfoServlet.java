@@ -63,7 +63,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		}
 
 		request.setAttribute("user", user);
-		System.out.println("UpdateAccountInfoServlet[post]:valuesString="+valuesStrings[0]);
+		System.out.println("UpdateAccountInfoServlet[get]:valuesString="+valuesStrings[0]);
 		request.setAttribute("value1", valuesStrings[0]);
 		request.setAttribute("value2", valuesStrings[1]);
 		request.setAttribute("value3", valuesStrings[2]);
@@ -136,7 +136,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
-		System.out.println("UpdateAccountInfoServlet[post]:Joboffer_id="+form.getJoboffer_id());
+		System.out.println("UpdateAccountInfoServlet[post]:="+form.getGraduate());
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			UserService userService = new UserService();

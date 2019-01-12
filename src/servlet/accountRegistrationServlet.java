@@ -160,7 +160,7 @@ public class accountRegistrationServlet extends HttpServlet {
 			ValueService valueService = new ValueService();
 			int[] value_id =new int[3];
 			for(int i=0;i<3;i++){
-				System.out.println("accountRegistrationServlet: valueid = "+values[i]);
+				System.out.println("accountRegistrationServlet: valueName = "+values[i]);
 				Value value_result = valueService.getAndCreateValueByName(values[i]);
 				//価値観が空白でない場合
 				if (value_result != null) {

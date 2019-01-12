@@ -37,7 +37,8 @@ public class ValueService {
  * @return
  */
 	public Value getAndCreateValueByName(String valueName){
-		if (valueName.equals("")) {
+		System.out.println("ValueService.getAndCreateValueByName:valueName="+valueName);
+		if (valueName==null|| valueName.equals("")) {
 			return null;
 		}
 		Value value = valuesDAO.selectValueByName(valueName);
