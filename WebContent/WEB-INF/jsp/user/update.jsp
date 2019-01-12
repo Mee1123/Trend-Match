@@ -1,6 +1,8 @@
+<%@page import="service.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.User"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
 <%
 	User user = (User) request.getAttribute("user");
 %>
@@ -15,6 +17,22 @@
 <title>ユーザー情報編集</title>
 </head>
 <body>
+	<%
+		int userId = (int) session.getAttribute("userID");
+		UserService userService = new UserService();
+		User account = userService.getMyAccountInfo(userId);
+	%>
+	<%
+		if (account.getNickname() == null) {
+	%>
+	<jsp:include page="/WEB-INF/headerForUnfinishAccountRegistration.jsp" />
+	<%
+		} else {
+	%>
+	<jsp:include page="/WEB-INF/header.jsp" />
+	<%
+		}
+	%>
 	<!-- コンテンツ -->
 	<div class="container">
 		<h2 class="page-header">ユーザー情報編集</h2>
@@ -34,14 +52,15 @@
 				<label for="password">新しいパスワードを入力してください</label> <input
 					class="form-control" type="password" name="password" id="password">
 				<br> <label for="password2">パスワード確認用</label> <input
-					class="form-control" type="password" name="password2" id="password2">
-				<br>
+					class="form-control" type="password" name="password2"
+					id="password2"> <br>
 				<div align="right">
-				<button type="submit" class="btn btn-primary">登録</button>
+					<button type="submit" class="btn btn-primary">登録</button>
 				</div>
 			</div>
 		</form>
-		<a href="/SE18G2/Unsubscribe"><input class="btn btn-primary" type="button" value="退会"></a>
+		<a href="/SE18G2/Unsubscribe"><input class="btn btn-primary"
+			type="button" value="退会"></a>
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
