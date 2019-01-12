@@ -32,7 +32,7 @@ public class ValueService {
 		valuesDAO.insertValue(valueName);
 	}
 /**
- * 価値観の名前からIdと名前をValue型で返します.ない場合はDBに登録してその後登録したものを返します.
+ * 価値観の名前からIdと名前をValue型で返します.ない場合はDBに登録してその後登録したものを返します.引数が""の場合はnullを返します.
  * @param valueName
  * @return
  */

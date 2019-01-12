@@ -447,12 +447,14 @@ public class UsersDAO extends DatabaseAccessor {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			String sql = "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
-					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ?,"
-					+ "value_1_id = ?, value_2_id = ?, value_3_id = ? where user_id = ? ";
-			System.out.println("DAO,2,success");
+			String mysql= "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
+					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ?,";
+	    	if(value1 != 0)mysql = mysql +",value_1_id= ? ";
+	    	if(value2 != 0)mysql = mysql +",value_2_id= ? ";
+	    	if(value3 != 0)mysql = mysql +",value_3_id= ? ";
+	    	mysql = mysql + "where user_id = ?";
 			connection = createConnection();
-			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement = connection.prepareStatement(mysql);
 
 			preparedStatement.setString(1, form.getNickname());
 			preparedStatement.setString(2, form.getPicturepath());
@@ -468,12 +470,21 @@ public class UsersDAO extends DatabaseAccessor {
 			/*statement.setInt(10, values.get(0));
 			statement.setInt(11, values.get(1));
 			statement.setInt(12, values.get(2));*/
+	        int i = 10;
+	    	if(value1 != 0){
+		        preparedStatement.setInt(i, value1);
+		        i++;
+	    	};
+	    	if(value2 != 0){
+		        preparedStatement.setInt(i, value2);
+		        i++;
+	    	};
+	    	if(value3 != 0){
+		        preparedStatement.setInt(i, value3);
+		        i++;
+	    	}
 
-			preparedStatement.setInt(10, value1);
-			preparedStatement.setInt(11, value2);
-			preparedStatement.setInt(12, value3);
-
-			preparedStatement.setInt(13, userId);
+			preparedStatement.setInt(i, userId);
 			System.out.println("mysql    > " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
