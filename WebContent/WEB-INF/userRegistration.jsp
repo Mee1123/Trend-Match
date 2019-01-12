@@ -12,6 +12,11 @@
 <title>ユーザー登録</title>
 </head>
 <body>
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="/WEB-INF/pages/aboutTrendMatch.jsp">About
+			TrendMatch</a>
+	</nav>
+	<br>
 	<div class="container">
 		<h1>ユーザー登録</h1>
 		<form action="/SE18G2/userRegistration" method="post">
