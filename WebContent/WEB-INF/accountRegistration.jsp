@@ -5,18 +5,24 @@
 <!DOCTYPE html >
 <html>
 <head>
+<!-- CSS -->
+<link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <meta charset="UTF-8">
 
 <title>アカウント登録</title>
 </head>
 <body>
-
+<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
 <form action="/SE18G2/accountRegistration" method="post"enctype="multipart/form-data">
 <!-- headerを入れます -->
 
 <h1>アカウント登録(※は必須項目です)</h1>
-<!-- <input type="file" name="picturepath" size="30"/><br>
-プロフィール画像<br> -->
+<!--
+<input type="file" name="file" size="30"/><br>
+プロフィール画像<br>
+-->
 <p>
 <input type="radio" name="jobOffer" value="内定あり">内定あり<br>
 <input type="radio" name="jobOffer" value="内定なし"  checked="checked">内定なし<br>
@@ -90,5 +96,8 @@
 
 
 </form>
+<!-- javascript -->
+	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/SE18G2/CSS/js/bootstrap.min.js"></script>
 </body>
 </html>

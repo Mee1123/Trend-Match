@@ -1,0 +1,21 @@
+.box1 {
+	padding: 0.5em 1em;
+	margin: 2em 0;
+	font-weight: bold;
+	border: solid 3px #000000;
+	width: 400px
+}
+
+.box1 p {
+	margin: 0;
+	padding: 0;
+}
+
+.box2 {
+	height: 6.5em; /* 高さを制限(※) */
+	overflow: scroll; /* スクロールバーを表示(※) */
+	padding: 0.5em 1em; margin : 2em 0; font-weight : bold; border : solid
+	3px #000000; width : 400px border : red 1px dashed; /* 枠線を追加 */
+	margin: 2em 0;
+	font-weight: bold;
+}
