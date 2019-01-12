@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="/WEB-INF/pages/aboutTrendMatch.jsp">About TrendMatch</a>
+		<a class="navbar-brand" href="/SE18G2/AboutTrendMatch">About TrendMatch</a>
 </nav>
 <br>
 <nav>
