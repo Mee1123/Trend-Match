@@ -160,10 +160,11 @@ public class UserService {
 		UsersDAO dao = new UsersDAO();
 		dao.deleteUser(user);
 	}
-	public void updateUserInfo(UpdateUserInfoForm form, int userId) {
+	public void updateUserInfo(UpdateUserInfoForm form, int userId) throws NoSuchAlgorithmException {
 		System.out.println("UserService.updateUserInfo:success");
 		UsersDAO dao = new UsersDAO();
-		dao.update(form, userId);
+		String hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
+		dao.update(form, userId,hashPassword);
 	}
 
 	public void updateAccountInfo(UpdateAccountInfoForm form, int userId, int value1, int value2, int value3) {

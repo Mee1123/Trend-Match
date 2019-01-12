@@ -418,7 +418,7 @@ public class UsersDAO extends DatabaseAccessor {
 		    }
     }
 
-	public void update(UpdateUserInfoForm form, int userId) {
+	public void update(UpdateUserInfoForm form, int userId, String hashPassword) {
 		System.out.println("DAO,1,success");
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -429,7 +429,7 @@ public class UsersDAO extends DatabaseAccessor {
 			connection = createConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, form.getMailAddress());
-			preparedStatement.setString(2, form.getPassword());
+			preparedStatement.setString(2, hashPassword);
 			preparedStatement.setString(3, form.getName());
 			preparedStatement.setInt(4, userId);
 			System.out.println("mysql    > " + preparedStatement.toString());
