@@ -1,28 +1,52 @@
 
 package service;
 
+import java.util.ArrayList;
+
 import dao.table.ValuesDAO;
 import model.Value;;
 
 
 
 public class ValueService {
-	ValuesDAO valuesDAO = new ValuesDAO();
+	private ValuesDAO valuesDAO = new ValuesDAO();
 
 
 	public Value getValueID(String valueName) {
-		ValuesDAO dao = new ValuesDAO();
 		Value value = new Value();
-		value = dao.selectValueByName(valueName);
+		value = valuesDAO.selectValueByName(valueName);
 		return value;
 	}
 
 	public Value getValueName(int valueID) {
-		ValuesDAO dao = new ValuesDAO();
 		Value value = new Value();
-		value = dao.selectValueByID(valueID);
+		value = valuesDAO.selectValueByID(valueID);
 		return value;
 	}
 
+	public ArrayList<Value> getAllValue() {
+		return valuesDAO.selectValueAll();
+	}
+
+	public void setValue(String valueName){
+		valuesDAO.insertValue(valueName);
+	}
+/**
+ * 価値観の名前からIdと名前をValue型で返します.ない場合はDBに登録してその後登録したものを返します.
+ * @param valueName
+ * @return
+ */
+	public Value getAndCreateValueByName(String valueName){
+		if (valueName.equals("")) {
+			return null;
+		}
+		Value value = valuesDAO.selectValueByName(valueName);
+		if(value.getId()==0){
+			valuesDAO.insertValue(valueName);
+		}
+		value = valuesDAO.selectValueByName(valueName);
+		System.out.println("ValueService.getAndCreateValueByName:valueId="+value.getId());
+		return value;
+	}
 
 }

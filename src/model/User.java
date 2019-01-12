@@ -183,8 +183,13 @@ public class User extends Default{
 	public ArrayList<Integer> getValue_id() {
 		return values_id;
 	}
-
+	/**
+	 * value_idをセットします.<br>value_id=0の時は入りません.<br>すでに3つ入っている場合は最初に入れたものを消します.
+	 * @param value_id
+	 * @return 入れられた場合,すでに入っている場合 true :value_id=0の場合,3つ入っている場合 false
+	 */
 	public boolean setValues_id(int value_id) {
+		if(value_id==0)return false;
 		if (values_id ==null) {
 			values_id = new ArrayList<>();
 		}

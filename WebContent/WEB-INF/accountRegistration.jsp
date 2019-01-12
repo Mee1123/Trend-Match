@@ -73,23 +73,15 @@
 				<br>
 			</p>
 			<p>
-				価値観<br> <select name="valueId1">
+				価値観<br>
+				<input type="text" name="valueId1" autocomplete="on" list="values">
+				<datalist id="values">
 					<c:forEach var="value" items="${values}">
-						<option value="${value.getValue()}"><c:out
-								value="${value.getValue()}" /></option>
+						<option value="${value.getValue()}">
 					</c:forEach>
-				</select> <br> <select name="valueId2">
-					<c:forEach var="value" items="${values}">
-						<option value="${value.getValue()}"><c:out
-								value="${value.getValue()}" /></option>
-					</c:forEach>
-				</select> <br> <select name="valueId3">
-					<c:forEach var="value" items="${values}">
-						<option value="${value.getValue()}"><c:out
-								value="${value.getValue()}" /></option>
-					</c:forEach>
-				</select>
-
+				</datalist>
+				<input type="text" name="valueId2" autocomplete="on" list="values">
+				<input type="text" name="valueId3" autocomplete="on" list="values">
 			</p>
 			<br> <input class="btn btn-primary" type="submit" value="次へ">
 

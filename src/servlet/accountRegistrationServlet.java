@@ -59,7 +59,7 @@ public class accountRegistrationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		// jspからformの内容を取り出し
-		System.out.println("ServletのdoPost");
+		System.out.println("accountRegistrationServlet:"+"ServletのdoPost");
 		if (request.getParameter("goto").equals("いいえ")) {
 
 			ArrayList<Value> values = new ArrayList<Value>();
@@ -76,7 +76,7 @@ public class accountRegistrationServlet extends HttpServlet {
 
 			// 内定情報
 			String jobOffer = request.getParameter("jobOffer");
-			System.out.println(jobOffer);
+			System.out.println("accountRegistrationServlet:"+jobOffer);
 			if (jobOffer.equals("内定あり")) {
 				jobOffer_id = 1;
 			} else {
@@ -85,19 +85,19 @@ public class accountRegistrationServlet extends HttpServlet {
 
 			// ニックネーム
 			String nickname = request.getParameter("nickname");
-			System.out.println(nickname);
+			System.out.println("accountRegistrationServlet:"+nickname);
 
 			// 卒業年度
 			int graduate = Integer.parseInt(request.getParameter("graduate"));
-			System.out.println(graduate);
+			System.out.println("accountRegistrationServlet:"+graduate);
 
 			// 所属
 			String department = request.getParameter("department");
-			System.out.println(department);
+			System.out.println("accountRegistrationServlet:"+department);
 
 			// 職種
 			String occupation = request.getParameter("occupation");
-			System.out.println(occupation);
+			System.out.println("accountRegistrationServlet:"+occupation);
 			if (occupation.equals("学部生")) {
 				occupation_id = 1;
 			} else if (occupation.equals("大学院生")) {
@@ -132,7 +132,7 @@ public class accountRegistrationServlet extends HttpServlet {
 
 			// 性別
 			String sex = request.getParameter("sex");
-			System.out.println(sex);
+			System.out.println("accountRegistrationServlet:"+sex);
 			if (sex.equals("男")) {
 				sex_id = 1;
 			} else if (sex.equals("女")) {
@@ -143,36 +143,37 @@ public class accountRegistrationServlet extends HttpServlet {
 
 			// 連絡先
 			String contact = request.getParameter("contact");
-			System.out.println(contact);
+			System.out.println("accountRegistrationServlet:"+contact);
 
 			// フリースペース
 			String freeSpace = request.getParameter("freespace");
-			System.out.println(freeSpace);
+			System.out.println("accountRegistrationServlet:"+freeSpace);
 
 			// 価値観
-			String value1 = request.getParameter("value1");
-			String value2 = request.getParameter("value2");
-			String value3 = request.getParameter("value3");
-			System.out.println(value1);
-			System.out.println(value2);
-			System.out.println(value3);
+			String values[] =new String[3];
+			values[0] = request.getParameter("value1");
+			values[1] = request.getParameter("value2");
+			values[2] = request.getParameter("value3");
 
 			// 価値観のID化
 			// まずはサービス
 			ValueService valueService = new ValueService();
-			Value value1_result = valueService.getValueID(value1);
-			Value value2_result = valueService.getValueID(value2);
-			Value value3_result = valueService.getValueID(value3);
-			int value1_id = value1_result.getId();
-			int value2_id = value2_result.getId();
-			int value3_id = value3_result.getId();
-			System.out.println(value1_id);
-			System.out.println(value2_id);
-			System.out.println(value3_id);
+			int[] value_id =new int[3];
+			for(int i=0;i<3;i++){
+				System.out.println("accountRegistrationServlet: valueid = "+values[i]);
+				Value value_result = valueService.getAndCreateValueByName(values[i]);
+				//価値観が空白でない場合
+				if (value_result != null) {
+					value_id[i] = value_result.getId();
+				} else {//価値観が空白の場合
+					value_id[i] = 0;
+				}
+				System.out.println("accountRegistrationServlet:"+value_id[i]);
+			}
 
 			accountRegistrationForm form = new accountRegistrationForm(jobOffer_id, nickname, graduate, department,
-					occupation_id, sex_id, contact, freeSpace, value1_id, value2_id, value3_id);
-			System.out.println("formから戻りました");
+					occupation_id, sex_id, contact, freeSpace, value_id[0], value_id[1], value_id[2]);
+			System.out.println("accountRegistrationServlet:"+"formから戻りました");
 
 			HttpSession session = request.getSession();
 			int userId = (int) session.getAttribute("userID");
@@ -180,14 +181,13 @@ public class accountRegistrationServlet extends HttpServlet {
 			// int userId = 28;
 
 			UserService userService = new UserService();
-			System.out.println("サービスの生成");
+			System.out.println("accountRegistrationServlet:"+"サービスの生成");
 			userService.RegistrationAccount(request, form, userId);
 
 			// Formにエラー個所がなければ、不正な値はなかったものとして処理.
 			if (form.getError().isEmpty()) {
-				UserService service = new UserService();
 				try {
-					service.RegistrationAccount(request, form, userId);
+					userService.RegistrationAccount(request, form, userId);
 
 					// プロフィール画像
 					/*

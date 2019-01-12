@@ -127,7 +127,7 @@ public class UserService {
 	}
 
 	public void RegistrationAccount(HttpServletRequest request, accountRegistrationForm form,int userID) {
-		System.out.println("サービスの処理");
+		System.out.println("UserService.RegistrationAccount:処理開始");
 		//型変換の必要なし
 		//Part filePart = form.getFilePart();
 		int jobOffer = form.getJoboffer_id();
@@ -140,7 +140,7 @@ public class UserService {
 		String contact = form.getContact();
 		String freeSpace = form.getFreespace();
 		ArrayList<Integer> Values = form.getValue_id();
-		int[] value = {1,1,1};
+		int[] value = {0,0,0};
 		if(Values.size()>0){
 			value[0] = Values.get(0);
 		}
@@ -151,12 +151,9 @@ public class UserService {
 		if(Values.size()>2){
 			value[2] = Values.get(2);
 		}
-
-
-		System.out.println("DAOにいきます");
-
-
+		System.out.println("UserService.RegistrationAccount:この後userDAOにいきます");
 		usersDAO.insertAccount(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value[0],value[1],value[2],userID);
+		System.out.println("UserService.RegistrationAccount:登録終了");
 	}
 
   	public void DeleteUser(User user) {
@@ -164,13 +161,13 @@ public class UserService {
 		dao.deleteUser(user);
 	}
 	public void updateUserInfo(UpdateUserInfoForm form, int userId) {
-		System.out.println("Service,1,success");
+		System.out.println("UserService.updateUserInfo:success");
 		UsersDAO dao = new UsersDAO();
 		dao.update(form, userId);
 	}
 
 	public void updateAccountInfo(UpdateAccountInfoForm form, int userId, int value1, int value2, int value3) {
-		System.out.println("Service,1,success");
+		System.out.println("UserService.updateAccountInfo:success");
 		UsersDAO dao = new UsersDAO();
 		dao.updateAccount(form,userId,value1,value2,value3);
 	}

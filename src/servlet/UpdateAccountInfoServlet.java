@@ -68,6 +68,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		request.setAttribute("value1", valuesStrings[0]);
 		request.setAttribute("value2", valuesStrings[1]);
 		request.setAttribute("value3", valuesStrings[2]);
+		request.setAttribute("values",valueService.getAllValue());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/account/update.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -115,9 +116,9 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		}
 
 		ValueService valueService = new ValueService();
-		Value value1_result = valueService.getValueID(request.getParameter("value1"));
-		Value value2_result = valueService.getValueID(request.getParameter("value2"));
-		Value value3_result = valueService.getValueID(request.getParameter("value3"));
+		Value value1_result = valueService.getAndCreateValueByName(request.getParameter("value1"));
+		Value value2_result = valueService.getAndCreateValueByName(request.getParameter("value2"));
+		Value value3_result = valueService.getAndCreateValueByName(request.getParameter("value3"));
 		int value1_id = value1_result.getId();
 		int value2_id = value2_result.getId();
 		int value3_id = value3_result.getId();
