@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html >
 <html>
@@ -13,12 +14,116 @@
 </head>
 <body>
 <jsp:include page="headerForAdmin.jsp"/>
-	<h1>ユーザー削除完了画面</h1>
-	<form action="/SE18G2/finishUserDelete" method="post">
-		プロフィール画像<br> ニックネーム<br> 所属<br> 職種<br> 性別<br>
-		連絡先<br> フリースペース<br> このユーザーを削除しました <input
-			class="btn btn-primary" type="submit" value="トップ画面へ">
-	</form>
+
+<h1>ユーザー削除完了画面</h1>
+<form action="/SE18G2/finishUserDelete" method="post">
+	ユーザー情報<br>
+   <div class="form-group">
+			ニックネーム:
+			<div class="box1">
+				<p>
+		<c:out value="${user.getNickname()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			所属:
+			<div class="box1">
+				<p>
+		<c:out value="${user.getDepartment()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			職種:
+			<div class="box1">
+				<p>
+		<c:out value="${user.getOccupation_id()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			性別:
+			<div class="box1">
+				<p>
+		<c:choose>
+			<c:when test="${user.getSex_id()==0}">-</c:when>
+			<c:when test="${user.getSex_id()==1}">男</c:when>
+			<c:when test="${user.getSex_id()==2}">女</c:when>
+		</c:choose>
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			連絡先:
+			<div class="box1">
+				<p>
+		<c:out value="${user.getContact()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			価値観:
+			<div class="box1">
+				<p>
+		<c:out value="${value1}" /><br>
+		<c:out value="${value2}" /><br>
+		<c:out value="${value3}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">
+			フリースペース:
+			<div class="box2">
+				<p>
+		<c:out value="${user.getFreespace()}" />
+				</p>
+			</div>
+		</div>
+		<div class="form-group">エニアグラム</div>
+		<div class="table">
+		<table border>
+				<!-- <tr bgcolor="#ffb6c1">  -->
+				<tr>
+					<td>タイプ１（改革する人）</td>
+					<td>タイプ2（人を助ける人）</td>
+					<td>タイプ3（達成する人）</td>
+			</tr>
+			<tr>
+				<td><c:out value="${user.getEnneagram()[0]}" /></td>
+				<td><c:out value="${user.getEnneagram()[1]}" /></td>
+				<td><c:out value="${user.getEnneagram()[2]}" /></td>
+			</tr>
+				<!-- <tr bgcolor="#ffb6c1">  -->
+				<tr>
+					<td>タイプ4（個性的な人）</td>
+					<td>タイプ5（調べる人）</td>
+					<td>タイプ6（忠実な人）</td>
+			</tr>
+			<tr>
+				<td><c:out value="${user.getEnneagram()[3]}" /></td>
+				<td><c:out value="${user.getEnneagram()[4]}" /></td>
+				<td><c:out value="${user.getEnneagram()[5]}" /></td>
+			</tr>
+				<!-- <tr bgcolor="#ffb6c1">  -->
+				<tr>
+					<td>タイプ7（熱中する人）</td>
+					<td>タイプ8（挑戦する人）</td>
+					<td>タイプ9（平和をもたらす人）</td>
+			</tr>
+			<tr>
+				<td><c:out value="${user.getEnneagram()[6]}" /></td>
+				<td><c:out value="${user.getEnneagram()[7]}" /></td>
+				<td><c:out value="${user.getEnneagram()[8]}" /></td>
+			</tr>
+		</table>
+		</div>
+このユーザーを削除しました
+<input type="submit" value="トップ画面へ">
+</form>
+
+
+
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/SE18G2/CSS/js/bootstrap.min.js"></script>

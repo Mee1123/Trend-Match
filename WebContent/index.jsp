@@ -13,7 +13,9 @@
 	Hello, world!!!<br>
 
 	<h1><a href="/SE18G2/Login">login</a></h1><br>
+	</form>
 
+ <form action="/SE18G2/AccountView" method="get">
 	要素1:<input type="text" name="1"><br>
 	要素2:<input type="text" name="2"><br>
 

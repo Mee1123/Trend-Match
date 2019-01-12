@@ -146,6 +146,15 @@
 </c:when>
 			<c:when test="${session ==2 }">
 通報
+
+<form action="/SE18G2/DeleteUser" method="post">
+<input type="hidden" name="id" value="${user.getId()}">
+
+<input type="submit" value="削除">
+</form>
+
+
+
 連絡
 </c:when>
 		</c:choose>
