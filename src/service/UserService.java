@@ -28,7 +28,7 @@ public class UserService {
 	LocalDateTime dateTime = LocalDateTime.now();
 
 	public void LoginUser(HttpServletRequest request, LoginForm form) throws NoSuchAlgorithmException {
-		System.out.println("Service,1,success");
+		System.out.println("UserService.LoginUser:開始");
 		System.out.println(form.getMailAddress());
 		UsersDAO usersDAO = new UsersDAO();
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
@@ -36,10 +36,10 @@ public class UserService {
 		System.out.println(HashHelper.getHash(form.getMailAddress(), form.getPassword()));
 		if (user == null) {
 			form.setError(errorStatement);
-			System.out.println("Service,2,success");
 		} else {
 			if (HashHelper.getHash(form.getMailAddress(), form.getPassword()).equals(user.getPassword())) {
 				SessionHelper.createUserSession(request, user.getId());
+				System.out.println("UserService.LoginUser:開始:Success");
 			} else {
 				form.setError(errorStatement);
 			}
@@ -83,7 +83,7 @@ public class UserService {
 	}
 
 	public User getMyAccountInfo(int userId) {
-		System.out.println("Service,1,Success");
+		System.out.println("UserService.getMyAccountInfo:Success");
 		UsersDAO dao = new UsersDAO();
 		User user = new User();
 		user = dao.selectUserById(userId);
@@ -107,7 +107,7 @@ public class UserService {
 	}
 
 	public void RegistrationEnneagram(HttpServletRequest request, enneagramRegistrationForm form,int userID) {
-		System.out.println("Service,1,Success");
+		System.out.println("UserService.RegistrationEnneagram:Success");
 		//型変換の必要なし
 		int[] enneagram = form.getEnneagram();
 
@@ -206,18 +206,18 @@ public class UserService {
   			double similarity=0;
   			for(int i=0; i<9;i++){
   				similarity =similarity + Math.pow(enneagram1[i]-enneagram2[i],2);
-  				System.out.println("En:["+enneagram1[i]+","+enneagram2[i]+"]:"+similarity);
+  				System.out.println("UserService.matching:エニアグラム[本人,相手]:["+enneagram1[i]+","+enneagram2[i]+"]:差分 = "+similarity);
   			}
-  			System.out.println("ユークリ前:"+similarity);
+  			System.out.println("UserService.matching:[ユークリッド距離の計算√前]ユークリッド距離^2 = "+similarity);
   			similarity = Math.sqrt(similarity);
-  			System.out.println("ユークリ:"+similarity);
-  			System.out.println("価値観"+valueMatch);
+  			System.out.println("UserService.matching:[ユークリッド距離の計算√後]ユークリッド距離 = "+similarity);
+  			System.out.println("UserService.matching:価値観補正 = "+valueMatch);
   			//重みの計算
   			similarity = 30 - similarity +valueMatch;
   			//
   			similarityUserForm.setSimilarity(similarity);
   			similarityUsers.add(similarityUserForm);
-  			System.out.println("かち:"+similarity);
+  			System.out.println("UserService.matching:類似度 ="+similarity);
 		}
 		return similarityUsers;
 

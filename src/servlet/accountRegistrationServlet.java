@@ -182,7 +182,6 @@ public class accountRegistrationServlet extends HttpServlet {
 
 			UserService userService = new UserService();
 			System.out.println("accountRegistrationServlet:"+"サービスの生成");
-			userService.RegistrationAccount(request, form, userId);
 
 			// Formにエラー個所がなければ、不正な値はなかったものとして処理.
 			if (form.getError().isEmpty()) {
