@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import form.SimilarityUserForm;
+import helper.SessionHelper;
 import model.User;
 import service.UserService;
 
@@ -37,16 +38,13 @@ public class Top extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().append("Served at: ").append(request.getContextPath());
+			HttpSession session = request.getSession();
+			Object userSession = session.getAttribute("userID");
 
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html; charset=UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		HttpSession session = request.getSession();
-		Object userSession = session.getAttribute("userID");
-		if (userSession == null) {
-			System.out.println("Top:[セッションが存在しないユーザー](indexへ飛ばします)");
-			response.sendRedirect("/SE18G2");
-		} else {
 			int userId = (int) userSession;
 			// 管理者か
 			if (userId == 1) {
@@ -75,9 +73,9 @@ public class Top extends HttpServlet {
 				request.setAttribute("users", users2);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Top.jsp");
 				dispatcher.forward(request, response);
+
 			}
 		}
-
 	}
 
 	/**
