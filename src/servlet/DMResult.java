@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import helper.SessionHelper;
 
@@ -31,8 +32,12 @@ public class DMResult extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (SessionHelper.sessionCheck(request, response)) {
-
-			response.getWriter().append("Served at: ").append(request.getContextPath());
+			System.out.println("DMResult.doGet:start");
+			//セッションからユーザーIdの取得
+			HttpSession session = request.getSession();
+			session.getAttribute("userID");
+			//会話したユーザーのニックネームと最新会話のリスト作成
+			
 		}
 	}
 
