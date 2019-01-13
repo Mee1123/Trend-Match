@@ -19,7 +19,7 @@
 	<div class="container">
 		<form action="/SE18G2/startAccountRegistration" method="post">
 			<h3>
-				<br> アカウント情報を登録してください<br> <br> 登録は<input
+				<br> アカウント情報が登録されていません<br> <br> 登録は<input
 					class="btn btn-primary" type="submit" value="こちら">
 			</h3>
 

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User"%>
 <%
 	User user = (User) request.getAttribute("user");
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>アカウント情報編集</title>
 </head>
@@ -20,9 +21,8 @@
 	<!-- ナビゲーションバー -->
 	<!-- コンテンツ -->
 	<div class="container">
-		<h2 class="page-header">アカウント情報編集</h2>
-		<hr>
-		<!-- 水平線 -->
+		<h1 class="page-header">アカウント情報編集</h1>
+		<br>
 		<form action="/SE18G2/account/update" method="post">
 			<div class="form-group">
 				<%
@@ -81,15 +81,20 @@
 					value="<%=user.getFreespace()%>">
 			</div>
 			<div class="form-group">
-				<label for="value">価値観</label>
-				 <input class="form-control" type="text" name="value1" id="value1" value="<%=request.getAttribute("value1")%>"  autocomplete="on"list="values">
-				  <input class="form-control" type="text" name="value2" id="value2" value="<%=request.getAttribute("value2")%>" autocomplete="on"list="values">
-				  <input class="form-control" type="text" name="value3" id="value3" value="<%=request.getAttribute("value3")%>" autocomplete="on"list="values">
-				  	<datalist id="values">
-					<c:forEach var="value" items="${values}">
-						<option value="${value.getValue()}">
-					</c:forEach>
-				</datalist>
+				<label for="value">価値観</label> <input class="form-control"
+					type="text" name="value1" id="value1"
+					value="<%=request.getAttribute("value1")%>" autocomplete="on"
+					list="values"> <input class="form-control" type="text"
+					name="value2" id="value2"
+					value="<%=request.getAttribute("value2")%>" autocomplete="on"
+					list="values"> <input class="form-control" type="text"
+					name="value3" id="value3"
+					value="<%=request.getAttribute("value3")%>" autocomplete="on"
+					list="values">
+				<datalist id="values"> <c:forEach var="value"
+					items="${values}">
+					<option value="${value.getValue()}">
+				</c:forEach> </datalist>
 			</div>
 			<button type="submit" class="btn btn-primary">登録</button>
 		</form>

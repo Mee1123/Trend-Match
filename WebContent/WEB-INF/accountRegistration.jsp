@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
-
 <title>アカウント登録</title>
 </head>
 <body>
@@ -18,9 +18,8 @@
 	<div class="container">
 		<form action="/SE18G2/accountRegistration" method="post"
 			enctype="multipart/form-data">
-			<!-- headerを入れます -->
-
 			<h1>アカウント登録(※は必須項目です)</h1>
+			<br>
 			<!--
 <input type="file" name="file" size="30"/><br>
 プロフィール画像<br>
@@ -73,8 +72,8 @@
 				<br>
 			</p>
 			<p>
-				価値観<br>
-				<input type="text" name="valueId1" autocomplete="on" list="values">
+				価値観<br> <input type="text" name="valueId1" autocomplete="on"
+					list="values">
 				<datalist id="values">
 					<c:forEach var="value" items="${values}">
 						<option value="${value.getValue()}">

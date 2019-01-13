@@ -9,14 +9,14 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
 <title>アカウント登録内容確認</title>
 </head>
 <body>
 	<jsp:include page="headerForUnfinishAccountRegistration.jsp" />
 	<div class="container">
-
-		<h1 class="page-header">登録確認画面</h1>
+		<h1 class="page-header">登録確認</h1>
 		<form action="/SE18G2/checkAccountRegistration" method="post"
 			enctype="multipart/form-data">
 			<!-- headerを入れます -->
@@ -88,14 +88,9 @@
 					class="form-control" type="hidden" name="value3"
 					value=<%=request.getAttribute("value3")%>><br>
 			</p>
-
-
-
 			上記の内容で登録します。よろしいですか？<br>
 			<p>
 				<input class="btn btn-primary" type="submit" name="goto" value="いいえ">
-			</p>
-			<p>
 				<input class="btn btn-primary" type="submit" name="goto" value="はい">
 			</p>
 		</form>
