@@ -19,7 +19,7 @@
 		<ul>
 		<li><a href="/SE18G2/Top"><img src="header/home(black).jpg" alt="home"><br>Home</a></li>
 		<li><a href="/SE18G2/AccountView"><img src="header/account(black).jpg" ><br>ACCOUNT</a></li>
-		<li><a href=""><img src="header/DM(black).jpg" ><br>E-BLAST</a></li>
+		<li><a href="/SE18G2/DMResult"><img src="header/DM(black).jpg" ><br>E-BLAST</a></li>
 		<li><a href="/SE18G2/HeaderUserInfo"><img src="header/Edit(black).jpg" ><br>EDIT USER INFO.</a></li>
 		<li><a href="/SE18G2/Logout"><img src="header/Logout(black).jpg" ><br>LOGOUT</a></li>
 		</ul>
