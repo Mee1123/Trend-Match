@@ -10,7 +10,18 @@ public class Message extends Default {
 	private String messageContents;
 	private Date createdAt;
 
+	public Message() {
+		// TODO 自動生成されたコンストラクター・スタブ
+	}
 
+	public Message(int id,int sendUserId, int receiveUserId, String messageContents, Date createdAt) {
+		super();
+		setId(id);
+		setSendUserId(sendUserId);
+		setReceiveUserId(receiveUserId);
+		setMessageContents(messageContents);
+		setCreatedAt(createdAt);
+	}
 	public int getSendUserId() {
 		return sendUserId;
 	}

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
 <title>メッセージボックス</title>
 </head>
 <body>
@@ -13,10 +13,10 @@
 		<tr>
 			<td>ニックネーム</td>
 		</tr>
-		<c:forEach var="user" items="${users}">
+		<c:forEach var="user" items="${usersList}">
 			<tr>
-				<td><c:out value="${user.getNickname()}" /> <c:out
-						value="${user.getFreespace()}" /></td>
+				<td><c:out value="${user.getUserNickname()}" /> <c:out
+						value="${user.getMessageContents()}" /></td>
 			</tr>
 		</c:forEach>
 	</table>

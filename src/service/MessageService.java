@@ -3,9 +3,12 @@ package service;
 import java.util.ArrayList;
 
 import dao.table.MessagesDAO;
+import dao.table.UsersDAO;
+import form.DMResultForm;
 import form.MessageForm;
 import helper.SortHelper;
 import model.Message;
+import model.User;
 
 public class MessageService {
 	MessagesDAO messagesDAO = new MessagesDAO();
@@ -76,18 +79,27 @@ public class MessageService {
 	 *
 	 * @return
 	 */
-	public ArrayList<Message> latestMessage(ArrayList<Message> messages, int userId) {
+	public ArrayList<DMResultForm> latestMessage(ArrayList<Message> messages, int userId) {
 		ArrayList<Integer> usersId = new ArrayList<>(userId);
-		ArrayList<Message> newMessages = new ArrayList<>();
+		ArrayList<DMResultForm> dmResultForms = new ArrayList<>();
+		UsersDAO usersDAO = new UsersDAO();
 		for (Message message : messages) {
 			if (!usersId.contains(message.getSendUserId())) {
-				newMessages.add(message);
+				User user = usersDAO.selectUserById(message.getSendUserId());
+				if(user != null){
+					DMResultForm dmResultForm = new DMResultForm(message,user.getNickname());
+					dmResultForms.add(dmResultForm);
+				}
 			}
 			if (!usersId.contains(message.getReceiveUserId())) {
-				newMessages.add(message);
+				User user = usersDAO.selectUserById(message.getReceiveUserId());
+				if(user != null){
+					DMResultForm dmResultForm = new DMResultForm(message,user.getNickname());
+					dmResultForms.add(dmResultForm);
+				}
 			}
 		}
-		return newMessages;
+		return dmResultForms;
 	}
 	/**
 	 * 2人ユーザー間のメッセージを表示します.
