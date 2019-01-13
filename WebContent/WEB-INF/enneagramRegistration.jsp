@@ -8,21 +8,22 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="tableDesign.css">
 <title>自己分析</title>
 </head>
 <body>
-<jsp:include page="headerForUnfinishAccountRegistration.jsp"/>
+	<jsp:include page="headerForUnfinishAccountRegistration.jsp" />
 	<div class="container">
 		<form action="/SE18G2/enneagramRegistration" method="post">
-			<!-- headerを入れます -->
 
 			<h1>自己分析</h1>
+			<br>
 			★まずエニアグラム診断を受け、その結果を入力してください。<br> <a
 				href="https://www.enneagram.ne.jp/about" target="_blank">エニアグラムとは</a><br>
 			*エニアグラムはAppleやIBMなどの企業でも採用されている性格診断の手法です。
-
+			<br>
 			<table>
 				<tr>
 					<td>1</td>
@@ -55,10 +56,8 @@
 					<td><input type="text" name="enneagram9"></td>
 				</tr>
 			</table>
-
+			<br>
 			<input class="btn btn-primary" type="submit" value="次へ">
-
-
 		</form>
 	</div>
 	<!-- javascript -->

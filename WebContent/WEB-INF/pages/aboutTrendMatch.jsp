@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
 <title>Trendmatchとは？</title>
 </head>
@@ -14,6 +15,10 @@
 	<nav class="navbar navbar-dark bg-dark">
 		<a class="navbar-brand" href="/SE18G2/AboutTrendMatch">About
 			TrendMatch</a>
+		<div align="right">
+			<a class="navbar-brand" href="/SE18G2/PrivacyPolicy">Privacy
+				Policy</a>
+		</div>
 	</nav>
 	<br>
 	<div class="container">

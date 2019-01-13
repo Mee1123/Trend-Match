@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
 <title>モチベーショングラフの作成</title>
 </head>
@@ -16,11 +17,11 @@
 	<div class="container">
 		<form action="/SE18G2/motivation" method="post">
 
-			<h2>モチベーショングラフの作成</h2>
+			<h1>モチベーショングラフの作成</h1>
 			<br> 手元に紙とペンを用意してください。<br> <br> 出生から現在を振り返り<br>
-			どんなときに喜び、どんなときに悲しんだのか考えてみよう<br> 
+			どんなときに喜び、どんなときに悲しんだのか考えてみよう<br>
+			<br>
 			<input class="btn btn-primary"type="submit" value="次へ">
-
 		</form>
 	</div>
 	<!-- javascript -->
