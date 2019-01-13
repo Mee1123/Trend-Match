@@ -54,6 +54,7 @@ public class AccountSearchInfoServlet extends HttpServlet {
 		// jspからformの内容を取り出して,LoginFormを作成.
 		String nickname = request.getParameter("nickname");
 		String graduate = request.getParameter("graduate");
+		System.out.println("AccountSearchInfoServlet.doPost:graduate="+graduate);
 		String department = request.getParameter("department");
 		String occupation_id_String = request.getParameter("occupation");
 		String sex_id_String = request.getParameter("sex");

@@ -94,12 +94,12 @@ public class UsersDAO extends DatabaseAccessor {
 				}
 				mysql = mysql + "freespace = '" + freespace + "' ";
 			}
-			if (!graduate.equals("")) {
+			if (graduate !=null) {
 				parameterCount++;
 				if (parameterCount != 2) {
 					mysql = mysql + " and ";
 				}
-				mysql = mysql + "graduate > '" + graduate + "' and graduate < '"+graduate+1+"'";
+				mysql = mysql + "graduate > '" + graduate + "' and graduate < '"+String.valueOf(graduate+1)+"'";
 			}
 			if (!occupation_id_String.equals("")) {
 				parameterCount++;

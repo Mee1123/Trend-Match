@@ -25,6 +25,7 @@
 			</div>
 			<div class="form-group">
 				職種:<select name="occupation">
+					<option value=""> - </option>
 					<option value="1">学部生</option>
 					<option value="2">大学院生</option>
 					<option value="3">農業・水産</option>
