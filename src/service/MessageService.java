@@ -15,7 +15,7 @@ public class MessageService {
 
 	public Boolean createMessage(MessageForm messageForm) {
 		try {
-			int receiveUserId = Integer.valueOf(messageForm.getReceiveUserId());
+			int receiveUserId = Integer.valueOf(messageForm.getReceiveUserIdString());
 			Boolean result = messagesDAO.insertMessage(messageForm.getSendUserId(), receiveUserId,
 					messageForm.getMessageContents());
 			return result;

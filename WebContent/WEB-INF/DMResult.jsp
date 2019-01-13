@@ -34,7 +34,7 @@
 		</c:forEach>
 	</table>
 	<%-- 表示中の相手の名前 --%>
-	<c:out value="${ Nickname}"/>
+	<c:out value="${user.getNickname()}"/>
 	<%-- チャット風表示 --%>
 	<c:forEach var = "message" items = "${messageList}">
 	<c:choose>
@@ -58,6 +58,13 @@
 	</c:when>
 	</c:choose>
 	</c:forEach>
+	<c:if test="${user.getId() != null}">
+		 <form action="/SE18G2/DMResult" method="post">
+			 <input type="hidden" name="toUserId" value=<c:out value="${user.getId()}"/>>
+			 <textarea name="message" rows="5" cols="200">本文</textarea>
+			 <input type="submit" value="送信">
+		 </form>
+	 </c:if>
 
 </body>
 </html>

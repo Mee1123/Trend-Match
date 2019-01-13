@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import form.DMResultForm;
+import form.MessageForm;
 import helper.SessionHelper;
 import model.Message;
 import service.MessageService;
@@ -44,21 +45,21 @@ public class DMResultServlet extends HttpServlet {
 			// セッションからユーザーIdの取得
 			HttpSession session = request.getSession();
 			int userId = (int) session.getAttribute("userID");
-			//対象ユーザーを取得
+			// 対象ユーザーを取得
 			String conversationUserIdString = request.getParameter("Id");
 			if (conversationUserIdString != null)
 				try {
-					//対象ユーザーIdをint変換
+					// 対象ユーザーIdをint変換
 					int conversationUserId = Integer.valueOf(conversationUserIdString);
 					System.out.println("DMResultServlet.Get:[chat open]userId=" + conversationUserIdString);
-					//chatリスト生成
+					// chatリスト生成
 					UserService userService = new UserService();
 					MessageService messageService = new MessageService();
 					ArrayList<Message> chatList = messageService.getMessageByUsers(userId, conversationUserId);
-					System.out.println("messageList="+chatList.get(0).getSendUserId());
+					System.out.println("messageList=" + chatList.get(0).getSendUserId());
 					request.setAttribute("messageList", chatList);
 					request.setAttribute("userId", userId);
-					request.setAttribute("Nickname", userService.accountView(conversationUserId).getNickname());
+					request.setAttribute("user", userService.accountView(conversationUserId));
 				} catch (Exception e) {
 					// TODO: handle exception
 					System.out.println("DMResultServlet.Get:[chat取得失敗]もしかして,不正なId");
@@ -85,8 +86,25 @@ public class DMResultServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		if (SessionHelper.sessionCheck(request, response)) {
+			System.out.println("DMResult.doPost:start");
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
+			response.getWriter().append("Served at: ").append(request.getContextPath());
+			// セッションからユーザーIdの取得
+			HttpSession session = request.getSession();
+			int userId = (int) session.getAttribute("userID");
+			// ユーザーからform情報の取得
+			String receiveUserId = request.getParameter("toUserId");
+			String messageContents = request.getParameter("message");
+			System.out.println("DMResult.doPost:receiveUserId="+receiveUserId);
+			MessageService messageService = new MessageService();
+			MessageForm messageForm = new MessageForm(userId, receiveUserId, messageContents);
+			if (messageService.createMessage(messageForm))
+			System.out.println("DMResult.doPost:success");
 			doGet(request, response);
-	}
 
+		}
+
+	}
 }
