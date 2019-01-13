@@ -94,12 +94,12 @@ public class UsersDAO extends DatabaseAccessor {
 				}
 				mysql = mysql + "freespace = '" + freespace + "' ";
 			}
-			if (!graduate.equals("")) {
+			if (graduate !=null) {
 				parameterCount++;
 				if (parameterCount != 2) {
 					mysql = mysql + " and ";
 				}
-				mysql = mysql + "graduate > '" + graduate + "' and graduate < '"+graduate+1+"'";
+				mysql = mysql + "graduate > '" + graduate + "' and graduate < '"+String.valueOf(graduate+1)+"'";
 			}
 			if (!occupation_id_String.equals("")) {
 				parameterCount++;
@@ -193,7 +193,6 @@ public class UsersDAO extends DatabaseAccessor {
 				user.setContact(resultSet.getString("contact"));
 				user.setDepartment(resultSet.getString("department"));
 				user.setFreespace(resultSet.getString("freespace"));
-
 				int enneagram[] = new int[9];// エニアグラム
 				enneagram[0] = resultSet.getInt("enneagram_1");
 				enneagram[1] = resultSet.getInt("enneagram_2");
@@ -418,7 +417,7 @@ public class UsersDAO extends DatabaseAccessor {
 		    }
     }
 
-	public void update(UpdateUserInfoForm form, int userId) {
+	public void update(UpdateUserInfoForm form, int userId, String hashPassword) {
 		System.out.println("DAO,1,success");
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -429,7 +428,7 @@ public class UsersDAO extends DatabaseAccessor {
 			connection = createConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, form.getMailAddress());
-			preparedStatement.setString(2, form.getPassword());
+			preparedStatement.setString(2, hashPassword);
 			preparedStatement.setString(3, form.getName());
 			preparedStatement.setInt(4, userId);
 			System.out.println("mysql    > " + preparedStatement.toString());
@@ -447,16 +446,18 @@ public class UsersDAO extends DatabaseAccessor {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			String sql = "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
-					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ?,"
-					+ "value_1_id = ?, value_2_id = ?, value_3_id = ? where user_id = ? ";
-			System.out.println("DAO,2,success");
+			String mysql= "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
+					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ? ";
+	    	if(value1 != 0)mysql = mysql +",value_1_id= ? ";
+	    	if(value2 != 0)mysql = mysql +",value_2_id= ? ";
+	    	if(value3 != 0)mysql = mysql +",value_3_id= ? ";
+	    	mysql = mysql + "where user_id = ?";
 			connection = createConnection();
-			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement = connection.prepareStatement(mysql);
 
 			preparedStatement.setString(1, form.getNickname());
 			preparedStatement.setString(2, form.getPicturepath());
-			preparedStatement.setDate(3, (Date) form.getGraduate());
+			preparedStatement.setDate(3, (Date) form.getGraduate_Int());
 			preparedStatement.setString(4, form.getContact());
 			preparedStatement.setString(5, form.getDepartment());
 			preparedStatement.setString(6, form.getFreespace());
@@ -468,12 +469,21 @@ public class UsersDAO extends DatabaseAccessor {
 			/*statement.setInt(10, values.get(0));
 			statement.setInt(11, values.get(1));
 			statement.setInt(12, values.get(2));*/
+	        int i = 10;
+	    	if(value1 != 0){
+		        preparedStatement.setInt(i, value1);
+		        i++;
+	    	};
+	    	if(value2 != 0){
+		        preparedStatement.setInt(i, value2);
+		        i++;
+	    	};
+	    	if(value3 != 0){
+		        preparedStatement.setInt(i, value3);
+		        i++;
+	    	}
 
-			preparedStatement.setInt(10, value1);
-			preparedStatement.setInt(11, value2);
-			preparedStatement.setInt(12, value3);
-
-			preparedStatement.setInt(13, userId);
+			preparedStatement.setInt(i, userId);
 			System.out.println("mysql    > " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
