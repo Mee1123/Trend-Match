@@ -160,10 +160,11 @@ public class UserService {
 		UsersDAO dao = new UsersDAO();
 		dao.deleteUser(user);
 	}
-	public void updateUserInfo(UpdateUserInfoForm form, int userId) {
+	public void updateUserInfo(UpdateUserInfoForm form, int userId) throws NoSuchAlgorithmException {
 		System.out.println("UserService.updateUserInfo:success");
 		UsersDAO dao = new UsersDAO();
-		dao.update(form, userId);
+		String hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
+		dao.update(form, userId,hashPassword);
 	}
 
 	public void updateAccountInfo(UpdateAccountInfoForm form, int userId, int value1, int value2, int value3) {
@@ -190,17 +191,23 @@ public class UserService {
   		ArrayList<SimilarityUserForm> similarityUsers = new ArrayList<>();
   		int enneagram1[] = user.getEnneagram();
   		ArrayList<Integer> userValues = user.getValue_id();
+		System.out.println("UserService.matching:類似度リストの計算を始めます."+users.size()+"人");
   		for (User instantUser: users) {
+  			System.out.println("UserService.matching:[類似度計算開始]対象userId="+instantUser.getId());
   			SimilarityUserForm similarityUserForm = new SimilarityUserForm();
   			similarityUserForm.setId(instantUser.getId());
+  			System.out.println("UserService.matching:[価値観計算開始]");
   			//価値観の一致率
   			int valueMatch=0;
+  			instantUser.createValues();
+  			System.out.println("ここは");
   			for(int userValue:userValues){
-  		//		System.out.println("sa-bisu:"+instantUser.getValue_id());
+  				System.out.println("sa-bisu:"+instantUser.getValue_id());
   				if(instantUser.getValue_id().contains(userValue)){
   	  				valueMatch+=5;
   	  			}
   			}
+ 			System.out.println("UserService.matching:価値観補正 = "+valueMatch);
   			//ユークリッド距離の計算
   			int enneagram2[] =instantUser.getEnneagram();
   			double similarity=0;
@@ -211,14 +218,14 @@ public class UserService {
   			System.out.println("UserService.matching:[ユークリッド距離の計算√前]ユークリッド距離^2 = "+similarity);
   			similarity = Math.sqrt(similarity);
   			System.out.println("UserService.matching:[ユークリッド距離の計算√後]ユークリッド距離 = "+similarity);
-  			System.out.println("UserService.matching:価値観補正 = "+valueMatch);
-  			//重みの計算
+ 			//重みの計算
   			similarity = 30 - similarity +valueMatch;
   			//
   			similarityUserForm.setSimilarity(similarity);
   			similarityUsers.add(similarityUserForm);
   			System.out.println("UserService.matching:類似度 ="+similarity);
 		}
+			System.out.println("UserService.matching:終了");
 		return similarityUsers;
 
 	}

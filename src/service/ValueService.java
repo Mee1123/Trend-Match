@@ -32,12 +32,13 @@ public class ValueService {
 		valuesDAO.insertValue(valueName);
 	}
 /**
- * 価値観の名前からIdと名前をValue型で返します.ない場合はDBに登録してその後登録したものを返します.
+ * 価値観の名前からIdと名前をValue型で返します.ない場合はDBに登録してその後登録したものを返します.引数が""の場合はnullを返します.
  * @param valueName
  * @return
  */
 	public Value getAndCreateValueByName(String valueName){
-		if (valueName.equals("")) {
+		System.out.println("ValueService.getAndCreateValueByName:valueName="+valueName);
+		if (valueName==null|| valueName.equals("")) {
 			return null;
 		}
 		Value value = valuesDAO.selectValueByName(valueName);
