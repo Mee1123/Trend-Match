@@ -4,7 +4,7 @@ import model.Message;
 
 public class SortHelper {
 	public static int messageCreatedAt(Message a,Message b) {
-		if (a.getCreatedAt().before(b.getCreatedAt())) {
+		if (a.getId()<(b.getId())) {
 			return 1;
 		} else {
 			return -1;
