@@ -21,6 +21,8 @@
 			どんな出来事があって、<br> どんなことを学び感じたのか言語化しよう<br> 深めることができれば<br>
 			自分の中で大切にしてきた価値観が見えてくるはず。<br> <br>
 			振り返るときには何故そう感じたのか？を大事にしよう。<br>
+			<br>
+			<img alt="personalHistory" src="picture/selfHistory.png"><br>
 			<br> <input class="btn btn-primary" type="submit" value="おしまい">
 
 		</form>
