@@ -32,7 +32,7 @@
 				ニックネーム※<input type="text" name="nickname"><br>
 			</p>
 			<p>
-				卒業年度<input type="text" name="graduate"><br>
+				卒業年度(西暦4桁で入力してください)※<input type="text" name="graduate" maxlength="4"><br>
 			</p>
 			<p>
 				所属<input type="text" name="department"><br>
@@ -72,7 +72,7 @@
 				<br>
 			</p>
 			<p>
-				価値観<br> <input type="text" name="valueId1" autocomplete="on"
+				価値観(最低一つは入力してください)<br> <input type="text" name="valueId1" autocomplete="on"
 					list="values">
 				<datalist id="values">
 					<c:forEach var="value" items="${values}">

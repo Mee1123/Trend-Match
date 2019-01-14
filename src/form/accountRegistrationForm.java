@@ -39,8 +39,8 @@ public class accountRegistrationForm extends model.User{
 			error.add(ValidationHelper.minimumText(1, getNickname(), "ニックネーム"));
 			System.out.println("ニックネームが短い");
 		}
-		if(ValidationHelper.maximumText(40, getNickname(), "ニックネーム")!=null){
-			error.add(ValidationHelper.maximumText(40, getNickname(), "ニックネーム"));
+		if(ValidationHelper.maximumText(10, getNickname(), "ニックネーム")!=null){
+			error.add(ValidationHelper.maximumText(10, getNickname(), "ニックネーム"));
 			System.out.println("ニックネームが長い");
 		}
 	}
@@ -67,8 +67,8 @@ public class accountRegistrationForm extends model.User{
 	}
 
 	public void freeSpaceValidation(){
-		if(ValidationHelper.maximumText(40,getFreespace(), "フリースペース")!=null){
-			error.add(ValidationHelper.maximumText(40, getFreespace(), "フリースペース"));
+		if(ValidationHelper.maximumText(200,getFreespace(), "フリースペース")!=null){
+			error.add(ValidationHelper.maximumText(200, getFreespace(), "フリースペース"));
 			System.out.println("フリースペースが長い");
 		}
 	}
