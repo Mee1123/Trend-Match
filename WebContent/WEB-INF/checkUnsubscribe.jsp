@@ -24,11 +24,12 @@
 			<div class="form_conf">
 				<input class="btn btn-danger" type="submit" value="はい">
 		</form>
-		<a href="/SE18G2/HeaderUserInfo"> <input class="btn btn-primary"
+		<form action="/SE18G2/HeaderUserInfo" method="get"> <input class="btn btn-primary"
 			type="submit" value="いいえ">
-		</a>
+		</form>
+			 </div>
 	</div>
-	</div>
+
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/SE18G2/CSS/js/bootstrap.min.js"></script>
