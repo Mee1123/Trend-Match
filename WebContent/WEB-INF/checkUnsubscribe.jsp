@@ -27,7 +27,7 @@
 		<form action="/SE18G2/HeaderUserInfo" method="get"> <input class="btn btn-primary"
 			type="submit" value="いいえ">
 		</form>
-		    </div>
+			 </div>
 	</div>
 
 	<!-- javascript -->
