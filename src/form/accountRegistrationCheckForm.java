@@ -1,6 +1,8 @@
 package form;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import helper.ValidationHelper;
 public class accountRegistrationCheckForm extends model.User{
@@ -24,6 +26,7 @@ public class accountRegistrationCheckForm extends model.User{
 		setFreespace(freeSpace);
 
 		nicknameValidation();//1~40
+		isNumMatch(graduate);
 		graduateValidation();//4
 		departmentValidation();//1~20
 		contactValidation();//1~40
@@ -37,6 +40,7 @@ public class accountRegistrationCheckForm extends model.User{
 
 
 	public void nicknameValidation(){
+		System.out.println(getNickname());
 		if (ValidationHelper.minimumText(1, getNickname(), "ニックネーム")!=null){
 			error.add(ValidationHelper.minimumText(1, getNickname(), "ニックネーム"));
 			System.out.println("ニックネームが短い");
@@ -48,9 +52,13 @@ public class accountRegistrationCheckForm extends model.User{
 	}
 
 	public void graduateValidation(){
-		if(ValidationHelper.maximumText(9, getGraduate_String(), "卒業年度")!=null){
-			error.add(ValidationHelper.maximumText(9, getGraduate_String(), "卒業年度"));
+		if(ValidationHelper.maximumText(8, getGraduate_String(), "卒業年度")!=null){
+			error.add(ValidationHelper.maximumText(8, getGraduate_String(), "卒業年度"));
 			System.out.println("卒業年度が長い");
+		}
+		if(ValidationHelper.minimumText(8, getGraduate_String(), "卒業年度")!=null){
+			error.add(ValidationHelper.minimumText(8, getGraduate_String(), "卒業年度"));
+			System.out.println("卒業年度が短い");
 		}
 	}
 
@@ -75,6 +83,13 @@ public class accountRegistrationCheckForm extends model.User{
 		}
 	}
 
+	public void isNumMatch(String graduate){
+		Pattern pattern = Pattern.compile("^[0-9]*$");
+		Matcher matcher = pattern.matcher(graduate);
+		if(matcher.matches()==false){
+			error.add("半角数字で入力してください");
+		}
+	}
 
 
 	public String getJoboffer_id_String() {
