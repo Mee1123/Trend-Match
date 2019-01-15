@@ -19,7 +19,7 @@
 			<tr>
 				<div class="form-group">
 					<td>
-					<a href=<c:out value="/SE18G2/AccountView?Id=${user.getUserId() }"/> >
+					<a href=<c:out value="/SE18G2/AccountView?userId=${user.getId() }"/> >
 					<c:out value="${user.getNickname()}" /></td></a>
 					<td><c:out value="${user.getFreespace()}" /></td>
 				</div>
