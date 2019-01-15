@@ -47,23 +47,32 @@ public class DMResultServlet extends HttpServlet {
 			int userId = (int) session.getAttribute("userID");
 			// 対象ユーザーを取得
 			String conversationUserIdString = request.getParameter("Id");
+			int conversationUserId;
+			UserService userService = new UserService();
 			if (conversationUserIdString != null)
 				try {
 					// 対象ユーザーIdをint変換
-					int conversationUserId = Integer.valueOf(conversationUserIdString);
+					conversationUserId = Integer.valueOf(conversationUserIdString);
 					System.out.println("DMResultServlet.Get:[chat open]userId=" + conversationUserIdString);
-					// chatリスト生成
-					UserService userService = new UserService();
-					MessageService messageService = new MessageService();
-					ArrayList<Message> chatList = messageService.getMessageByUsers(userId, conversationUserId);
-					System.out.println("messageList=" + chatList.get(0).getSendUserId());
-					request.setAttribute("messageList", chatList);
 					request.setAttribute("userId", userId);
 					request.setAttribute("user", userService.accountView(conversationUserId));
+					try {
+						// chatリスト生成
+						MessageService messageService = new MessageService();
+						ArrayList<Message> chatList = messageService.getMessageByUsers(userId, conversationUserId);
+						System.out.println("messageList=" + chatList.get(0).getSendUserId());
+						request.setAttribute("messageList", chatList);
+
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println("DMResultServlet.Get:[chatなし]新しい会話");
+					}
+
 				} catch (Exception e) {
 					// TODO: handle exception
 					System.out.println("DMResultServlet.Get:[chat取得失敗]もしかして,不正なId");
 				}
+
 
 			// 会話したユーザーのニックネームと最新会話のリスト作成
 			MessageService messageService = new MessageService();
