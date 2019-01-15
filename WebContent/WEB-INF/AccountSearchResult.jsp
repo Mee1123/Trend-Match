@@ -18,7 +18,9 @@
 		<c:forEach var="user" items="${users}">
 			<tr>
 				<div class="form-group">
-					<td><c:out value="${user.getNickname()}" /></td>
+					<td>
+					<a href=<c:out value="/SE18G2/AccountView?Id=${user.getUserId() }"/> >
+					<c:out value="${user.getNickname()}" /></td></a>
 					<td><c:out value="${user.getFreespace()}" /></td>
 				</div>
 			</tr>
