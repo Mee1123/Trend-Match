@@ -21,6 +21,7 @@
 			<br> 手元に紙とペンを用意してください。<br> <br> 出生から現在を振り返り<br>
 			どんなときに喜び、どんなときに悲しんだのか考えてみよう<br>
 			<br>
+			<img alt="motivationGraph" src="picture/motivation.png"><br>
 			<input class="btn btn-primary"type="submit" value="次へ">
 		</form>
 	</div>
