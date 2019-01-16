@@ -156,8 +156,9 @@
 				</form>
 
 
-
+<a href=<c:out value="/SE18G2/DMResult?Id=${user.getId() }"/> >
 連絡
+</a>
 </c:when>
 		</c:choose>
 	</div>
