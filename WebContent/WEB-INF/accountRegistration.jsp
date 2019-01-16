@@ -29,13 +29,13 @@
 				<input type="radio" name="jobOffer" value="内定なし" checked="checked">内定なし<br>
 			</p>
 			<p>
-				ニックネーム※<input type="text" name="nickname"><br>
+				ニックネーム(40文字以下)※<input type="text" name="nickname"><br>
 			</p>
 			<p>
 				卒業年度(西暦4桁で入力してください)※<input type="text" name="graduate" maxlength="4"><br>
 			</p>
 			<p>
-				所属<input type="text" name="department"><br>
+				所属(20文字以下)<input type="text" name="department"><br>
 			</p>
 			<p>
 				職種<select name="occupation">
@@ -64,10 +64,10 @@
 				</select><br>
 			</p>
 			<p>
-				連絡先<input type="text" name="contact"><br>
+				連絡先(40文字以下)<input type="text" name="contact"><br>
 			</p>
 			<p>
-				フリースペース(アピールポイントや興味があること等を書いてください)<br>
+				フリースペース(200文字以下でアピールポイントや興味があること等を書いてください)<br>
 				<textarea name=freespace maxlength=200 cols="40" rows="5"></textarea>
 				<br>
 			</p>
