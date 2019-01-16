@@ -73,9 +73,9 @@ public class DeleteUserCheckServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("Serv_userID");
-
-
-
+		HttpSession session=request.getSession();
+		int userid = (int) session.getAttribute("userID");
+		if(userid==1){
 			String userIdString = request.getParameter("id");
 			System.out.println(userIdString);
 			//User user = new User();
@@ -113,7 +113,7 @@ public class DeleteUserCheckServlet extends HttpServlet {
 
 */
 
-
+		}
 		}
 
 }
