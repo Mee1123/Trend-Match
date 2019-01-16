@@ -149,12 +149,12 @@
 			</c:when>
 			<c:when test="${session ==2 }">
 通報
-
+<c:if test="${session == 0 }">
 <form action="/SE18G2/DeleteUser" method="post">
 					<input type="hidden" name="id" value="${user.getId()}"> <input
 						type="submit" value="削除">
 				</form>
-
+</c:if>
 
 
 連絡
