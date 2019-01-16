@@ -20,9 +20,9 @@
 	<div class="container">
 		<h1>ユーザー登録</h1>
 		<form action="/SE18G2/userRegistration" method="post">
-			氏名:<input class="form-control" type="text" name="userName"><br>
-			メールアドレス:<input class="form-control" type="text" name="mailAddress"><br>
-			パスワード:<input class="form-control" type="password" name="password"><br>
+			氏名(20文字以下):<input class="form-control" type="text" name="userName"><br>
+			メールアドレス(40文字以下):<input class="form-control" type="text" name="mailAddress"><br>
+			パスワード(8文字以上20文字以下):<input class="form-control" type="password" name="password"><br>
 			パスワード確認用:<input class="form-control" type="password" name="password2"><br>
 			<input class="btn btn-primary" type="submit" value="登録">
 		</form>
