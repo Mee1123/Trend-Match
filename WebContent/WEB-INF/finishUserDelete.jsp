@@ -16,7 +16,7 @@
 <jsp:include page="headerForAdmin.jsp"/>
 
 <h1>ユーザー削除完了画面</h1>
-<form action="/SE18G2/finishUserDelete" method="post">
+
 	ユーザー情報<br>
    <div class="form-group">
 			ニックネーム:
@@ -119,8 +119,8 @@
 		</table>
 		</div>
 このユーザーを削除しました
-<input type="submit" value="トップ画面へ">
-</form>
+		<a href="/SE18G2/Top"><input class="btn btn-primary" type="submit" value="TOP画面へ"></a>
+
 
 
 
