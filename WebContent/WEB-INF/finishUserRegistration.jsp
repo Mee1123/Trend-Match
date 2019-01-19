@@ -12,6 +12,15 @@
 <title>ユーザー登録完了</title>
 </head>
 <body>
+	<nav class="navbar navbar-dark bg-dark">
+		<a class="navbar-brand" href="/SE18G2/AboutTrendMatch">About
+			TrendMatch</a>
+		<div align="right">
+			<a class="navbar-brand" href="/SE18G2/PrivacyPolicy">Privacy
+				Policy</a>
+		</div>
+	</nav>
+	<br>
 	<div class="container">
 		<form action="/SE18G2/finishUserRegistration" method="post">
 			<h1>登録が完了しました</h1>
