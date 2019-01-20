@@ -55,7 +55,7 @@
 			<div class="form-group">
 				<label for="graduate">卒業年度※</label> <input
 					class="form-control" type="text" name="graduate" id="graduate"
-					value="<%=user.getGraduate()%>" maxlength="4">
+					value="<%=user.getGraduate()%>">
 			</div>
 			<div class="form-group">
 				<label for="department">所属(20文字以下)</label> <input
