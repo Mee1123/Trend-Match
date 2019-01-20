@@ -36,7 +36,7 @@
 	%>
 	<!-- コンテンツ -->
 	<div class="container">
-		<h2 class="page-header">ユーザー情報編集</h2>
+		<h1 class="page-header">ユーザー情報編集</h1>
 		<br>
 		<form action="/SE18G2/user/update" method="post">
 			<div class="form-group">

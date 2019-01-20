@@ -18,11 +18,8 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/header.jsp" />
-	<!-- ナビゲーションバー -->
-	<!-- コンテンツ -->
 	<div class="container">
 		<h1 class="page-header">アカウント情報編集</h1>
-		<br>
 		<form action="/SE18G2/account/update" method="post">
 			<div class="form-group">
 				<%
