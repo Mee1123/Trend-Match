@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class DatabaseAccessor {
 	private final static String SERVER_NAME = "localhost";
-
+	//deployはse18g2_db
 	private final static String DATABASE_NAME = "trendmatch";
 
 	private final static String USER_NAME = "se18g2";
