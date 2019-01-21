@@ -6,65 +6,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
- <!--
-     a       {display:block;width:100%;height:100%;}
- -->
- </style>
- <!-- CSS -->
+<!-- <style type="text/css">
+a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+</style> -->
+<!-- CSS -->
+<link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <link rel="stylesheet" href="/SE18G2/CSS/css/chat.css">
 <meta charset="UTF-8">
 <title>メッセージボックス</title>
 </head>
 <body>
-<h1>メッセージボックス</h1>
-	<table border="1">
-		<tr>
-			<td>ニックネーム</td>
-		</tr>
-		<c:forEach var="user" items="${usersList}">
+	<jsp:include page="/WEB-INF/header.jsp" />
+	<div class="container">
+		<h1>メッセージボックス</h1>
+		<table border="1">
 			<tr>
-				<td width="200" height="30">
-					<a href=<c:out value="/SE18G2/DMResult?Id=${user.getUserId() }"/> >
-					<c:out value="${user.getUserNickname()}" />
-					<c:out value="${user.getMessageContents()}"/>
-					</a>
-					</td>
+				<td align="center">ニックネーム</td>
 			</tr>
+			<c:forEach var="user" items="${usersList}">
+				<tr>
+					<td width="200" height="30" align="center"><a
+						href=<c:out value="/SE18G2/DMResult?Id=${user.getUserId() }"/>>
+							<c:out value="${user.getUserNickname()}" /> <c:out
+								value="${user.getMessageContents()}" />
+					</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+		<%-- 表示中の相手の名前 --%>
+		<c:out value="${user.getNickname()}" />
+		<%-- チャット風表示 --%>
+		<c:forEach var="message" items="${messageList}">
+			<c:choose>
+				<c:when test="${message.getSendUserId() == userId}">
+					<div class="kaiwa">
+						<div class="kaiwa-text-right">
+							<p class="kaiwa-text">
+								<c:out value="${message.getMessageContents() }"></c:out>
+							</p>
+						</div>
+					</div>
+				</c:when>
+				<c:when test="${message.getSendUserId() != userId}">
+					<div class="kaiwa">
+						<div class="kaiwa-text-left">
+							<p class="kaiwa-text">
+								<c:out value="${message.getMessageContents() }"></c:out>
+							</p>
+						</div>
+					</div>
+				</c:when>
+			</c:choose>
 		</c:forEach>
-	</table>
-	<%-- 表示中の相手の名前 --%>
-	<c:out value="${user.getNickname()}"/>
-	<%-- チャット風表示 --%>
-	<c:forEach var = "message" items = "${messageList}">
-	<c:choose>
-	<c:when test="${message.getSendUserId() == userId}">
-		<div class="kaiwa">
-			<div class="kaiwa-text-right">
-				<p class="kaiwa-text">
-		 		<c:out value="${message.getMessageContents() }"></c:out>
-				</p>
-			 </div>
-		</div>
-	</c:when>
-	<c:when test="${message.getSendUserId() != userId}">
-		<div class="kaiwa">
- 			<div class="kaiwa-text-left">
-				<p class="kaiwa-text">
-		 		<c:out value="${message.getMessageContents() }"></c:out>
-				</p>
-			 </div>
-		</div>
-	</c:when>
-	</c:choose>
-	</c:forEach>
-	<c:if test="${user.getId() != null}">
-		 <form action="/SE18G2/DMResult" method="post">
-			 <input type="hidden" name="toUserId" value=<c:out value="${user.getId()}"/>>
-			 <textarea name="message" rows="5" cols="200">本文</textarea>
-			 <input type="submit" value="送信">
-		 </form>
-	 </c:if>
-
+		<c:if test="${user.getId() != null}">
+			<form action="/SE18G2/DMResult" method="post">
+				<input type="hidden" name="toUserId"
+					value=<c:out value="${user.getId()}"/>>
+				<textarea name="message" rows="5" cols="200">本文</textarea>
+				<input type="submit" value="送信">
+			</form>
+		</c:if>
+	</div>
+	<!-- javascript -->
+	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/SE18G2/CSS/js/bootstrap.min.js"></script>
 </body>
 </html>

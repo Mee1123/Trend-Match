@@ -36,25 +36,25 @@
 	%>
 	<!-- コンテンツ -->
 	<div class="container">
-		<h2 class="page-header">ユーザー情報編集</h2>
+		<h1 class="page-header">ユーザー情報編集</h1>
 		<br>
 		<form action="/SE18G2/user/update" method="post">
 			<div class="form-group">
 				<div class="sideborder">
-					<label for="name">氏名</label> <input class="form-control"
+					<label for="name">氏名(20文字以下)</label> <input class="form-control"
 						type="text" name="name" id="name" value="<%=user.getName()%>">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="sideborder">
-					<label for="description">メールアドレス</label> <input
+					<label for="description">メールアドレス(40文字以下)</label> <input
 						class="form-control" name="mailaddress" id="mailaddress"
 						value="<%=user.getMailAddress()%>">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="sideborder">
-					<label for="password">新しいパスワードを入力してください</label> <input
+					<label for="password">新しいパスワード(8文字以上20文字以下)</label> <input
 						class="form-control" type="password" name="password" id="password">
 				</div>
 				<br>

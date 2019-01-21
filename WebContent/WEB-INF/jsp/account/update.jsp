@@ -19,8 +19,6 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/header.jsp" />
-	<!-- ナビゲーションバー -->
-	<!-- コンテンツ -->
 	<div class="container">
 		<h1 class="page-header">アカウント情報編集</h1>
 		<br> ※は必須項目です <br>

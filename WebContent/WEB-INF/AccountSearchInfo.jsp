@@ -7,25 +7,28 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
 <title>アカウント検索</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp" />
 	<div class="container">
+		<h1>アカウント検索</h1>
 		<form action="/SE18G2/AccountSearchInfo" method="post">
 			<div class="form-group">
 				ニックネーム:<input class="form-control" type="text" name="nickname"><br>
 			</div>
 			<div class="form-group">
-				卒業年度:<input class="form-control" type="text" name="graduate" maxlength="4"><br>
+				卒業年度:<input class="form-control" type="text" name="graduate"
+					maxlength="4"><br>
 			</div>
 			<div class="form-group">
 				所属:<input class="form-control" type="text" name="department"><br>
 			</div>
 			<div class="form-group">
 				職種:<select name="occupation">
-					<option value=""> - </option>
+					<option value="">-</option>
 					<option value="1">学部生</option>
 					<option value="2">大学院生</option>
 					<option value="3">農業・水産</option>
