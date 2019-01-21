@@ -148,19 +148,20 @@
 				<br>
 			</c:when>
 			<c:when test="${session ==2 }">
-通報
-<c:if test="${session == 0 }">
-<form action="/SE18G2/DeleteUser" method="post">
-					<input type="hidden" name="id" value="${user.getId()}"> <input
-						type="submit" value="削除">
-				</form>
-</c:if>
+				<button class="btn btn-danger">通報</button>
+				<c:if test="${session == 0 }">
+					<form action="/SE18G2/DeleteUser" method="post">
+						<input type="hidden" name="id" value="${user.getId()}"> <input
+							type="submit" value="削除">
+					</form>
+				</c:if>
 
-<a href=<c:out value="/SE18G2/DMResult?Id=${user.getId() }"/> >
-連絡
-</a>
-</c:when>
+				<a href=<c:out value="/SE18G2/DMResult?Id=${user.getId() }"/>>
+					<button class="btn btn-primary">Message</button>
+				</a>
+			</c:when>
 		</c:choose>
+		<br> <br>
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
