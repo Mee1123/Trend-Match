@@ -55,20 +55,18 @@ public class UpdateUserInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-
 		request.setCharacterEncoding("UTF-8");
+
+		String name = request.getParameter("name");
 		String mailaddress = request.getParameter("mailaddress");
 		String password = request.getParameter("password");
-		String name = request.getParameter("name");
+		String password2 = request.getParameter("password2");
 
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
-		UpdateUserInfoForm form = new UpdateUserInfoForm(mailaddress, password, name);
-		System.out.println(form.getName());
-		System.out.println(form.getPassword());
-		System.out.println(form.getMailAddress());
+		UpdateUserInfoForm form = new UpdateUserInfoForm(name, mailaddress, password, password2);
+
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			System.out.println("エラーなし");
@@ -88,10 +86,13 @@ public class UpdateUserInfoServlet extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/updateFinished.jsp");
 				dispatcher.forward(request, response);
 			} else {
+				request.setCharacterEncoding("UTF-8");
 				request.setAttribute("form", form);
 				doGet(request, response);
 			}
 		}else {
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html; charset=UTF-8");
 			request.setAttribute("form", form);
 			doGet(request, response);
 		}
