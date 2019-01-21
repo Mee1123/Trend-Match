@@ -9,22 +9,30 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
 <title>アカウント検索結果</title>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp" />
 	<div class="container">
-		<c:forEach var="user" items="${users}">
+		<h1>アカウント検索結果</h1>
+		<table border="1">
 			<tr>
-				<div class="form-group">
-					<td>
-					<a href=<c:out value="/SE18G2/AccountView?userId=${user.getId() }"/> >
-					<c:out value="${user.getNickname()}" /></td></a>
-					<td><c:out value="${user.getFreespace()}" /></td>
-				</div>
+				<td align="center">ニックネーム</td>
+				<td align="center">フリースペース</td>
 			</tr>
-		</c:forEach>
+			<c:forEach var="user" items="${users}">
+				<tr>
+					<div class="form-group">
+						<td align="center"><a
+							href=<c:out value="/SE18G2/AccountView?userId=${user.getId() }"/>>
+								<c:out value="${user.getNickname()}" /></td>
+					</a>
+					<td align="center"><c:out value="${user.getFreespace()}" /></td>
+					</div>
+				</tr>
+			</c:forEach>
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
