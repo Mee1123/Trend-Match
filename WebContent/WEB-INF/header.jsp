@@ -24,7 +24,7 @@
 	<nav>
 		<ul>
 			<li><a href="/SE18G2/Top"><img
-					src="/SE18G2/header/home(black).jpg"><br>Home</a></li>
+					src="/SE18G2/header/home(black).jpg"><br>Top</a></li>
 			<li><a href="/SE18G2/AccountView"><img
 					src="/SE18G2/header/account(black).jpg"><br>ACCOUNT</a></li>
 			<li><a href="/SE18G2/DMResult"><img
