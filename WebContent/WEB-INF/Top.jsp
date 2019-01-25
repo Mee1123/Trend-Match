@@ -18,6 +18,7 @@
 	<div class="container">
 		<h1>アカウント保持者のトップページ</h1>
 		<table border="1">
+		<caption>性格傾向によるマッチング結果</caption>
 			<tr>
 				<td align="center">ニックネーム</td>
 				<td align="center">フリースペース</td>
@@ -34,9 +35,10 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<a href="AccountSearchInfo"><button
+				class="btn btn-primary" style="position: absolute; left: 50%">アカウント検索</button></a>
 		<br> <a href="AccountMatchingResult"><button
-				class="btn btn-primary">もっと見る</button></a> <a href="AccountSearchInfo"><button
-				class="btn btn-primary">アカウント検索</button></a>
+				class="btn btn-primary">もっと見る</button></a>
 
 	</div>
 	<!-- javascript -->
