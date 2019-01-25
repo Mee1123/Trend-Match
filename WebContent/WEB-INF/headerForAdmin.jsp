@@ -23,7 +23,7 @@
 	<nav>
 		<ul>
 			<li><a href="/SE18G2/Top"><img
-					src="/SE18G2/header/home(black).jpg" alt="home"><br>Home</a></li>
+					src="/SE18G2/header/home(black).jpg" alt="home"><br>Top</a></li>
 			<li><img src="/SE18G2/header/account(gray).jpg"><br>ACCOUNT</li>
 			<li><a href="/SE18G2/DMResult"><img
 					src="/SE18G2/header/DM(black).jpg"><br>E-BLAST</a></li>
