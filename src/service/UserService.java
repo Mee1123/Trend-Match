@@ -90,6 +90,14 @@ public class UserService {
 		return user;
 	}
 
+	public User findUser(String mailAddress){
+		System.out.println("UserService.findUser:Success");
+		UsersDAO dao = new UsersDAO();
+		User user = new User();
+		user = dao.selectUserByMailAddress(mailAddress);
+		return user;
+	}
+
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
 		//型変換の必要なし
 		String name = form.getName();
