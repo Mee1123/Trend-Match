@@ -22,8 +22,7 @@
 	</nav>
 	<br>
 	<div class="container">
-
-		<h1>ユーザー登録</h1>
+		<h1>ユーザー登録(全て入力必須項目です)</h1>
 		<form action="/SE18G2/userRegistration" method="post">
 			氏名(20文字以下):<input class="form-control" type="text" name="userName"><br>
 			メールアドレス(40文字以下):<input class="form-control" type="text" name="mailAddress"><br>

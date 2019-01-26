@@ -21,14 +21,18 @@
 			<h1>自己分析</h1>
 			<br>
 			★まずエニアグラム診断を受け、その結果を入力してください。<br> <a
-				href="https://www.enneagram.ne.jp/about" target="_blank">エニアグラムとは</a><br>
-			*エニアグラムはAppleやIBMなどの企業でも採用されている性格診断の手法です。
+				href="https://www.enneagram.ne.jp/about" target="_blank"><input class="btn btn-primary" type="button" value="エニアグラムとは"></a><br>
+			エニアグラムはAppleやIBMなどの企業でも採用されている性格診断の手法です。<br>
+			<a href="https://www.enneagram.ne.jp/about/diagnosis/dns01" target="blank">こちら</a>
+			からエニアグラム診断が受けられます。<br>
+			タイプ1～タイプ9のチェック数を以下に入力してください。
+			<br>
 			<br>
 			<table>
 				<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
+					<td>タイプ1</td>
+					<td>タイプ2</td>
+					<td>タイプ3</td>
 				</tr>
 				<tr>
 					<td><input type="text" name="enneagram1"></td>
@@ -36,9 +40,9 @@
 					<td><input type="text" name="enneagram3"></td>
 				</tr>
 				<tr>
-					<td>4</td>
-					<td>5</td>
-					<td>6</td>
+					<td>タイプ4</td>
+					<td>タイプ5</td>
+					<td>タイプ6</td>
 				</tr>
 				<tr>
 					<td><input type="text" name="enneagram4"></td>
@@ -46,9 +50,9 @@
 					<td><input type="text" name="enneagram6"></td>
 				</tr>
 				<tr>
-					<td>7</td>
-					<td>8</td>
-					<td>9</td>
+					<td>タイプ7</td>
+					<td>タイプ8</td>
+					<td>タイプ9</td>
 				</tr>
 				<tr>
 					<td><input type="text" name="enneagram7"></td>
