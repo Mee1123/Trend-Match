@@ -211,7 +211,7 @@ public class accountRegistrationServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			} else {
-				request.setAttribute("form", form);
+				request.setAttribute("form", form.getError());
 				doGet(request, response);
 			}
 

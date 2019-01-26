@@ -66,13 +66,13 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		System.out.println("formから戻りました");
 
 		HttpSession session = request.getSession();
-    
+
 		int userId = (int) session.getAttribute("userID");
 		System.out.println("エニアグラム登録:userId="+userId);
-		
+
 		System.out.println("セッションからID引っ張る");
 		System.out.println(userId);
-    
+
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if(form.getError().isEmpty()){
 			UserService service = new UserService();
@@ -87,11 +87,11 @@ public class enneagramRegistrationServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			else {
-				request.setAttribute("form", form);
+				request.setAttribute("form", form.getError());
 				doGet(request, response);
 				}
 		}else {
-			request.setAttribute("form", form);
+			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
 

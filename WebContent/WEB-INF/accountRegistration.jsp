@@ -18,7 +18,8 @@
 	<div class="container">
 		<form action="/SE18G2/accountRegistration" method="post"
 			enctype="multipart/form-data">
-			<h1>アカウント登録(※は必須項目です)</h1>
+			<h1>アカウント登録(※は必須項目です)<br><span class="label label-denger">${form}</span></h1>
+
 			<br>
 			<!--
 <input type="file" name="file" size="30"/><br>

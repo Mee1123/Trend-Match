@@ -18,7 +18,8 @@
 	<div class="container">
 		<form action="/SE18G2/enneagramRegistration" method="post">
 
-			<h1>自己分析</h1>
+			<h1>自己分析<span class="label label-denger">${form}</span></h1>
+
 			<br>
 			★まずエニアグラム診断を受け、その結果を入力してください。<br> <a
 				href="https://www.enneagram.ne.jp/about" target="_blank"><input class="btn btn-primary" type="button" value="エニアグラムとは"></a><br>

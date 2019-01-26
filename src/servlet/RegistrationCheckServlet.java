@@ -55,7 +55,7 @@ public class RegistrationCheckServlet extends HttpServlet {
 		System.out.println("RegistrationCheckServlet");
 		userRegistrationForm form = new userRegistrationForm(userName,mailAddress,password,password2);
 		System.out.println("formから戻りました");
-
+		System.out.println("RegistrationCheckServlet"+form.getError());
 		if(form.getError().isEmpty()){
 			//System.out.println("エラーなし");
 			request.setAttribute("userName", userName);
@@ -67,7 +67,7 @@ public class RegistrationCheckServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}else{
 			System.out.println("エラーあり");
-			request.setAttribute("form", form);
+			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
 
