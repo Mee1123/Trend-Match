@@ -87,13 +87,13 @@ public class UpdateUserInfoServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			} else {
 				request.setCharacterEncoding("UTF-8");
-				request.setAttribute("form", form);
+				request.setAttribute("form", form.getError());
 				doGet(request, response);
 			}
 		}else {
 			request.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html; charset=UTF-8");
-			request.setAttribute("form", form);
+			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
 	}

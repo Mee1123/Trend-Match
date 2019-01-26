@@ -23,7 +23,7 @@
 	</nav>
 	<br>
 	<div class="container">
-		<h1 class="page-header">Login</h1>
+		<h1 class="page-header">Login<span class="label label-denger">${form}</span></h1>
 		<br>
 		<form action="/SE18G2/Login" method="post">
 			<div class="form-group">

@@ -98,7 +98,7 @@ public class AccountSearchInfoServlet extends HttpServlet {
 				for (String error : form.getError()) {
 					System.out.println("e2"+error);
 				}
-				request.setAttribute("form", form);
+				request.setAttribute("form", form.getError());
 				doGet(request, response);
 			}
 		} else {
@@ -106,7 +106,7 @@ public class AccountSearchInfoServlet extends HttpServlet {
 			for (String error : form.getError()) {
 				System.out.println("e1"+error);
 			}
-			request.setAttribute("form", form);
+			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
 	}

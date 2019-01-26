@@ -156,13 +156,13 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 			} else {
 				System.out.println("UpdateAccountInfoServlet[post]:[formError]");
 				for(String error:form.getError())System.out.println(error);
-				request.setAttribute("form", form);
+				request.setAttribute("form", form.getError());
 				doGet(request, response);
 			}
 		} else {
 			System.out.println("UpdateAccountInfoServlet[post]:[formError]");
 			for(String error:form.getError())System.out.println(error);
-			request.setAttribute("form", form);
+			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
 	}

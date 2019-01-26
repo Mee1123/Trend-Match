@@ -134,7 +134,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 
 		}else{
 			System.out.println("エラーあり");
-			request.setAttribute("form", form);
+			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
 	}
