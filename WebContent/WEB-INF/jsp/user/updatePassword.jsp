@@ -36,23 +36,10 @@
 	%>
 	<!-- コンテンツ -->
 	<div class="container">
-		<h1 class="page-header">ユーザー情報編集</h1>
+		<h1 class="page-header">パスワード編集</h1>
 		<br>
-		<form action="/SE18G2/user/update" method="post">
+		<form action="/SE18G2/user/updatePassword" method="post">
 			<div class="form-group">
-				<div class="sideborder">
-					<label for="name">氏名(20文字以下)</label> <input class="form-control"
-						type="text" name="name" id="name" value="<%=user.getName()%>">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="sideborder">
-					<label for="description">メールアドレス(40文字以下)</label> <input
-						class="form-control" name="mailaddress" id="mailaddress"
-						value="<%=user.getMailAddress()%>">
-				</div>
-			</div>
-			<!-- <div class="form-group">
 				<div class="sideborder">
 					<label for="password">新しいパスワード(8文字以上20文字以下)</label> <input
 						class="form-control" type="password" name="password" id="password">
@@ -62,19 +49,10 @@
 					<label for="password2">パスワード確認用</label> <input class="form-control"
 						type="password" name="password2" id="password2">
 				</div>
-				<br> -->
-				<button type="submit" class="btn btn-primary">登録</button>
-				<div align="right">
-				<a href="/SE18G2/user/updatePassword"><input class="btn btn-primary"
-				type="button" value="パスワード変更"></a>
-				</div>
 				<br>
-			<!-- </div> -->
+				<button type="submit" class="btn btn-primary">登録</button>
+			</div>
 		</form>
-		<div align="right">
-			<a href="/SE18G2/Unsubscribe"><input class="btn btn-danger"
-				type="button" value="退会"></a>
-		</div>
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>

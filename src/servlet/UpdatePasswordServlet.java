@@ -17,14 +17,14 @@ import service.UserService;
 /**
  * Servlet implementation class UpdateUserInfoServlet
  */
-@WebServlet("/user/update")
-public class UpdateUserInfoServlet extends HttpServlet {
+@WebServlet("/user/updatePassword")
+public class UpdatePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UpdateUserInfoServlet() {
+	public UpdatePasswordServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,9 +35,10 @@ public class UpdateUserInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setCharacterEncoding("UTF-8");
 
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
@@ -45,7 +46,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
 		User user = new User();
 		user = userService.getMyInfo(userId);
 		request.setAttribute("user", user);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/update.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/updatePassword.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -59,8 +60,8 @@ public class UpdateUserInfoServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String mailaddress = request.getParameter("mailaddress");
-		//String password = request.getParameter("password");
-		//String password2 = request.getParameter("password2");
+		String password = request.getParameter("password");
+		String password2 = request.getParameter("password2");
 
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
