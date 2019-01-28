@@ -36,9 +36,9 @@
 					<td>タイプ3</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="enneagram1"></td>
-					<td><input type="text" name="enneagram2"></td>
-					<td><input type="text" name="enneagram3"></td>
+					<td><input type="text" name="enneagram1" value="0"></td>
+					<td><input type="text" name="enneagram2" value="0"></td>
+					<td><input type="text" name="enneagram3" value="0"></td>
 				</tr>
 				<tr>
 					<td>タイプ4</td>
@@ -46,9 +46,9 @@
 					<td>タイプ6</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="enneagram4"></td>
-					<td><input type="text" name="enneagram5"></td>
-					<td><input type="text" name="enneagram6"></td>
+					<td><input type="text" name="enneagram4" value="0"></td>
+					<td><input type="text" name="enneagram5" value="0"></td>
+					<td><input type="text" name="enneagram6" value="0"></td>
 				</tr>
 				<tr>
 					<td>タイプ7</td>
@@ -56,9 +56,9 @@
 					<td>タイプ9</td>
 				</tr>
 				<tr>
-					<td><input type="text" name="enneagram7"></td>
-					<td><input type="text" name="enneagram8"></td>
-					<td><input type="text" name="enneagram9"></td>
+					<td><input type="text" name="enneagram7" value="0"></td>
+					<td><input type="text" name="enneagram8" value="0"></td>
+					<td><input type="text" name="enneagram9" value="0"></td>
 				</tr>
 			</table>
 			<br>

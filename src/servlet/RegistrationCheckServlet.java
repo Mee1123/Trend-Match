@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import form.userRegistrationForm;
-import model.User;
 import service.UserService;
 
 /**
@@ -64,7 +63,8 @@ public class RegistrationCheckServlet extends HttpServlet {
 		if (form.getError().isEmpty()) {
 
 			UserService service = new UserService();
-			User findUserResult = service.findUser(mailAddress);
+			String findUserResult = service.findUser(mailAddress);
+			System.out.println("RegistrationCheckServlet.doPost:"+findUserResult);
 			if (findUserResult == null) {
 
 
