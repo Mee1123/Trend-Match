@@ -65,7 +65,8 @@ public class UpdateUserInfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
-		UpdateUserInfoForm form = new UpdateUserInfoForm(name, mailaddress, password, password2);
+		//UpdateUserInfoForm form = new UpdateUserInfoForm(name, mailaddress, password, password2);
+		UpdateUserInfoForm form = new UpdateUserInfoForm(name, mailaddress);
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {

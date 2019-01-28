@@ -7,15 +7,16 @@ import helper.ValidationHelper;
 public class UpdateUserInfoForm extends model.User {
 	private ArrayList<String> error = new ArrayList<>();
 
-	public UpdateUserInfoForm(String name, String email, String password, String password2) {
+	//public UpdateUserInfoForm(String name, String email, String password, String password2) {
+	public UpdateUserInfoForm(String name, String email) {
 		setName(name);
 		setMailAddress(email);
-		setPassword(password);
-		setPassword(password2);
+		//setPassword(password);
+		//setPassword(password2);
 		nameValidation();
 		emailValidation();
-		passwordValidation();
-		passwordCheck(password, password2);
+		//passwordValidation();
+		//passwordCheck(password, password2);
 
 		System.out.println("Form,1,success");
 	}

@@ -13,6 +13,7 @@ import form.AccountSearchInfoForm;
 import form.LoginForm;
 import form.SimilarityUserForm;
 import form.UpdateAccountInfoForm;
+import form.UpdatePasswordForm;
 import form.UpdateUserInfoForm;
 import form.accountRegistrationForm;
 import form.checkUserRegistrationForm;
@@ -163,8 +164,15 @@ public class UserService {
 	public void updateUserInfo(UpdateUserInfoForm form, int userId) throws NoSuchAlgorithmException {
 		System.out.println("UserService.updateUserInfo:success");
 		UsersDAO dao = new UsersDAO();
+		//String hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
+		//dao.update(form, userId,hashPassword);
+		dao.update(form, userId);
+	}
+	public void updatePasswordInfo(UpdatePasswordForm form, int userId) throws NoSuchAlgorithmException {
+		System.out.println("UserService.updateUserInfo:success");
+		UsersDAO dao = new UsersDAO();
 		String hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
-		dao.update(form, userId,hashPassword);
+		dao.updatePassword(form, userId,hashPassword);
 	}
 
 	public void updateAccountInfo(UpdateAccountInfoForm form, int userId, int value1, int value2, int value3) {

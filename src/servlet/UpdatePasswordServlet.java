@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import form.UpdateUserInfoForm;
+import form.UpdatePasswordForm;
 import model.User;
 import service.UserService;
 
@@ -58,15 +58,15 @@ public class UpdatePasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		String name = request.getParameter("name");
-		String mailaddress = request.getParameter("mailaddress");
+		//String name = request.getParameter("name");
+		//String mailaddress = request.getParameter("mailaddress");
 		String password = request.getParameter("password");
 		String password2 = request.getParameter("password2");
 
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
-		UpdateUserInfoForm form = new UpdateUserInfoForm(name, mailaddress, password, password2);
+		UpdatePasswordForm form = new UpdatePasswordForm(password, password2);
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
@@ -74,7 +74,7 @@ public class UpdatePasswordServlet extends HttpServlet {
 			UserService userService = new UserService();
 			try {
 				//userService.updateUserInfo(request,form);
-				userService.updateUserInfo(form,userId);
+				userService.updatePasswordInfo(form,userId);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

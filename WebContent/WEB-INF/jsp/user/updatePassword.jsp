@@ -15,7 +15,7 @@
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ユーザー情報編集</title>
+<title>ユーザー情報変更</title>
 </head>
 <body>
 	<%
