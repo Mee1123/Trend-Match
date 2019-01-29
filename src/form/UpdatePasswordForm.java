@@ -7,7 +7,8 @@ import helper.ValidationHelper;
 public class UpdatePasswordForm extends model.User {
 	private ArrayList<String> error = new ArrayList<>();
 
-	public UpdatePasswordForm(String password, String password2) {
+	public UpdatePasswordForm(String email, String password, String password2) {
+		setMailAddress(email);
 		setPassword(password);
 		setPassword(password2);
 		passwordValidation();

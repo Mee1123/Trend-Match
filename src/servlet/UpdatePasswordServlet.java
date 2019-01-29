@@ -66,12 +66,16 @@ public class UpdatePasswordServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
-		UpdatePasswordForm form = new UpdatePasswordForm(password, password2);
+		UserService userService = new UserService();
+		User user = userService.getMyInfo(userId);
+		String mailaddress = user.getMailAddress();
+
+		UpdatePasswordForm form = new UpdatePasswordForm(mailaddress, password, password2);
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			System.out.println("エラーなし");
-			UserService userService = new UserService();
+			//UserService userService = new UserService();
 			try {
 				//userService.updateUserInfo(request,form);
 				userService.updatePasswordInfo(form,userId);
