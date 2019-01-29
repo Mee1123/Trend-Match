@@ -435,7 +435,6 @@ public class UsersDAO extends DatabaseAccessor {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, form.getMailAddress());
 			//preparedStatement.setString(2, hashPassword);
-			//preparedStatement.setString(3, form.getName());
 			preparedStatement.setString(2, form.getName());
 			preparedStatement.setInt(3, userId);
 			System.out.println("mysql    > " + preparedStatement.toString());

@@ -34,6 +34,7 @@ public class UserService {
 		UsersDAO usersDAO = new UsersDAO();
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
 		System.out.println(form.getPassword());
+		System.out.println(user.getPassword());
 		System.out.println(HashHelper.getHash(form.getMailAddress(), form.getPassword()));
 		if (user == null) {
 			form.setError(errorStatement);
@@ -170,9 +171,15 @@ public class UserService {
 	}
 	public void updatePasswordInfo(UpdatePasswordForm form, int userId) throws NoSuchAlgorithmException {
 		System.out.println("UserService.updateUserInfo:success");
+		String hashPassword = null;
+		try {
+			hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
+		} catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
 		UsersDAO dao = new UsersDAO();
-		String hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
-		dao.updatePassword(form, userId,hashPassword);
+		dao.updatePassword(form,userId,hashPassword);
 	}
 
 	public void updateAccountInfo(UpdateAccountInfoForm form, int userId, int value1, int value2, int value3) {
