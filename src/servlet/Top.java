@@ -86,7 +86,9 @@ public class Top extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		doGet(request, response);
+	}
 	}
 
 }

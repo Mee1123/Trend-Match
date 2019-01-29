@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import helper.SessionHelper;
 import model.User;
 import service.UserService;
 import service.ValueService;
@@ -35,6 +36,7 @@ public class DeleteUserCheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -65,12 +67,14 @@ public class DeleteUserCheckServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkUserDelete.jsp");
 		dispatcher.forward(request, response);
 	}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("Serv_userID");
 		HttpSession session=request.getSession();
@@ -115,5 +119,6 @@ public class DeleteUserCheckServlet extends HttpServlet {
 
 		}
 		}
+	}
 
 }

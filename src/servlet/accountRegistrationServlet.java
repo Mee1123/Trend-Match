@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.table.ValuesDAO;
 import form.accountRegistrationForm;
+import helper.SessionHelper;
 import model.Value;
 import service.UserService;
 import service.ValueService;;
@@ -41,6 +42,7 @@ public class accountRegistrationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -48,6 +50,7 @@ public class accountRegistrationServlet extends HttpServlet {
 		// 遷移元
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkAccountRegistration.jsp");
 		dispatcher.forward(request, response);
+		}
 	}
 
 	/**
@@ -57,6 +60,7 @@ public class accountRegistrationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		// jspからformの内容を取り出し
 		System.out.println("accountRegistrationServlet:"+"ServletのdoPost");
@@ -215,6 +219,7 @@ public class accountRegistrationServlet extends HttpServlet {
 				doGet(request, response);
 			}
 
+		}
 		}
 	}
 
