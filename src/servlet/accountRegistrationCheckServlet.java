@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import form.accountRegistrationCheckForm;;
+import form.accountRegistrationCheckForm;
+import helper.SessionHelper;;
 
 /**
  * Servlet implementation class Registration
@@ -34,6 +35,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -43,6 +45,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/accountRegistration.jsp");
 		dispatcher.forward(request, response);
 	}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -50,6 +53,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		//jspからformの内容を取り出し
 		System.out.println("ServletのdoPost");
@@ -136,6 +140,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 			System.out.println("エラーあり");
 			request.setAttribute("form", form.getError());
 			doGet(request, response);
+		}
 		}
 	}
 }

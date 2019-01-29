@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import form.UpdatePasswordForm;
+import helper.SessionHelper;
 import model.User;
 import service.UserService;
 
@@ -35,6 +36,7 @@ public class UpdatePasswordServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -49,6 +51,7 @@ public class UpdatePasswordServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/updatePassword.jsp");
 		dispatcher.forward(request, response);
 	}
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -56,6 +59,7 @@ public class UpdatePasswordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 
 		//String name = request.getParameter("name");
@@ -100,6 +104,7 @@ public class UpdatePasswordServlet extends HttpServlet {
 			response.setContentType("text/html; charset=UTF-8");
 			request.setAttribute("form", form);
 			doGet(request, response);
+		}
 		}
 	}
 

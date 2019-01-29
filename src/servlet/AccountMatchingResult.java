@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import form.SimilarityUserForm;
+import helper.SessionHelper;
 import model.User;
 import service.UserService;
 
@@ -35,7 +36,9 @@ public class AccountMatchingResult extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		doPost(request, response);
+		}
 	}
 
 	/**
@@ -43,6 +46,7 @@ public class AccountMatchingResult extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -62,6 +66,7 @@ public class AccountMatchingResult extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountMatchingResult.jsp");
 		dispatcher.forward(request, response);
+	}
 	}
 
 }

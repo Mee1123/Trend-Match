@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.table.ValuesDAO;
+import helper.SessionHelper;
 import model.Value;
 
 /**
@@ -35,13 +36,14 @@ public class aboutMotivationServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/unfinishedAccountRegistration.jsp");
 		dispatcher.forward(request, response);
-
+		}
 	}
 
 	/**
@@ -51,6 +53,7 @@ public class aboutMotivationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 
 		// Formにエラー個所がなければ、不正な値はなかったものとして処理.
@@ -72,6 +75,7 @@ public class aboutMotivationServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 
+	}
 	}
 
 }
