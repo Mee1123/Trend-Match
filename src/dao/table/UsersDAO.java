@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import config.DatabaseAccessor;
 import form.UpdateAccountInfoForm;
+import form.UpdatePasswordForm;
 import form.UpdateUserInfoForm;
 import model.User;
 
@@ -67,7 +68,7 @@ public class UsersDAO extends DatabaseAccessor {
 			connection = createConnection();
 			// 実行するSQL文とパラメータを指定する
 			int parameterCount = 0;
-			if (!nickname.equals("") || !department.equals("") || !freespace.equals("") || !(graduate==null)
+			if (!nickname.equals("") || !department.equals("") || !freespace.equals("") || !(graduate == null)
 					|| !occupation_id_String.equals("") || !sex_id_String.equals("")
 					|| !jobofffer_id_String.equals("")) {
 				mysql += "where ";
@@ -94,12 +95,12 @@ public class UsersDAO extends DatabaseAccessor {
 				}
 				mysql = mysql + "freespace = '" + freespace + "' ";
 			}
-			if (graduate !=null) {
+			if (graduate != null) {
 				parameterCount++;
 				if (parameterCount != 2) {
 					mysql = mysql + " and ";
 				}
-				mysql = mysql + "graduate > '" + graduate + "' and graduate < '"+String.valueOf(graduate+1)+"'";
+				mysql = mysql + "graduate > '" + graduate + "' and graduate < '" + String.valueOf(graduate + 1) + "'";
 			}
 			if (!occupation_id_String.equals("")) {
 				parameterCount++;
@@ -221,7 +222,6 @@ public class UsersDAO extends DatabaseAccessor {
 		}
 	}
 
-
 	//登録されているユーザーを見つける
 	public User findOne(int userId) {
 		Connection connection = null;
@@ -248,7 +248,7 @@ public class UsersDAO extends DatabaseAccessor {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
-		}finally {
+		} finally {
 			// クローズ処理
 			close(connection, statement, resultSet);
 		}
@@ -296,141 +296,169 @@ public class UsersDAO extends DatabaseAccessor {
 
 	//アカウント(エニアグラム)登録
 	@SuppressWarnings("resource")
-	public void insertEnneagram(int eg1,int eg2,int eg3,int eg4,int eg5,int eg6,int eg7,int eg8,int eg9,int userID) {
+	public void insertEnneagram(int eg1, int eg2, int eg3, int eg4, int eg5, int eg6, int eg7, int eg8, int eg9,
+			int userID) {
 		System.out.println("Dao,1,Success");
 		Connection connection = null;
-	    PreparedStatement preparedStatement = null;
-	    ResultSet resultSet = null;
-	    try {
-	    	//mysql文の用意
-	    	String mysql = "update users set enneagram_1 = ? ,enneagram_2 = ? ,enneagram_3 = ? ,enneagram_4 = ? ,enneagram_5 = ? ,enneagram_6 = ? ,enneagram_7 = ? ,enneagram_8 = ? ,enneagram_9 = ? where user_id = ?";
-	    	System.out.println("DAO,2,success");
-	    	connection = createConnection();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			//mysql文の用意
+			String mysql = "update users set enneagram_1 = ? ,enneagram_2 = ? ,enneagram_3 = ? ,enneagram_4 = ? ,enneagram_5 = ? ,enneagram_6 = ? ,enneagram_7 = ? ,enneagram_8 = ? ,enneagram_9 = ? where user_id = ?";
+			System.out.println("DAO,2,success");
+			connection = createConnection();
 
-	    	System.out.println(mysql);
+			System.out.println(mysql);
 
-	        // 実行するSQL文とパラメータを指定する
-	    	preparedStatement = connection.prepareStatement(mysql);
-	        preparedStatement.setInt(1, eg1);
-	        preparedStatement.setInt(2, eg2);
-	        preparedStatement.setInt(3, eg3);
-	        preparedStatement.setInt(4, eg4);
-	        preparedStatement.setInt(5, eg5);
-	        preparedStatement.setInt(6, eg6);
-	        preparedStatement.setInt(7, eg7);
-	        preparedStatement.setInt(8, eg8);
-	        preparedStatement.setInt(9, eg9);
-	        preparedStatement.setInt(10, userID);
+			// 実行するSQL文とパラメータを指定する
+			preparedStatement = connection.prepareStatement(mysql);
+			preparedStatement.setInt(1, eg1);
+			preparedStatement.setInt(2, eg2);
+			preparedStatement.setInt(3, eg3);
+			preparedStatement.setInt(4, eg4);
+			preparedStatement.setInt(5, eg5);
+			preparedStatement.setInt(6, eg6);
+			preparedStatement.setInt(7, eg7);
+			preparedStatement.setInt(8, eg8);
+			preparedStatement.setInt(9, eg9);
+			preparedStatement.setInt(10, userID);
 			System.out.println("mysql    > " + preparedStatement.toString());
-	        preparedStatement.executeUpdate();
-	        } catch (Exception e) {
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
 			// TODO: handle exception
-	        e.printStackTrace();
-		}finally {
-	        // クローズ処理
-	        close(connection, preparedStatement, resultSet);
-	    }
+			e.printStackTrace();
+		} finally {
+			// クローズ処理
+			close(connection, preparedStatement, resultSet);
+		}
 	}
 
 	//アカウント登録
-		@SuppressWarnings("resource")
-		public void insertAccount(int jobOffer,String nickname,int graduate,String department,int occupation,int sex,String contact,String freeSpace,int value1,int value2, int value3, int userID) {
-			Connection connection = null;
-		    PreparedStatement preparedStatement = null;
-		    ResultSet resultSet = null;
-		    try {
-		    	//mysql文の用意
-		    	String mysql = "update users set jobofffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ? ";
-		    	if(value1 != 0)mysql = mysql +",value_1_id= ? ";
-		    	if(value2 != 0)mysql = mysql +",value_2_id= ? ";
-		    	if(value3 != 0)mysql = mysql +",value_3_id= ? ";
-		    	mysql = mysql + "where user_id = ?";
-		    	connection = createConnection();
-		    	preparedStatement = connection.prepareStatement(mysql);
+	@SuppressWarnings("resource")
+	public void insertAccount(int jobOffer, String nickname, int graduate, String department, int occupation, int sex,
+			String contact, String freeSpace, int value1, int value2, int value3, int userID) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			//mysql文の用意
+			String mysql = "update users set jobofffer_id = ? ,nickname = ? ,graduate = ? ,department = ? ,occupation_id = ? ,sex_id = ? ,contact = ? ,freespace = ? ";
+			if (value1 != 0)
+				mysql = mysql + ",value_1_id= ? ";
+			if (value2 != 0)
+				mysql = mysql + ",value_2_id= ? ";
+			if (value3 != 0)
+				mysql = mysql + ",value_3_id= ? ";
+			mysql = mysql + "where user_id = ?";
+			connection = createConnection();
+			preparedStatement = connection.prepareStatement(mysql);
 
+			System.out.println(mysql);
 
-		    	System.out.println(mysql);
+			//resultSet.first();
 
-
-		         //resultSet.first();
-
-		    	// DB へのコネクションを作成する
-		        connection = createConnection();
-		        // 実行するSQL文とパラメータを指定する
-		        preparedStatement = connection.prepareStatement(mysql);
-		        //preparedStatement.setInt(1, filePart);
-		        preparedStatement.setInt(1, jobOffer);
-		        preparedStatement.setString(2, nickname);
-		        preparedStatement.setInt(3,graduate);
-		        preparedStatement.setString(4, department);
-		        preparedStatement.setInt(5, occupation);
-		        preparedStatement.setInt(6, sex);
-		        preparedStatement.setString(7, contact);
-		        preparedStatement.setString(8, freeSpace);
-		        int i = 9;
-		    	if(value1 != 0){
-			        preparedStatement.setInt(i, value1);
-			        i++;
-		    	};
-		    	if(value2 != 0){
-			        preparedStatement.setInt(i, value2);
-			        i++;
-		    	};
-		    	if(value3 != 0){
-			        preparedStatement.setInt(i, value3);
-			        i++;
-		    	};
-		        preparedStatement.setInt(i, userID);
-				System.out.println("mysql    > " + preparedStatement.toString());
-		        preparedStatement.executeUpdate();
-
-			} catch (Exception e) {
-				// TODO: handle exception
-		        e.printStackTrace();
+			// DB へのコネクションを作成する
+			connection = createConnection();
+			// 実行するSQL文とパラメータを指定する
+			preparedStatement = connection.prepareStatement(mysql);
+			//preparedStatement.setInt(1, filePart);
+			preparedStatement.setInt(1, jobOffer);
+			preparedStatement.setString(2, nickname);
+			preparedStatement.setInt(3, graduate);
+			preparedStatement.setString(4, department);
+			preparedStatement.setInt(5, occupation);
+			preparedStatement.setInt(6, sex);
+			preparedStatement.setString(7, contact);
+			preparedStatement.setString(8, freeSpace);
+			int i = 9;
+			if (value1 != 0) {
+				preparedStatement.setInt(i, value1);
+				i++;
 			}
-		    finally {
-		        // クローズ処理
-		        close(connection, preparedStatement, resultSet);
-		    }
+			;
+			if (value2 != 0) {
+				preparedStatement.setInt(i, value2);
+				i++;
+			}
+			;
+			if (value3 != 0) {
+				preparedStatement.setInt(i, value3);
+				i++;
+			}
+			;
+			preparedStatement.setInt(i, userID);
+			System.out.println("mysql    > " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			// クローズ処理
+			close(connection, preparedStatement, resultSet);
 		}
+	}
 
 	//ユーザー削除
-		public void deleteUser(User user) {
-	        PreparedStatement preparedStatement = null;
-	        ResultSet resultSet = null;
-			Connection connection = null;
-		    try {
-				connection = createConnection();
-		    	String sql = "delete from users where user_id = ?";
-				preparedStatement = connection.prepareStatement(sql);
-				preparedStatement.setInt(1, user.getId());
-				System.out.println("mysql    > " + preparedStatement.toString());
-				preparedStatement.executeUpdate();
-			} catch (Exception e) {
-				// TODO: handle exception
-		        e.printStackTrace();
-		        //return null;
-			}
-		    finally {
-		        // クローズ処理
-		        close(connection, preparedStatement, resultSet);
-		    }
-    }
+	public void deleteUser(User user) {
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		Connection connection = null;
+		try {
+			connection = createConnection();
+			String sql = "delete from users where user_id = ?";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, user.getId());
+			System.out.println("mysql    > " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			//return null;
+		} finally {
+			// クローズ処理
+			close(connection, preparedStatement, resultSet);
+		}
+	}
 
-	public void update(UpdateUserInfoForm form, int userId, String hashPassword) {
+	//public void update(UpdateUserInfoForm form, int userId, String hashPassword) {
+	public void update(UpdateUserInfoForm form, int userId) {
 		System.out.println("DAO,1,success");
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			String sql = "update users set mailaddress = ? , password = ? , name = ? where user_id = ? ";
+			//String sql = "update users set mailaddress = ? , password = ? , name = ? where user_id = ? ";
+			String sql = "update users set mailaddress = ? , name = ? where user_id = ? ";
 			System.out.println("DAO,2,success");
 			connection = createConnection();
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, form.getMailAddress());
-			preparedStatement.setString(2, hashPassword);
-			preparedStatement.setString(3, form.getName());
-			preparedStatement.setInt(4, userId);
+			//preparedStatement.setString(2, hashPassword);
+			preparedStatement.setString(2, form.getName());
+			preparedStatement.setInt(3, userId);
+			System.out.println("mysql    > " + preparedStatement.toString());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// クローズ処理
+			close(connection, preparedStatement, resultSet);
+		}
+	}
+
+	public void updatePassword(UpdatePasswordForm form, int userId, String hashPassword) {
+		System.out.println("DAO,1,success");
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			String sql = "update users set password = ? where user_id = ? ";
+			System.out.println("DAO,2,success");
+			connection = createConnection();
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, hashPassword);
+			preparedStatement.setInt(2, userId);
 			System.out.println("mysql    > " + preparedStatement.toString());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -446,12 +474,15 @@ public class UsersDAO extends DatabaseAccessor {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		try {
-			String mysql= "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
+			String mysql = "update users set nickname = ?, picturepath = ?, graduate = ?, contact = ?, department = ?,"
 					+ "freespace = ?, occupation_id = ?, sex_id = ?, jobofffer_id = ? ";
-	    	if(value1 != 0)mysql = mysql +",value_1_id= ? ";
-	    	if(value2 != 0)mysql = mysql +",value_2_id= ? ";
-	    	if(value3 != 0)mysql = mysql +",value_3_id= ? ";
-	    	mysql = mysql + "where user_id = ?";
+			if (value1 != 0)
+				mysql = mysql + ",value_1_id= ? ";
+			if (value2 != 0)
+				mysql = mysql + ",value_2_id= ? ";
+			if (value3 != 0)
+				mysql = mysql + ",value_3_id= ? ";
+			mysql = mysql + "where user_id = ?";
 			connection = createConnection();
 			preparedStatement = connection.prepareStatement(mysql);
 
@@ -469,19 +500,21 @@ public class UsersDAO extends DatabaseAccessor {
 			/*statement.setInt(10, values.get(0));
 			statement.setInt(11, values.get(1));
 			statement.setInt(12, values.get(2));*/
-	        int i = 10;
-	    	if(value1 != 0){
-		        preparedStatement.setInt(i, value1);
-		        i++;
-	    	};
-	    	if(value2 != 0){
-		        preparedStatement.setInt(i, value2);
-		        i++;
-	    	};
-	    	if(value3 != 0){
-		        preparedStatement.setInt(i, value3);
-		        i++;
-	    	}
+			int i = 10;
+			if (value1 != 0) {
+				preparedStatement.setInt(i, value1);
+				i++;
+			}
+			;
+			if (value2 != 0) {
+				preparedStatement.setInt(i, value2);
+				i++;
+			}
+			;
+			if (value3 != 0) {
+				preparedStatement.setInt(i, value3);
+				i++;
+			}
 
 			preparedStatement.setInt(i, userId);
 			System.out.println("mysql    > " + preparedStatement.toString());
