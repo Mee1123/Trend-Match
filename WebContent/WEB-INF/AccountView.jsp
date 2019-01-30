@@ -149,17 +149,19 @@
 			</c:when>
 			<c:when test="${session ==2 }">
 				<button class="btn btn-danger">通報</button>
-				<c:if test="${session == 0 }">
-					<form action="/SE18G2/DeleteUser" method="post">
-						<input type="hidden" name="id" value="${user.getId()}"> <input
-							type="submit" value="削除">
-					</form>
-				</c:if>
 
 				<a href=<c:out value="/SE18G2/DMResult?Id=${user.getId() }"/>>
 					<button class="btn btn-primary">Message</button>
 				</a>
 			</c:when>
+
+			<c:when test="${session == 0 }">
+					<form action="/SE18G2/DeleteUser" method="post">
+						<input type="hidden" name="id" value="${user.getId()}">
+						<button class="btn btn-primary">削除</button>
+					</form>
+
+				</c:when>
 		</c:choose>
 		<br> <br>
 	</div>
