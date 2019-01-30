@@ -169,7 +169,6 @@
 				<br>
 			</c:when>
 			<c:when test="${session ==2 }">
-				<button class="btn btn-danger">通報</button>
 
 				<a href=<c:out value="/SE18G2/DMResult?Id=${user.getId() }"/>>
 					<button class="btn btn-primary">Message</button>
