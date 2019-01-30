@@ -17,7 +17,7 @@
 	<jsp:include page="header.jsp" />
 	<div class="container">
 		<h1>性格傾向によるマッチング結果</h1>
-		おすすめの社会人ユーザーを表示しています
+		おすすめのユーザーを表示しています
 		<table border="1">
 			<tr>
 				<td align="center">ニックネーム</td>
