@@ -26,7 +26,8 @@
 			エニアグラムはAppleやIBMなどの企業でも採用されている性格診断の手法です。<br>
 			<a href="https://www.enneagram.ne.jp/about/diagnosis/dns01" target="blank">こちら</a>
 			からエニアグラム診断が受けられます。<br>
-			タイプ1～タイプ9のチェック数を以下に入力してください。
+			タイプ1～タイプ9のチェック数を以下に入力してください。<br>
+			未記入の場合は0となります。
 			<br>
 			<br>
 			<table>
