@@ -68,7 +68,6 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		String eg8 = request.getParameter("enneagram8");
 		String eg9 = request.getParameter("enneagram9");
 
-		System.out.println("eg1:"+eg1 +",eg2:"+ eg2);
 		if(eg1==""){
 			System.out.println("未入力");
 			eg1="0";
@@ -90,7 +89,8 @@ public class enneagramRegistrationServlet extends HttpServlet {
 			eg9="0";
 		}
 
-		int enneagram1 = Integer.parseInt(eg1);
+
+		/*int enneagram1 = Integer.parseInt(eg1);
 		int enneagram2 = Integer.parseInt(eg2);
 		int enneagram3 = Integer.parseInt(eg3);
 		int enneagram4 = Integer.parseInt(eg4);
@@ -98,21 +98,24 @@ public class enneagramRegistrationServlet extends HttpServlet {
 		int enneagram6 = Integer.parseInt(eg6);
 		int enneagram7 = Integer.parseInt(eg7);
 		int enneagram8 = Integer.parseInt(eg8);
-		int enneagram9 = Integer.parseInt(eg9);
+		int enneagram9 = Integer.parseInt(eg9);*/
 
-		enneagramRegistrationForm form = new enneagramRegistrationForm(enneagram1,enneagram2,enneagram3,enneagram4,enneagram5,enneagram6,enneagram7,enneagram8,enneagram9);
+		enneagramRegistrationForm form = new enneagramRegistrationForm(eg1,eg2,eg3,eg4,eg5,eg6,eg7,eg8,eg9);
+		//enneagramRegistrationForm form = new enneagramRegistrationForm(enneagram1,enneagram2,enneagram3,enneagram4,enneagram5,enneagram6,enneagram7,enneagram8,enneagram9);
 		System.out.println("formから戻りました");
 
-		HttpSession session = request.getSession();
-
-		int userId = (int) session.getAttribute("userID");
-		System.out.println("エニアグラム登録:userId="+userId);
-
-		System.out.println("セッションからID引っ張る");
-		System.out.println(userId);
+		System.out.println("enneagramRegistrationServlet.doPost:"+form.getError());
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if(form.getError().isEmpty()){
+			HttpSession session = request.getSession();
+
+			int userId = (int) session.getAttribute("userID");
+			System.out.println("エニアグラム登録:userId="+userId);
+
+			System.out.println("セッションからID引っ張る");
+			System.out.println(userId);
+
 			UserService service = new UserService();
 			try {
 				service.RegistrationEnneagram(request,form, userId);
@@ -125,11 +128,12 @@ public class enneagramRegistrationServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			}
 			else {
+				System.out.println("enneagramRegistrationServlet.doPost:"+form.getError());
 				request.setAttribute("form", form.getError());
 				doGet(request, response);
 				}
 		}else {
-			System.out.println("enneagramRegistrationServlet.doPost:formにエラーあり");
+			System.out.println("enneagramRegistrationServlet.doPost:"+form.getError());
 			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
