@@ -6,6 +6,7 @@ public class enneagramRegistrationForm extends model.User{
 	private ArrayList<String> error = new ArrayList<String>();
 
 	public enneagramRegistrationForm(int enneagram_1,int enneagram_2, int enneagram_3,int enneagram_4, int enneagram_5, int enneagram_6, int enneagram_7,int enneagram_8, int enneagram_9) {
+
 		int[] enneagram = new int[] { enneagram_1, enneagram_2, enneagram_3, enneagram_4, enneagram_5, enneagram_6,
 				enneagram_7, enneagram_8, enneagram_9, };
 		setEnneagram(enneagram);
@@ -18,7 +19,7 @@ public class enneagramRegistrationForm extends model.User{
 		checkEnneagramValue(enneagram_7);
 		checkEnneagramValue(enneagram_8);
 		checkEnneagramValue(enneagram_9);
-		System.out.println("Form,1,success");
+		System.out.println("Form,2,success");
 	}
 
 
