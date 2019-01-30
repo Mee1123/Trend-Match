@@ -80,7 +80,7 @@ public class RegistrationServlet extends HttpServlet {
 				}
 
 			}else {
-				request.setAttribute("form", form);
+				request.setAttribute("form", form.getError());
 				doGet(request, response);
 			}
 		}

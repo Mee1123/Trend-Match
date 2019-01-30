@@ -13,6 +13,7 @@ import form.AccountSearchInfoForm;
 import form.LoginForm;
 import form.SimilarityUserForm;
 import form.UpdateAccountInfoForm;
+import form.UpdatePasswordForm;
 import form.UpdateUserInfoForm;
 import form.accountRegistrationForm;
 import form.checkUserRegistrationForm;
@@ -33,6 +34,7 @@ public class UserService {
 		UsersDAO usersDAO = new UsersDAO();
 		User user = usersDAO.selectUserByMailAddress(form.getMailAddress());
 		System.out.println(form.getPassword());
+		System.out.println(user.getPassword());
 		System.out.println(HashHelper.getHash(form.getMailAddress(), form.getPassword()));
 		if (user == null) {
 			form.setError(errorStatement);
@@ -88,6 +90,15 @@ public class UserService {
 		User user = new User();
 		user = dao.selectUserById(userId);
 		return user;
+	}
+
+	public int findUser(String mailAddress){
+		System.out.println("UserService.findUser:Success");
+		UsersDAO dao = new UsersDAO();
+		User user = new User();
+		user = dao.selectUserByMailAddress(mailAddress);
+		System.out.println("UserService.findUser:"+user.getId());
+		return user.getId();
 	}
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
@@ -163,8 +174,21 @@ public class UserService {
 	public void updateUserInfo(UpdateUserInfoForm form, int userId) throws NoSuchAlgorithmException {
 		System.out.println("UserService.updateUserInfo:success");
 		UsersDAO dao = new UsersDAO();
-		String hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
-		dao.update(form, userId,hashPassword);
+		//String hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
+		//dao.update(form, userId,hashPassword);
+		dao.update(form, userId);
+	}
+	public void updatePasswordInfo(UpdatePasswordForm form, int userId) throws NoSuchAlgorithmException {
+		System.out.println("UserService.updateUserInfo:success");
+		String hashPassword = null;
+		try {
+			hashPassword = HashHelper.getHash(form.getMailAddress(), form.getPassword());
+		} catch (NoSuchAlgorithmException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		UsersDAO dao = new UsersDAO();
+		dao.updatePassword(form,userId,hashPassword);
 	}
 
 	public void updateAccountInfo(UpdateAccountInfoForm form, int userId, int value1, int value2, int value3) {

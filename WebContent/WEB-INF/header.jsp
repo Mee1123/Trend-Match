@@ -24,11 +24,11 @@
 	<nav>
 		<ul>
 			<li><a href="/SE18G2/Top"><img
-					src="/SE18G2/header/home(black).jpg"><br>Home</a></li>
+					src="/SE18G2/header/home(black).jpg"><br>Top</a></li>
 			<li><a href="/SE18G2/AccountView"><img
 					src="/SE18G2/header/account(black).jpg"><br>ACCOUNT</a></li>
-			<li><a href="/SE18G2/DMResult"><img src="/SE18G2/header/DM(black).jpg"><br>DIRECT
-					MESSAGE</a></li>
+			<li><a href="/SE18G2/DMResult"><img
+					src="/SE18G2/header/DM(black).jpg"><br>DIRECT MESSAGE</a></li>
 			<li><a href="/SE18G2/HeaderUserInfo"><img
 					src="/SE18G2/header/Edit(black).jpg"><br>EDIT USER INFO.</a></li>
 			<li><a href="/SE18G2/Logout"><img

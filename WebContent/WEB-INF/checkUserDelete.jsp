@@ -128,13 +128,13 @@
 
 このユーザーを削除しますか？<br>
 
-
 <form action="/SE18G2/DeleteUserCheck" method="post">
 	<input type="hidden" name="id" value="${user.getId()}">
-<input type="submit" value="はい"> </form>
+	<button class="btn btn-primary">はい</button>
+   </form>
 	<form action="/SE18G2/AccountView" method="get">
 		<input type="hidden" name="userId" value="${user.getId() }">
-	<input type="submit" value="いいえ">
+	<button class="btn btn-primary">いいえ</button>
 </form>
 
 	</div>

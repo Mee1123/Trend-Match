@@ -8,8 +8,9 @@
 <link rel="stylesheet" href="/SE18G2/CSS/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/border.css">
 <meta charset="UTF-8">
-<title>ユーザー登録</title>
+<title>ログイン</title>
 </head>
 <body>
 	<nav class="navbar navbar-dark bg-dark">
@@ -22,14 +23,25 @@
 	</nav>
 	<br>
 	<div class="container">
-		<h1>ユーザー登録(全て入力必須項目です)<br><span class="label label-denger">${form}</span></h1>
+		<h1 class="page-header">Login<span class="label label-denger">${form}</span></h1>
 
-		<form action="/SE18G2/userRegistration" method="post">
-			氏名(20文字以下):<input class="form-control" type="text" name="userName"><br>
-			メールアドレス(40文字以下):<input class="form-control" type="text" name="mailAddress"><br>
-			パスワード(8文字以上20文字以下):<input class="form-control" type="password" name="password"><br>
-			パスワード確認用:<input class="form-control" type="password" name="password2"><br>
-			<input class="btn btn-primary" type="submit" value="登録">
+		<br>
+		<form action="/SE18G2/Login" method="post">
+			<div class="form-group">
+				<div class="sideborder">
+					メールアドレス<input class="form-control" type="text" name="mailAddress">
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+
+				<div class="sideborder">
+					パスワード<input class="form-control" type="password" name="password">
+				</div>
+			</div>
+			<br> <input class="btn btn-primary" type="submit" name="goto"
+				value="ログイン"><br>
+			<br>
 		</form>
 	</div>
 	<!-- javascript -->

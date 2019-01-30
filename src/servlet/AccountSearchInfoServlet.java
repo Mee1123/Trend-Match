@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import form.AccountSearchInfoForm;
+import helper.SessionHelper;
 import model.User;
 import service.UserService;
 
@@ -36,11 +37,13 @@ public class AccountSearchInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/AccountSearchInfo.jsp");
 		dispatcher.forward(request, response);
+	}
 	}
 
 	/**
@@ -50,6 +53,7 @@ public class AccountSearchInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 		// jspからformの内容を取り出して,LoginFormを作成.
 		String nickname = request.getParameter("nickname");
@@ -98,7 +102,7 @@ public class AccountSearchInfoServlet extends HttpServlet {
 				for (String error : form.getError()) {
 					System.out.println("e2"+error);
 				}
-				request.setAttribute("form", form);
+				request.setAttribute("form", form.getError());
 				doGet(request, response);
 			}
 		} else {
@@ -106,9 +110,10 @@ public class AccountSearchInfoServlet extends HttpServlet {
 			for (String error : form.getError()) {
 				System.out.println("e1"+error);
 			}
-			request.setAttribute("form", form);
+			request.setAttribute("form", form.getError());
 			doGet(request, response);
 		}
+	}
 	}
 
 }

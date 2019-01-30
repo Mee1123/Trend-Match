@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import form.UpdateUserInfoForm;
+import form.UpdatePasswordForm;
 import helper.SessionHelper;
 import model.User;
 import service.UserService;
@@ -18,14 +18,14 @@ import service.UserService;
 /**
  * Servlet implementation class UpdateUserInfoServlet
  */
-@WebServlet("/user/update")
-public class UpdateUserInfoServlet extends HttpServlet {
+@WebServlet("/user/updatePassword")
+public class UpdatePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UpdateUserInfoServlet() {
+	public UpdatePasswordServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,9 +37,10 @@ public class UpdateUserInfoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		if (SessionHelper.sessionCheck(request, response)) {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		request.setCharacterEncoding("UTF-8");
 
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
@@ -47,7 +48,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
 		User user = new User();
 		user = userService.getMyInfo(userId);
 		request.setAttribute("user", user);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/update.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user/updatePassword.jsp");
 		dispatcher.forward(request, response);
 	}
 	}
@@ -61,24 +62,27 @@ public class UpdateUserInfoServlet extends HttpServlet {
 		if (SessionHelper.sessionCheck(request, response)) {
 		request.setCharacterEncoding("UTF-8");
 
-		String name = request.getParameter("name");
-		String mailaddress = request.getParameter("mailaddress");
-		//String password = request.getParameter("password");
-		//String password2 = request.getParameter("password2");
+		//String name = request.getParameter("name");
+		//String mailaddress = request.getParameter("mailaddress");
+		String password = request.getParameter("password");
+		String password2 = request.getParameter("password2");
 
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userID");
 
-		//UpdateUserInfoForm form = new UpdateUserInfoForm(name, mailaddress, password, password2);
-		UpdateUserInfoForm form = new UpdateUserInfoForm(name, mailaddress);
+		UserService userService = new UserService();
+		User user = userService.getMyInfo(userId);
+		String mailaddress = user.getMailAddress();
+
+		UpdatePasswordForm form = new UpdatePasswordForm(mailaddress, password, password2);
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
 		if (form.getError().isEmpty()) {
 			System.out.println("エラーなし");
-			UserService userService = new UserService();
+			//UserService userService = new UserService();
 			try {
 				//userService.updateUserInfo(request,form);
-				userService.updateUserInfo(form,userId);
+				userService.updatePasswordInfo(form,userId);
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
@@ -92,16 +96,16 @@ public class UpdateUserInfoServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 			} else {
 				request.setCharacterEncoding("UTF-8");
-				request.setAttribute("form", form.getError());
+				request.setAttribute("form", form);
 				doGet(request, response);
 			}
 		}else {
 			request.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html; charset=UTF-8");
-			request.setAttribute("form", form.getError());
+			request.setAttribute("form", form);
 			doGet(request, response);
 		}
-	}
+		}
 	}
 
 }

@@ -49,9 +49,8 @@ public class goToNoAccountTopServlet extends HttpServlet {
 		System.out.println("doPost");
 
 		//Formにエラー個所がなければ、不正な値はなかったものとして処理.
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/startAccountRegistration.jsp");
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Login.jsp");
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/Login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/registrationSuccessLogin.jsp");
 		dispatcher.forward(request, response);
 	}
 }
