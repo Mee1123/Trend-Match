@@ -1,5 +1,7 @@
 package form;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +31,7 @@ public class accountRegistrationCheckForm extends model.User{
 		setFreespace(freeSpace);
 
 		checkValue(value1,value2,value3);
+		checkGraduate(graduate,occupation);
 
 		nicknameValidation();//1~40
 		isNumMatch(graduate);
@@ -43,6 +46,30 @@ public class accountRegistrationCheckForm extends model.User{
 		System.out.println("Form,1,success");
 	}
 
+	public void checkGraduate(String graduate,String occupation){
+		int graduateDay = Integer.parseInt(graduate);
+		System.out.println("accountRegistrationCheckForm.checkGraduate:"+graduateDay);
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String str = sdf.format(timestamp);
+
+        System.out.println(str);
+        String str2 = str.replace("/", "");
+        int currentDay = Integer.parseInt(str2);
+
+
+        System.out.println("accountRegistrationCheckForm.checkGraduate:"+currentDay);
+
+        if(currentDay>graduateDay ){
+        	if( occupation.equals("学部生") || occupation.equals("大学院生")){
+        		error.add("卒業年度あるいは職種に誤りがあります");
+        		System.out.println("卒業年度あるいは職種に誤りがあります");
+        	}
+
+        }
+
+
+	}
 	public void checkValue(String value1,String value2,String value3){
 		if(value1.equals("") && value2.equals("") && value3.equals("")){
 			error.add("価値観を最低一つ入力してください");
