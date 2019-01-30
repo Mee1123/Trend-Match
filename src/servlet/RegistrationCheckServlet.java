@@ -63,9 +63,9 @@ public class RegistrationCheckServlet extends HttpServlet {
 		if (form.getError().isEmpty()) {
 
 			UserService service = new UserService();
-			String findUserResult = service.findUser(mailAddress);
+			int findUserResult = service.findUser(mailAddress);
 			System.out.println("RegistrationCheckServlet.doPost:"+findUserResult);
-			if (findUserResult == null) {
+			if (findUserResult==0) {
 
 
 				// System.out.println("エラーなし");
@@ -80,7 +80,7 @@ public class RegistrationCheckServlet extends HttpServlet {
 				System.out.println("RegistrationCheckServlet.doPost:そのユーザーは既に存在します");
 				/*RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/userRegistration.jsp");
 				dispatcher.forward(request, response);*/
-				request.setAttribute("form", form.getError());
+				request.setAttribute("form", "そのメールアドレスは既に登録されています");
 				doGet(request, response);
 			}
 		} else {

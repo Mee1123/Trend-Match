@@ -45,6 +45,7 @@ public class UsersDAO extends DatabaseAccessor {
 				user.setId(resultSet.getInt("user_id"));
 				user.setPassword(resultSet.getString("password"));
 			}
+			System.out.println("UsersDAO.selectUserByMailAddress:"+user.getId());
 			return user;
 		} catch (Exception e) {
 			// TODO: handle exception

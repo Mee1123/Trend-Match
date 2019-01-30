@@ -92,13 +92,13 @@ public class UserService {
 		return user;
 	}
 
-	public String findUser(String mailAddress){
+	public int findUser(String mailAddress){
 		System.out.println("UserService.findUser:Success");
 		UsersDAO dao = new UsersDAO();
 		User user = new User();
 		user = dao.selectUserByMailAddress(mailAddress);
-		System.out.println("UserService.findUser:"+user.getMailAddress());
-		return user.getMailAddress();
+		System.out.println("UserService.findUser:"+user.getId());
+		return user.getId();
 	}
 
 	public void RegistrationUser(HttpServletRequest request, checkUserRegistrationForm form) {
