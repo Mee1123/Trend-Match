@@ -157,9 +157,10 @@
 
 			<c:when test="${session == 0 }">
 					<form action="/SE18G2/DeleteUser" method="post">
-						<input type="hidden" name="id" value="${user.getId()}"> <input
-							type="submit" value="削除">
+						<input type="hidden" name="id" value="${user.getId()}">
+						<button class="btn btn-primary">削除</button>
 					</form>
+
 				</c:when>
 		</c:choose>
 		<br> <br>
