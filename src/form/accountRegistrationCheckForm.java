@@ -14,7 +14,7 @@ public class accountRegistrationCheckForm extends model.User{
 
 
 
-	public accountRegistrationCheckForm(String jobOffer, String nickname,String graduate,String department,String occupation,String sex,String contact,String freeSpace) {
+	public accountRegistrationCheckForm(String jobOffer, String nickname,String graduate,String department,String occupation,String sex,String contact,String freeSpace,String value1,String value2,String value3) {
 
 		setJoboffer_id_String(jobOffer);
 		setNickname(nickname);
@@ -24,6 +24,8 @@ public class accountRegistrationCheckForm extends model.User{
 		setSex_id_String(sex);
 		setContact(contact);
 		setFreespace(freeSpace);
+
+		checkValue(value1,value2,value3);
 
 		nicknameValidation();//1~40
 		isNumMatch(graduate);
@@ -38,6 +40,12 @@ public class accountRegistrationCheckForm extends model.User{
 		System.out.println("Form,1,success");
 	}
 
+	public void checkValue(String value1,String value2,String value3){
+		if(value1.equals("") && value2.equals("") && value3.equals("")){
+			error.add("価値観を最低一つ入力してください");
+			System.out.println("価値観を最低一つ入力してください");
+		}
+	}
 
 	public void nicknameValidation(){
 		System.out.println(getNickname());
