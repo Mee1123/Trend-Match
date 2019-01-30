@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="model.User"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.text.ParseException"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <%
 	User user = (User) request.getAttribute("user");
 %>
@@ -51,9 +54,14 @@
 				</p>
 			</div> -->
 			<div class="form-group">
-				<label for="graduate">卒業年度※</label> <input
-					class="form-control" type="text" name="graduate" id="graduate"
-					value="<%=user.getGraduate()%>">
+				<%
+					Date str1 = user.getGraduate();
+
+					String str = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(str1);
+					String str2 = str.substring(0, 4);
+				%>
+				<label for="graduate">卒業年度※</label> <input class="form-control"
+					type="text" name="graduate" id="graduate" value="<%=str2%>">
 			</div>
 			<div class="form-group">
 				<label for="department">所属(20文字以下)</label> <input

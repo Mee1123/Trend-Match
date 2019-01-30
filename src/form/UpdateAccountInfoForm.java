@@ -1,20 +1,21 @@
 package form;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 import helper.ValidationHelper;
 
-public class UpdateAccountInfoForm extends model.User{
-	private ArrayList<String> error = new ArrayList<>();
-	private Date graduate_Int;
+public class UpdateAccountInfoForm extends model.User {
+	private ArrayList<String> error = new ArrayList<String>();
+	private String graduate_String;
 
-	public UpdateAccountInfoForm(String nickName,String picturePath,Date graduate, String department,int occupationId,int sexId,String contact,String freeSpace,
-			int jobOfferId,int valueId1,int valueId2,int valueId3) {
+	public UpdateAccountInfoForm(String nickName, String picturePath, String graduate, String department,
+			int occupationId,
+			int sexId, String contact, String freeSpace,
+			int jobOfferId, int valueId1, int valueId2, int valueId3) {
 
 		setNickname(nickName);
 		setPicturepath(picturePath);
-		setGraduate_Int(graduate);
+		setGraduate_String(graduate);
 		setDepartment(department);
 		setOccupation_id(occupationId);
 		setSex_id(sexId);
@@ -34,52 +35,59 @@ public class UpdateAccountInfoForm extends model.User{
 		System.out.println("Form,1,success");
 	}
 
-	public void nicknameValidation(){
-		if (ValidationHelper.minimumText(1, getNickname(), "ニックネーム")!=null){
+	public void nicknameValidation() {
+		if (ValidationHelper.minimumText(1, getNickname(), "ニックネーム") != null) {
 			error.add(ValidationHelper.minimumText(1, getNickname(), "ニックネーム"));
 			System.out.println("ニックネームが短い");
 		}
-		if(ValidationHelper.maximumText(10, getNickname(), "ニックネーム")!=null){
+		if (ValidationHelper.maximumText(10, getNickname(), "ニックネーム") != null) {
 			error.add(ValidationHelper.maximumText(10, getNickname(), "ニックネーム"));
 			System.out.println("ニックネームが長い");
 		}
 	}
 
-	public void graduateValidation(){
-		if(ValidationHelper.maximumText(9, String.valueOf(getGraduate()), "卒業年度")!=null){
+	public void graduateValidation() {
+		if (ValidationHelper.maximumText(9, String.valueOf(getGraduate()), "卒業年度") != null) {
 			error.add(ValidationHelper.maximumText(9, String.valueOf(getGraduate()), "卒業年度"));
 			System.out.println("卒業年度が長い");
 		}
 	}
 
-	public void departmentValidation(){
-		if(ValidationHelper.maximumText(20,getDepartment(), "所属")!=null){
+	public void departmentValidation() {
+		if (ValidationHelper.maximumText(20, getDepartment(), "所属") != null) {
 			error.add(ValidationHelper.maximumText(20, getDepartment(), "所属"));
 			System.out.println("所属が長い");
 		}
 	}
 
-	public void contactValidation(){
-		if(ValidationHelper.maximumText(40,getContact(), "連絡先")!=null){
+	public void contactValidation() {
+		if (ValidationHelper.maximumText(40, getContact(), "連絡先") != null) {
 			error.add(ValidationHelper.maximumText(40, getContact(), "連絡先"));
 			System.out.println("連絡先が長い");
 		}
 	}
 
-	public void freeSpaceValidation(){
-		if(ValidationHelper.maximumText(200,getFreespace(), "フリースペース")!=null){
+	public void freeSpaceValidation() {
+		if (ValidationHelper.maximumText(200, getFreespace(), "フリースペース") != null) {
 			error.add(ValidationHelper.maximumText(200, getFreespace(), "フリースペース"));
 			System.out.println("フリースペースが長い");
 		}
 	}
 
-	public Date getGraduate_Int() {
+	public String getGraduate_String() {
+		return graduate_String;
+	}
+
+	public void setGraduate_String(String graduate_String) {
+		this.graduate_String = graduate_String;
+	}
+	/*public Date getGraduate_Int() {
 		return graduate_Int;
 	}
 
 	public void setGraduate_Int(Date graduate) {
 		this.graduate_Int = graduate;
-	}
+	}*/
 
 	public ArrayList<String> getError() {
 		return error;

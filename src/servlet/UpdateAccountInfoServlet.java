@@ -1,9 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -87,7 +84,7 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String nickName = request.getParameter("nickName");
 		String picturePath = request.getParameter("picturePath");
-		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+		/*SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date utilGraduate = null;
 		try {
 			utilGraduate = (java.util.Date) sdFormat.parse(request.getParameter("graduate"));
@@ -97,8 +94,9 @@ public class UpdateAccountInfoServlet extends HttpServlet {
 		}
 		// java.util.Dateからjava.sql.Dateに変換する。
 		Date graduate = new java.sql.Date(utilGraduate.getTime());
-		System.out.println("UpdateAccountInfoServlet[post]:graduate="+utilGraduate.toString());
-		//int graduate = Integer.parseInt(request.getParameter("graduate"));
+		System.out.println("UpdateAccountInfoServlet[post]:graduate="+utilGraduate.toString());*/
+		String graduate = request.getParameter("graduate")+"0331";
+		int graduate2 = Integer.parseInt("graduate");
 
 		String department = request.getParameter("department");
 		System.out.println("UpdateAccountInfoServlet[post]:department="+request.getParameter("department"));
