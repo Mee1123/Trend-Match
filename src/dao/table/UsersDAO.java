@@ -1,7 +1,6 @@
 package dao.table;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -489,7 +488,8 @@ public class UsersDAO extends DatabaseAccessor {
 
 			preparedStatement.setString(1, form.getNickname());
 			preparedStatement.setString(2, form.getPicturepath());
-			preparedStatement.setDate(3, (Date) form.getGraduate_Int());
+			//preparedStatement.setDate(3, (Date) form.getGraduate_Int());
+			preparedStatement.setInt(3, form.getGraduate_Int());
 			preparedStatement.setString(4, form.getContact());
 			preparedStatement.setString(5, form.getDepartment());
 			preparedStatement.setString(6, form.getFreespace());
