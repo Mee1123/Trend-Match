@@ -16,9 +16,9 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="container">
-		<h1>アカウント保持者のトップページ</h1>
+		<h1>性格傾向によるマッチング結果</h1>
+		おすすめの社会人ユーザーを表示しています
 		<table border="1">
-		<caption>性格傾向によるマッチング結果</caption>
 			<tr>
 				<td align="center">ニックネーム</td>
 				<td align="center">フリースペース</td>
@@ -26,19 +26,18 @@
 			<c:forEach var="user" items="${users}" end="5">
 				<tr>
 					<div class="form-group">
-					<td align="center"><a
-						href=<c:out value="/SE18G2/AccountView?userId=${user.getId() }"/>>
-							<c:out value="${user.getNickname()}" />
-					</a></td>
-					<td align="center"><c:out value="${user.getFreespace()}" /></td>
-				</div>
+						<td align="center"><a
+							href=<c:out value="/SE18G2/AccountView?userId=${user.getId() }"/>>
+								<c:out value="${user.getNickname()}" />
+						</a></td>
+						<td align="center"><c:out value="${user.getFreespace()}" /></td>
+					</div>
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="AccountSearchInfo"><button
-				class="btn btn-primary" style="position: absolute; left: 50%">アカウント検索</button></a>
-		<br> <a href="AccountMatchingResult"><button
-				class="btn btn-primary">もっと見る</button></a>
+		<a href="AccountSearchInfo"><button class="btn btn-primary"
+				style="position: absolute; left: 50%">アカウント検索</button></a> <br> <a
+			href="AccountMatchingResult"><button class="btn btn-primary">すべて見る</button></a>
 
 	</div>
 	<!-- javascript -->
