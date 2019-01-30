@@ -73,7 +73,7 @@
 				<br>
 			</p>
 			<p>
-				価値観(最低一つは入力してください)<br> <input type="text" name="valueId1" autocomplete="on"
+				価値観(最低一つは入力してください)※<br> <input type="text" name="valueId1" autocomplete="on"
 					list="values">
 				<datalist id="values">
 					<c:forEach var="value" items="${values}">

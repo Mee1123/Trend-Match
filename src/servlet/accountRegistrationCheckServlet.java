@@ -98,7 +98,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		System.out.println(value2);
 		System.out.println(value3);
 
-		accountRegistrationCheckForm form = new accountRegistrationCheckForm(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace);
+		accountRegistrationCheckForm form = new accountRegistrationCheckForm(jobOffer,nickname,graduate,department,occupation,sex,contact,freeSpace,value1,value2,value3);
 
 		//プロフィール画像
 		/*
