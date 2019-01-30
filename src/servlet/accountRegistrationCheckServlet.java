@@ -68,7 +68,7 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		System.out.println(nickname);
 
 		//卒業年度
-		String graduate = request.getParameter("graduate")+"0331";
+		String graduate = request.getParameter("graduate");
 		System.out.println(graduate);
 
 		//所属
@@ -139,6 +139,18 @@ public class accountRegistrationCheckServlet extends HttpServlet {
 		}else{
 			System.out.println("エラーあり");
 			request.setAttribute("form", form.getError());
+			request.setAttribute("jobOffer",jobOffer );
+			request.setAttribute("nickname", nickname);
+			request.setAttribute("graduate", graduate);
+			request.setAttribute("department", department);
+			request.setAttribute("occupation", occupation);
+			request.setAttribute("sex", sex);
+			request.setAttribute("contact", contact);
+			request.setAttribute("freeSpace", freeSpace);
+			request.setAttribute("value1", value1);
+			request.setAttribute("value2", value2);
+			request.setAttribute("value3", value3);
+
 			doGet(request, response);
 		}
 		}

@@ -16,6 +16,9 @@ public class accountRegistrationCheckForm extends model.User{
 
 	public accountRegistrationCheckForm(String jobOffer, String nickname,String graduate,String department,String occupation,String sex,String contact,String freeSpace,String value1,String value2,String value3) {
 
+
+		graduate = graduate + "0331";
+
 		setJoboffer_id_String(jobOffer);
 		setNickname(nickname);
 		setGraduate_String(graduate);
@@ -61,11 +64,13 @@ public class accountRegistrationCheckForm extends model.User{
 
 	public void graduateValidation(){
 		if(ValidationHelper.maximumText(8, getGraduate_String(), "卒業年度")!=null){
-			error.add(ValidationHelper.maximumText(8, getGraduate_String(), "卒業年度"));
+			//error.add(ValidationHelper.maximumText(8, getGraduate_String(), "卒業年度"));
+			error.add("卒業年度は西暦4桁で入力してください");
 			System.out.println("卒業年度が長い");
 		}
 		if(ValidationHelper.minimumText(8, getGraduate_String(), "卒業年度")!=null){
-			error.add(ValidationHelper.minimumText(8, getGraduate_String(), "卒業年度"));
+			//error.add(ValidationHelper.minimumText(8, getGraduate_String(), "卒業年度"));
+			error.add("卒業年度は西暦4桁で入力してください");
 			System.out.println("卒業年度が短い");
 		}
 	}
@@ -95,7 +100,7 @@ public class accountRegistrationCheckForm extends model.User{
 		Pattern pattern = Pattern.compile("^[0-9]*$");
 		Matcher matcher = pattern.matcher(graduate);
 		if(matcher.matches()==false){
-			error.add("半角数字で入力してください");
+			error.add("卒業年度は半角数字で入力してください");
 		}
 	}
 
