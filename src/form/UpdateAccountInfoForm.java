@@ -6,16 +6,18 @@ import helper.ValidationHelper;
 
 public class UpdateAccountInfoForm extends model.User {
 	private ArrayList<String> error = new ArrayList<String>();
-	private String graduate_String;
+	private int graduate_Int;
+	//private String graduate_String;
 
-	public UpdateAccountInfoForm(String nickName, String picturePath, String graduate, String department,
+	public UpdateAccountInfoForm(String nickName, String picturePath, int graduate, String department,
 			int occupationId,
 			int sexId, String contact, String freeSpace,
 			int jobOfferId, int valueId1, int valueId2, int valueId3) {
 
 		setNickname(nickName);
 		setPicturepath(picturePath);
-		setGraduate_String(graduate);
+		setGraduate_Int(graduate);
+		//setGraduate_String(graduate);
 		setDepartment(department);
 		setOccupation_id(occupationId);
 		setSex_id(sexId);
@@ -74,14 +76,22 @@ public class UpdateAccountInfoForm extends model.User {
 		}
 	}
 
-	public String getGraduate_String() {
+	public int getGraduate_Int() {
+		return graduate_Int;
+	}
+
+	public void setGraduate_Int(int graduate_Int) {
+		this.graduate_Int = graduate_Int;
+	}
+
+	/*public String getGraduate_String() {
 		return graduate_String;
 	}
 
 	public void setGraduate_String(String graduate_String) {
 		this.graduate_String = graduate_String;
 	}
-	/*public Date getGraduate_Int() {
+	public Date getGraduate_Int() {
 		return graduate_Int;
 	}
 

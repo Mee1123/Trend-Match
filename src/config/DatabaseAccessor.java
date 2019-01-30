@@ -22,7 +22,8 @@ public class DatabaseAccessor {
 	//private final static String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
 
 	private final static String DRIVER_NAME = "com.mysql.jdbc.Driver";
-//開始処理
+
+	//開始処理
 	public Connection createConnection() {
 		try {
 			Class.forName(DRIVER_NAME);
@@ -35,7 +36,8 @@ public class DatabaseAccessor {
 		}
 		return null;
 	}
-//汎用終了処理
+
+	//汎用終了処理
 	protected static void close(Connection connection, PreparedStatement preparedStatement, ResultSet resultSet) {
 		if (connection != null) {
 			try {
