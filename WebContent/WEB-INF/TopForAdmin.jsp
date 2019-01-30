@@ -16,6 +16,10 @@
 	<jsp:include page="headerForAdmin.jsp" />
 	<div class="container">
 		<h1>管理者のトップページ</h1>
+
+				<a href="AccountSearchInfo"><button
+				class="btn btn-primary" style="position: absolute; left: 50%">アカウント検索</button></a>
+
 	</div>
 	<!-- javascript -->
 	<script type="text/javascript" src="/SE18G2/CSS/js/jquery-3.2.1.min.js"></script>
