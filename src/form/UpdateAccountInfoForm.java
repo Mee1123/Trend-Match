@@ -1,6 +1,8 @@
 package form;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import helper.ValidationHelper;
 
@@ -73,6 +75,14 @@ public class UpdateAccountInfoForm extends model.User {
 		if (ValidationHelper.maximumText(200, getFreespace(), "フリースペース") != null) {
 			error.add(ValidationHelper.maximumText(200, getFreespace(), "フリースペース"));
 			System.out.println("フリースペースが長い");
+		}
+	}
+
+	public void isNumMatch(String graduate) {
+		Pattern pattern = Pattern.compile("^[0-9]*$");
+		Matcher matcher = pattern.matcher(graduate);
+		if (matcher.matches() == false) {
+			error.add("半角数字で入力してください");
 		}
 	}
 

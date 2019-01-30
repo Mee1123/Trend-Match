@@ -61,7 +61,8 @@
 					String str2 = str.substring(0, 4);
 				%>
 				<label for="graduate">卒業年度※</label> <input class="form-control"
-					type="text" name="graduate" id="graduate" value="<%=str2%>">
+					type="text" name="graduate" id="graduate" maxlength="4"
+					value="<%=str2%>">
 			</div>
 			<div class="form-group">
 				<label for="department">所属(20文字以下)</label> <input
