@@ -139,7 +139,28 @@
 				</tr>
 			</table>
 		</div>
+
+
+
 		<c:choose>
+
+		<c:when test="${session == 0 }">
+		<div class="form-group">
+			メールアドレス:
+			<div class="box1">
+				<p>
+					<c:out value="${user.getMailAddress()}" />
+				</p>
+			</div>
+		</div>
+			<form action="/SE18G2/DeleteUser" method="post">
+					<input type="hidden" name="id" value="${user.getId()}">
+					<button class="btn btn-primary">削除</button>
+			</form>
+
+		</c:when>
+
+
 			<c:when test="${session == 1 }">
 				<div align="right">
 					<a href=/SE18G2/account/update><img
@@ -155,13 +176,6 @@
 				</a>
 			</c:when>
 
-			<c:when test="${session == 0 }">
-					<form action="/SE18G2/DeleteUser" method="post">
-						<input type="hidden" name="id" value="${user.getId()}">
-						<button class="btn btn-primary">削除</button>
-					</form>
-
-				</c:when>
 		</c:choose>
 		<br> <br>
 	</div>
