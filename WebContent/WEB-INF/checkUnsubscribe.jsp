@@ -1,3 +1,5 @@
+<%@page import="service.UserService"%>
+<%@ page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
@@ -13,7 +15,26 @@
 <title>退会確認</title>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+<%
+		int userId = (int) session.getAttribute("userID");
+		UserService userService = new UserService();
+		User account = userService.getMyAccountInfo(userId);
+	%>
+	<%
+	if(userId == 1){
+	%>
+	<jsp:include page="/WEB-INF/headerForAdmin.jsp" />
+	<%
+	}	else if (account.getNickname() == null) {
+	%>
+	<jsp:include page="/WEB-INF/headerForUnfinishAccountRegistration.jsp" />
+	<%
+		} else {
+	%>
+	<jsp:include page="/WEB-INF/header.jsp" />
+	<%
+		}
+	%>
 	<div class="container">
 		<h1>退会確認画面</h1>
 		<form action="/SE18G2/Unsubscribe" method="post">
