@@ -47,7 +47,7 @@ public class accountRegistrationForm extends model.User{
 
 	public void graduateValidation(){
 		if(ValidationHelper.maximumText(9, String.valueOf(getGraduate_Int()), "卒業年度")!=null){
-			error.add(ValidationHelper.maximumText(9, String.valueOf(getGraduate_Int()), "卒業年度"));
+			error.add("卒業年度は西暦4桁で入力してください");
 			System.out.println("卒業年度が長い");
 		}
 	}

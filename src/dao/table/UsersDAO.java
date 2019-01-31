@@ -210,6 +210,7 @@ public class UsersDAO extends DatabaseAccessor {
 				user.setValues_id(resultSet.getInt("value_1_id"));
 				user.setValues_id(resultSet.getInt("value_2_id"));
 				user.setValues_id(resultSet.getInt("value_3_id"));
+				user.setMailAddress(resultSet.getString("mailaddress"));
 			}
 			return user;
 		} catch (Exception e) {

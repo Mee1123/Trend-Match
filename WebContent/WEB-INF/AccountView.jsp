@@ -1,3 +1,5 @@
+<%@page import="service.UserService"%>
+<%@ page import="model.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,7 +18,26 @@
 <title>アカウント閲覧</title>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+<%
+		int userId = (int) session.getAttribute("userID");
+		UserService userService = new UserService();
+		User account = userService.getMyAccountInfo(userId);
+	%>
+	<%
+	if(userId == 1){
+	%>
+	<jsp:include page="/WEB-INF/headerForAdmin.jsp" />
+	<%
+	}	else if (account.getNickname() == null) {
+	%>
+	<jsp:include page="/WEB-INF/headerForUnfinishAccountRegistration.jsp" />
+	<%
+		} else {
+	%>
+	<jsp:include page="/WEB-INF/header.jsp" />
+	<%
+		}
+	%>
 	<div class="container">
 		<br>
 		<h1 class="page-header">アカウント情報</h1>
@@ -139,7 +160,28 @@
 				</tr>
 			</table>
 		</div>
+
+
+
 		<c:choose>
+
+		<c:when test="${session == 0 }">
+		<div class="form-group">
+			メールアドレス:
+			<div class="box1">
+				<p>
+					<c:out value="${user.getMailAddress()}" />
+				</p>
+			</div>
+		</div>
+			<form action="/SE18G2/DeleteUser" method="post">
+					<input type="hidden" name="id" value="${user.getId()}">
+					<button class="btn btn-primary">削除</button>
+			</form>
+
+		</c:when>
+
+
 			<c:when test="${session == 1 }">
 				<div align="right">
 					<a href=/SE18G2/account/update><img
@@ -148,20 +190,12 @@
 				<br>
 			</c:when>
 			<c:when test="${session ==2 }">
-				<button class="btn btn-danger">通報</button>
 
 				<a href=<c:out value="/SE18G2/DMResult?Id=${user.getId() }"/>>
 					<button class="btn btn-primary">Message</button>
 				</a>
 			</c:when>
 
-			<c:when test="${session == 0 }">
-					<form action="/SE18G2/DeleteUser" method="post">
-						<input type="hidden" name="id" value="${user.getId()}">
-						<button class="btn btn-primary">削除</button>
-					</form>
-
-				</c:when>
 		</c:choose>
 		<br> <br>
 	</div>
