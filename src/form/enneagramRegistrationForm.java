@@ -15,15 +15,15 @@ public class enneagramRegistrationForm extends model.User {
 	public enneagramRegistrationForm(String enneagram_1, String enneagram_2, String enneagram_3, String enneagram_4,
 			String enneagram_5, String enneagram_6, String enneagram_7, String enneagram_8, String enneagram_9) {
 
-		checkCharacter(enneagram_1);
-		checkCharacter(enneagram_2);
-		checkCharacter(enneagram_3);
-		checkCharacter(enneagram_4);
-		checkCharacter(enneagram_5);
-		checkCharacter(enneagram_6);
-		checkCharacter(enneagram_7);
-		checkCharacter(enneagram_8);
-		checkCharacter(enneagram_9);
+		checkCharacter(enneagram_1,"1");
+		checkCharacter(enneagram_2,"2");
+		checkCharacter(enneagram_3,"3");
+		checkCharacter(enneagram_4,"4");
+		checkCharacter(enneagram_5,"5");
+		checkCharacter(enneagram_6,"6");
+		checkCharacter(enneagram_7,"7");
+		checkCharacter(enneagram_8,"8");
+		checkCharacter(enneagram_9,"9");
 
 		if (getError().isEmpty()) {
 
@@ -51,21 +51,21 @@ public class enneagramRegistrationForm extends model.User {
 		System.out.println("Form,1,success");
 	}
 
-	public void checkCharacter(String enneagram_Value) {
+	public void checkCharacter(String enneagram_Value,String num) {
 		Pattern p = Pattern.compile("^[0-9]*$");
 		Matcher m = p.matcher(enneagram_Value);
 		if (m.find() == false) {
-			error.add("数字以外が入力されています");
+			error.add("タイプ"+num+"に数字以外が入力されています");
 			System.out.println("数字以外が入力されています");
 		} else {
 			int enneagram_Int = Integer.parseInt(enneagram_Value);
-			checkEnneagramValue(enneagram_Int);
+			checkEnneagramValue(enneagram_Int,num);
 		}
 	}
 
-	public void checkEnneagramValue(int enneagram_Value) {
+	public void checkEnneagramValue(int enneagram_Value,String num) {
 		if (enneagram_Value < 0 || enneagram_Value > 10) {
-			error.add("不正な入力値があります");
+			error.add("タイプ"+num+"の入力値が不正です");
 			System.out.println("不正な入力値があります");
 		}
 
