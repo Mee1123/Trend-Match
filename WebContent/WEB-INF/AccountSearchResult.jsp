@@ -1,5 +1,7 @@
+<%@page import="service.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="model.User"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -14,7 +16,26 @@
 <title>アカウント検索結果</title>
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<%
+		int userId = (int) session.getAttribute("userID");
+		UserService userService = new UserService();
+		User account = userService.getMyAccountInfo(userId);
+	%>
+	<%
+	if(userId == 1){
+	%>
+	<jsp:include page="/WEB-INF/headerForAdmin.jsp" />
+	<%
+	}	else if (account.getNickname() == null) {
+	%>
+	<jsp:include page="/WEB-INF/headerForUnfinishAccountRegistration.jsp" />
+	<%
+		} else {
+	%>
+	<jsp:include page="/WEB-INF/header.jsp" />
+	<%
+		}
+	%>
 	<div class="container">
 		<h1>アカウント検索結果</h1>
 		<table border="1">

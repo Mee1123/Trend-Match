@@ -24,7 +24,11 @@
 		User account = userService.getMyAccountInfo(userId);
 	%>
 	<%
-		if (account.getNickname() == null) {
+	if(userId == 1){
+	%>
+	<jsp:include page="/WEB-INF/headerForAdmin.jsp" />
+	<%
+	}	else if (account.getNickname() == null) {
 	%>
 	<jsp:include page="/WEB-INF/headerForUnfinishAccountRegistration.jsp" />
 	<%
@@ -34,6 +38,7 @@
 	<%
 		}
 	%>
+
 	<!-- コンテンツ -->
 	<div class="container">
 		<h1 class="page-header">パスワード編集</h1>

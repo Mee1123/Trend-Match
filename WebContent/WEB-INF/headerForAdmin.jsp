@@ -8,7 +8,7 @@
 <link rel="stylesheet"
 	href="/SE18G2/CSS/font/css/open-iconic-bootstrap.css">
 <title>headerForAdmin</title>
-<link rel="stylesheet" type="text/css" href="CSS/headerDesign.css">
+<link rel="stylesheet" type="text/css" href="/SE18G2/CSS/headerDesign.css">
 </head>
 <body>
 	<!-- ナビゲーションバー -->
@@ -25,8 +25,7 @@
 			<li><a href="/SE18G2/Top"><img
 					src="/SE18G2/header/home(black).jpg" alt="home"><br>Top</a></li>
 			<li><img src="/SE18G2/header/account(gray).jpg"><br>ACCOUNT</li>
-			<li><a href="/SE18G2/DMResult"><img
-					src="/SE18G2/header/DM(black).jpg"><br>E-BLAST</a></li>
+			<li><img src="/SE18G2/header/DM(gray).jpg"><br>E-BLAST</li>
 			<li><a href="/SE18G2/HeaderUserInfo"><img
 					src="/SE18G2/header/Edit(black).jpg"><br>EDIT USER
 					INFO.</a></li>
